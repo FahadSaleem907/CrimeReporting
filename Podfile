@@ -7,6 +7,8 @@ target 'CrimeReporting' do
 
   # Pods for CrimeReporting
   pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Auth'
   pod 'MaterialComponents/TextFields'
   pod 'RSLoadingView'
   pod 'SDWebImage', '~> 5.0'

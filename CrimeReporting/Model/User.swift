@@ -11,15 +11,15 @@ import UIKit
 
 struct User //: Codable
 {
-    var uid         : String
+    var uid         : String?
     var email       : String
     var name        : String
     var password    : String
-    var userType    : Bool?
+    var userType    : String
     var image       : UIImage?
     var userStatus  : Bool?
     
-    init(uid:String,name:String,email:String,pw:String,userType:Bool,image:UIImage?,userStatus:Bool)
+    init(uid:String?,name:String,email:String,pw:String,userType:String,image:UIImage?,userStatus:Bool?)
     {
         self.uid        =   uid
         self.name       =   name

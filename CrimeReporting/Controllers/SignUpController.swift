@@ -21,11 +21,34 @@ class SignUpController: UIViewController
     
     //Marks : Actions
     
+    @IBAction func createUser(_ sender: fancyUIButton1)
+    {
+        let user1 = User(uid: nil, name: "\(name.text!)", email: "\(email.text!)", pw: "\(password.text!)", userType: "\(accountType.text!)", image: nil, userStatus: false)
+        
+        userServices.createUser(user: user1)
+        { (user, success, error) in
+            
+            guard let success = success else { return }
+            guard let error = error else { return }
+            guard let user = user else { return }
+            let newUser = user
+            
+            if success == true
+            {
+                print("\(newUser)")
+                print("created")
+            }
+            else
+            {
+                print("Error: \(error)")
+            }
+        }
+    }
     //Marks : Variables
     
     
     //Marks : Constants
-    
+    let userServices = userFunctions()
 
     override func viewDidLoad()
     {
