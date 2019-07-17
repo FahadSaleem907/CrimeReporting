@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="CrimeReporting" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="39" translatesAutoresizingMaskIntoConstraints="NO" id="hoG-VS-diT">
+                                <rect key="frame" x="52" y="416.5" width="310.5" height="73"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rdb-ZX-0c9" customClass="fancyTextField" customModule="CrimeReporting" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="310.5" height="17"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="971-hw-0o0" customClass="fancyTextField" customModule="CrimeReporting" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="56" width="310.5" height="17"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUt-8Y-FME" customClass="fancyUIButton1" customModule="CrimeReporting" customModuleProvider="target">
+                                <rect key="frame" x="188" y="504.5" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zc7-4n-6x1" customClass="fancyUIButton1" customModule="CrimeReporting" customModuleProvider="target">
+                                <rect key="frame" x="163.5" y="549.5" width="87" height="30"/>
+                                <state key="normal" title="Not A User ?"/>
+                                <connections>
+                                    <segue destination="Kr0-rN-Jna" kind="show" id="LVd-Ky-KnK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJJ-Xv-sJw" customClass="fancyUIButton1" customModule="CrimeReporting" customModuleProvider="target">
+                                <rect key="frame" x="128" y="822" width="158" height="30"/>
+                                <state key="normal" title="Forgot Your Password?"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="mUt-8Y-FME" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="FWB-sH-40g"/>
+                            <constraint firstItem="zc7-4n-6x1" firstAttribute="top" secondItem="mUt-8Y-FME" secondAttribute="bottom" constant="15" id="GDJ-yn-Vmh"/>
+                            <constraint firstItem="rdb-ZX-0c9" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="J7n-Nq-7PR"/>
+                            <constraint firstItem="EJJ-Xv-sJw" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="RuA-nE-Ymm"/>
+                            <constraint firstItem="hoG-VS-diT" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="UbB-Nf-Zil"/>
+                            <constraint firstItem="971-hw-0o0" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="UhE-l7-pOm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="EJJ-Xv-sJw" secondAttribute="bottom" constant="10" id="ael-gR-D13"/>
+                            <constraint firstItem="mUt-8Y-FME" firstAttribute="top" secondItem="hoG-VS-diT" secondAttribute="bottom" constant="15" id="d3Q-ti-6gH"/>
+                            <constraint firstItem="zc7-4n-6x1" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="gte-pF-mnB"/>
+                            <constraint firstItem="hoG-VS-diT" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="hr8-sU-h6c"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="emaill" destination="rdb-ZX-0c9" id="Wgx-zS-sZR"/>
+                        <outlet property="forgotPwBtn" destination="EJJ-Xv-sJw" id="9T1-t1-iav"/>
+                        <outlet property="loginBtn" destination="mUt-8Y-FME" id="en4-7J-bB5"/>
+                        <outlet property="pw" destination="971-hw-0o0" id="zu9-Hc-9cM"/>
+                        <outlet property="signUpBtn" destination="zc7-4n-6x1" id="4PK-zv-ga3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1107" y="-60"/>
+        </scene>
+        <!--Sign Up Controller-->
+        <scene sceneID="aMw-Cj-8VU">
+            <objects>
+                <viewController id="Kr0-rN-Jna" customClass="SignUpController" customModule="CrimeReporting" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JGA-JX-fTZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="zaS-ny-qNd">
+                                <rect key="frame" x="52" y="370.5" width="310.5" height="165"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bxg-3y-TSC" customClass="MDCTextField">
+                                        <rect key="frame" x="0.0" y="0.0" width="310.5" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m8R-qF-NEy" customClass="MDCTextField">
+                                        <rect key="frame" x="0.0" y="45" width="310.5" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YEx-CI-uOU" customClass="MDCTextField">
+                                        <rect key="frame" x="0.0" y="90" width="310.5" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Account Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wjT-DP-2fM" customClass="MDCTextField">
+                                        <rect key="frame" x="0.0" y="135" width="310.5" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMa-ev-ssf" customClass="fancyUIButton1" customModule="CrimeReporting" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="555.5" width="414" height="30"/>
+                                <state key="normal" title="Create"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iMa-ev-ssf" firstAttribute="width" secondItem="JGA-JX-fTZ" secondAttribute="width" id="EQI-tw-2fT"/>
+                            <constraint firstItem="YEx-CI-uOU" firstAttribute="width" secondItem="JGA-JX-fTZ" secondAttribute="width" multiplier="0.75" id="GSY-gO-oiP"/>
+                            <constraint firstItem="bxg-3y-TSC" firstAttribute="width" secondItem="JGA-JX-fTZ" secondAttribute="width" multiplier="0.75" id="HQx-EE-ZcZ"/>
+                            <constraint firstItem="zaS-ny-qNd" firstAttribute="centerY" secondItem="Xrb-1M-Rk0" secondAttribute="centerY" id="Rug-cb-Hfl"/>
+                            <constraint firstItem="m8R-qF-NEy" firstAttribute="width" secondItem="JGA-JX-fTZ" secondAttribute="width" multiplier="0.75" id="gWs-aK-Ji1"/>
+                            <constraint firstItem="wjT-DP-2fM" firstAttribute="width" secondItem="JGA-JX-fTZ" secondAttribute="width" multiplier="0.75" id="gaw-Vb-BKE"/>
+                            <constraint firstItem="zaS-ny-qNd" firstAttribute="centerX" secondItem="Xrb-1M-Rk0" secondAttribute="centerX" id="lag-Am-E1X"/>
+                            <constraint firstItem="iMa-ev-ssf" firstAttribute="top" secondItem="zaS-ny-qNd" secondAttribute="bottom" constant="20" id="nka-Q6-ixr"/>
+                            <constraint firstItem="iMa-ev-ssf" firstAttribute="centerX" secondItem="Xrb-1M-Rk0" secondAttribute="centerX" id="ofI-4n-s9H"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Xrb-1M-Rk0"/>
+                    </view>
+                    <connections>
+                        <outlet property="accountType" destination="wjT-DP-2fM" id="6AV-oQ-caN"/>
+                        <outlet property="email" destination="m8R-qF-NEy" id="iQY-CT-Krn"/>
+                        <outlet property="name" destination="bxg-3y-TSC" id="Idj-mn-dSg"/>
+                        <outlet property="password" destination="YEx-CI-uOU" id="eFz-IK-dOf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GkQ-p1-dD7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-280" y="-60"/>
+        </scene>
+    </scenes>
+</document>

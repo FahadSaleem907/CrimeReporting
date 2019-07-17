@@ -1,0 +1,6 @@
+framework module Pods_CrimeReportingUITests {
+  umbrella header "Pods-CrimeReportingUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
