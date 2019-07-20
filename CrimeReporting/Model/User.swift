@@ -17,9 +17,9 @@ struct User //: Codable
     var password    : String
     var userType    : String
     var image       : UIImage?
-    var userStatus  : Bool?
+    var userStatus  : String
     
-    init(uid:String?,name:String,email:String,pw:String,userType:String,image:UIImage?,userStatus:Bool?)
+    init(uid:String?,name:String,email:String,pw:String,userType:String,image:UIImage?,userStatus:String)
     {
         self.uid        =   uid
         self.name       =   name

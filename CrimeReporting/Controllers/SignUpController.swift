@@ -23,7 +23,7 @@ class SignUpController: UIViewController
     
     @IBAction func createUser(_ sender: fancyUIButton1)
     {
-        let user1 = User(uid: nil, name: "\(name.text!)", email: "\(email.text!)", pw: "\(password.text!)", userType: "\(accountType.text!)", image: nil, userStatus: false)
+        let user1 = User(uid: nil, name: "\(name.text!)", email: "\(email.text!)", pw: "\(password.text!)", userType: "\(accountType.text!)", image: nil, userStatus: "Inactive")
         
         userServices.createUser(user: user1)
         { (user, success, error) in
