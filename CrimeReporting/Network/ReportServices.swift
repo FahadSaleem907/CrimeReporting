@@ -9,21 +9,56 @@
 import Foundation
 import UIKit
 import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 
-func createReport()
+
+public class reportFunctions
 {
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     
-}
-
-
-func cancelReport()
-{
     
-}
+    func createReport(reports:Report?, completion:@escaping(Report?,Bool?,String?)->Void)
+    {
+        let db = Firestore.firestore()
+        var ref:DocumentReference? = nil
+        
+        var report1 = Report(city: reports!.city, descField: reports!.descriptionField, reportType: reports!.reportType, user: reports!.user, time: reports!.time, img: reports?.image)
+        
+        let dataDic = ["city":"\(report1.city)",
+                       "time":"\(report1.time)",
+                       "reportType":"\(report1.reportType)",
+                       "reportDescription":"\(report1.descriptionField)"
+                      ]
+        
+        ref = db.collection("Reports").addDocument(data: dataDic)
+        {
+            err in
+            if let err = err
+            {
+                print("Error : \(err.localizedDescription)")
+                completion(nil,false,err.localizedDescription)
+            }
+            else
+            {
+                print("Created")
+                completion(reports,true,nil)
+            }
+        }
+        
+        
+    }
 
 
-func changeReportStatus()
-{
+    func cancelReport()
+    {
     
-}
+    }
 
+
+    func changeReportStatus()
+    {
+    
+    }
+
+}

@@ -21,6 +21,7 @@
 		FA6CB1A122DDE8B60037120D /* CrimeReportingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CB1A022DDE8B60037120D /* CrimeReportingTests.swift */; };
 		FA6CB1AC22DDE8B60037120D /* CrimeReportingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CB1AB22DDE8B60037120D /* CrimeReportingUITests.swift */; };
 		FA6CB1BA22DDE9750037120D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA6CB1B922DDE9750037120D /* GoogleService-Info.plist */; };
+		FA7DBE4722E328E000067F78 /* ReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7DBE4622E328E000067F78 /* ReportController.swift */; };
 		FAF62EBE22DF1664006DCA98 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF62EBD22DF1664006DCA98 /* User.swift */; };
 		FAF62EC022DF173C006DCA98 /* reportStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF62EBF22DF173C006DCA98 /* reportStatus.swift */; };
 		FAF62EC222DF174C006DCA98 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF62EC122DF174C006DCA98 /* Report.swift */; };
@@ -73,6 +74,7 @@
 		FA6CB1AB22DDE8B60037120D /* CrimeReportingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrimeReportingUITests.swift; sourceTree = "<group>"; };
 		FA6CB1AD22DDE8B60037120D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA6CB1B922DDE9750037120D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FA7DBE4622E328E000067F78 /* ReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportController.swift; sourceTree = "<group>"; };
 		FAF62EBD22DF1664006DCA98 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FAF62EBF22DF173C006DCA98 /* reportStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reportStatus.swift; sourceTree = "<group>"; };
 		FAF62EC122DF174C006DCA98 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			children = (
 				FA6CB18D22DDE8B50037120D /* MainViewController.swift */,
 				FAF62ECA22DF25FC006DCA98 /* SignUpController.swift */,
+				FA7DBE4622E328E000067F78 /* ReportController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				FA6CB18E22DDE8B50037120D /* MainViewController.swift in Sources */,
 				FAF62EBE22DF1664006DCA98 /* User.swift in Sources */,
 				FAF62EC222DF174C006DCA98 /* Report.swift in Sources */,
+				FA7DBE4722E328E000067F78 /* ReportController.swift in Sources */,
 				FA07BDBE22DE15D000822D85 /* fancyUIButton.swift in Sources */,
 				FA07BDBC22DE15C000822D85 /* fancyUITextField.swift in Sources */,
 				FAF62EC722DF22A5006DCA98 /* ReportServices.swift in Sources */,

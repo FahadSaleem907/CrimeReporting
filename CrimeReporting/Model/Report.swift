@@ -11,18 +11,18 @@ import UIKit
 
 struct Report //: Codable
 {
-    var reportID            : String
+    //var reportID            : String
     var city                : String
     var descriptionField    : String
     var reportType          : String
-    var user                : User
+    var user                : User?
     var time                : String
     var image               : UIImage?
     
     
-    init(reportID : String , city : String , descField : String , reportType : String , user : User , time : String , img : UIImage? )
+    init(/*reportID : String ,*/ city : String , descField : String , reportType : String , user : User? , time : String , img : UIImage? )
     {
-        self.reportID           =   reportID
+        //self.reportID           =   reportID
         self.city               =   city
         self.descriptionField   =   descField
         self.reportType         =   reportType
