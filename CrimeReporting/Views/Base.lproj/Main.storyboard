@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TN3-jL-ZP0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -38,6 +38,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUt-8Y-FME" customClass="fancyUIButton1" customModule="CrimeReporting" customModuleProvider="target">
                                 <rect key="frame" x="188" y="504.5" width="38" height="30"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q6h-IA-APp"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zc7-4n-6x1" customClass="fancyUIButton1" customModule="CrimeReporting" customModuleProvider="target">
                                 <rect key="frame" x="163.5" y="549.5" width="87" height="30"/>
@@ -69,7 +72,6 @@
                     <connections>
                         <outlet property="emaill" destination="rdb-ZX-0c9" id="Wgx-zS-sZR"/>
                         <outlet property="forgotPwBtn" destination="EJJ-Xv-sJw" id="9T1-t1-iav"/>
-                        <outlet property="loginBtn" destination="mUt-8Y-FME" id="en4-7J-bB5"/>
                         <outlet property="pw" destination="971-hw-0o0" id="zu9-Hc-9cM"/>
                         <outlet property="signUpBtn" destination="zc7-4n-6x1" id="4PK-zv-ga3"/>
                     </connections>

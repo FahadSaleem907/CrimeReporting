@@ -18,7 +18,26 @@ class MainViewController: UIViewController {
     @IBOutlet weak var pw: UITextField!
     
     //Mark: Actions
-    @IBOutlet weak var loginBtn: UIButton!
+  
+    @IBAction func login(_ sender: fancyUIButton1)
+    {
+        let userServices = userFunctions()
+        
+        userServices.login(email: emaill.text!, password: pw.text!) { (user, success, error) in
+            guard let user = user else { return }
+            guard let success = success else { return }
+            guard let error = error else { return }
+            
+            if success == true
+            {
+                print("Success. User : \(user)")
+            }
+            else
+            {
+                print("Failed. Error : \(error)")
+            }
+        }
+    }
     @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var forgotPwBtn: UIButton!
     
@@ -27,6 +46,8 @@ class MainViewController: UIViewController {
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        emaill.text = "fahad@fahad.com"
+        pw.text = "123123"
     }
 
 

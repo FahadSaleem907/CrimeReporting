@@ -16,11 +16,10 @@ import FirebaseFirestore
 public class reportFunctions
 {
     let delegate = UIApplication.shared.delegate as! AppDelegate
-    
+    let db = Firestore.firestore()
     
     func createReport(reports:Report?, completion:@escaping(Report?,Bool?,String?)->Void)
     {
-        let db = Firestore.firestore()
         var ref:DocumentReference? = nil
         
         var report1 = Report(city: reports!.city, descField: reports!.descriptionField, reportType: reports!.reportType, user: reports!.user, time: reports!.time, img: reports?.image)
@@ -49,7 +48,13 @@ public class reportFunctions
         
     }
 
-
+    func viewReports()
+    {
+        //var ref:DocumentReference? = nil
+        
+        
+    }
+    
     func cancelReport()
     {
     
@@ -60,5 +65,7 @@ public class reportFunctions
     {
     
     }
+    
+    
 
 }

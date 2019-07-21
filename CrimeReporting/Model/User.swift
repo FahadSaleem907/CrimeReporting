@@ -14,12 +14,12 @@ struct User //: Codable
     var uid         : String?
     var email       : String
     var name        : String
-    var password    : String
+    var password    : String?
     var userType    : String
     var image       : UIImage?
     var userStatus  : String
     
-    init(uid:String?,name:String,email:String,pw:String,userType:String,image:UIImage?,userStatus:String)
+    init(uid:String?,name:String,email:String,pw:String?,userType:String,image:UIImage?,userStatus:String)
     {
         self.uid        =   uid
         self.name       =   name
