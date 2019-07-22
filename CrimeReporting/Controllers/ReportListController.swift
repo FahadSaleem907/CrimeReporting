@@ -13,14 +13,35 @@ class ReportListController: UIViewController {
     //Marks: Outlets
     
     @IBOutlet weak var reportList: UITableView!
+    @IBOutlet weak var msgLbl: UILabel!
+    @IBOutlet weak var firstReportBtn: UIButton!
     
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     
-    override func viewDidLoad() {
+    func checkReport()
+    {
+        if delegate.currentUser?.reportsID.count == 0
+        {
+            reportList.isHidden = true
+            msgLbl.isHidden = false
+            firstReportBtn.isHidden = false
+        }
+        else
+        {
+            reportList.isHidden = false
+            msgLbl.isHidden = true
+            firstReportBtn.isHidden = true
+        }
+    }
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
         reportList.delegate     = self
         reportList.dataSource   = self
         // Do any additional setup after loading the view.
+        checkReport()
     }
     
 

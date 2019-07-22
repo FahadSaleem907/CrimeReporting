@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  CrimeReporting
-//
-//  Created by FahadSaleem on 16/07/2019.
-//  Copyright © 2019 FahadSaleem. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
@@ -97,7 +89,8 @@ extension MainViewController
     func statusAlert(title:String, msg:String, controller:UIViewController)
     {
         let alertValidation = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        let buttonOK = UIAlertAction(title: "Okay", style: .default, handler: {_ in self.navigationController?.popViewController(animated: true) })
+        let buttonOK = UIAlertAction(title: "Okay", style: .default, handler: {_ in //self.navigationController?.popViewController(animated: true) })
+            self.performSegue(withIdentifier: "loginUser", sender: self) })
         alertValidation.addAction(buttonOK)
         present(alertValidation, animated: true, completion: nil)
     }
