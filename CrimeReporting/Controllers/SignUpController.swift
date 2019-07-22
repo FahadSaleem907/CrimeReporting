@@ -23,32 +23,69 @@ class SignUpController: UIViewController
     
     @IBAction func createUser(_ sender: fancyUIButton1)
     {
-        let user1 = User(uid: nil, name: "\(name.text!)", email: "\(email.text!)", pw: "\(password.text!)", userType: "\(accountType.text!)", image: nil, userStatus: "Inactive")
         
-        userServices.createUser(user: user1)
-        { (user, success, error) in
-            
-            guard let success = success else { return }
-            guard let error = error else { return }
-            guard let user = user else { return }
-            let newUser = user
-            
-            if success == true
-            {
-                print("\(newUser)")
-                print("created")
-            }
-            else
-            {
-                print("Error: \(error)")
-            }
-        }
+        createuser()
+//        userServices.createUser(user: user1)
+//
+//        {
+//            (mainError, user, success, error)  in
+//            guard let mainError = mainError else { return }
+//            guard let success = success else { return }
+//            guard let error = error else { return }
+//            guard let user = user else { return }
+//            let newUser = user
+//
+//            print("\(mainError) $$$$$$")
+//            print("\(error) =======")
+//            if success == true
+//            {
+//                print("\(newUser)")
+//                print("created")
+//            }
+//
+//            if success == false
+//            {
+//                if mainError != nil
+//                {
+//                    print("Main Error: \(mainError)")
+//                }
+//                else
+//                {
+//                    print("Error: \(error)")
+//                }
+//            }
+//        }
     }
+        
+        
     //Marks : Variables
     
     
     //Marks : Constants
     let userServices = userFunctions()
+    
+    // MARKS : FUNCTIONS
+    
+    func createuser()
+    {
+        let user1 = User(uid: nil, name: "\(name.text!)", email: "\(email.text!)", pw: "\(password.text!)", userType: "\(accountType.text!)", image: nil, userStatus: "Inactive", reportID: [])
+        
+        
+        userServices.createUser(user: user1) { (authError, user, success, dataError) in
+            
+            guard let authError = authError else { return }
+            guard let user = user else { return }
+            guard let success = success else { return }
+            guard let dataError = dataError else { return }
+            
+            let newUser = user
+            
+            print("\(authError) .....")
+            print("\(dataError) -----")
+            print(user)
+            
+        }
+    }
 
     override func viewDidLoad()
     {

@@ -11,13 +11,13 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    //Mark: Variables
+    // Mark: - Variables
     
-    //Mark: Outlets
+    // Mark: - Outlets
     @IBOutlet weak var emaill: UITextField!
     @IBOutlet weak var pw: UITextField!
     
-    //Mark: Actions
+    //Mark: - Actions
   
     @IBAction func login(_ sender: fancyUIButton1)
     {
@@ -45,11 +45,9 @@ class MainViewController: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         emaill.text = "fahad@fahad.com"
         pw.text = "123123"
     }
-
-
 }
 

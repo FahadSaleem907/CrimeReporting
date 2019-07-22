@@ -21,7 +21,7 @@ public class userFunctions
     func login(email:String,password:String,completion:@escaping(User?,Bool?,String?)->Void)
     {
         
-        delegate.currentUser = User(uid: "asd", name: "asd", email: "asd", pw: nil, userType: "asd", image: nil, userStatus: "asd")
+        delegate.currentUser = User(uid: "asd", name: "asd", email: "asd", pw: nil, userType: "asd", image: nil, userStatus: "asd", reportID: [])
         
         Auth.auth().signIn(withEmail: email, password: password)
         {
@@ -181,16 +181,16 @@ public class userFunctions
     
     
     
-    func createUser(user:User?, completion:@escaping(User?, Bool?,String?)->Void)
+    func createUser(user:User?,completion:@escaping(String?,User?, Bool?,String?)->Void)
     {
         var ref:DocumentReference? = nil
     
         Auth.auth().createUser(withEmail: user!.email, password: user!.password!)
-        { (result, err) in
+        { (result, mainErr) in
             
-            if err == nil
+            if mainErr == nil
             {
-                var users:User? = User(uid: user!.uid, name: user!.name, email: user!.email, pw: user!.password, userType: user!.userType, image: nil, userStatus: "Active")
+                var users:User? = User(uid: user!.uid, name: user!.name, email: user!.email, pw: user!.password, userType: user!.userType, image: nil, userStatus: "Active", reportID: [])
                 
                 users?.uid = result!.user.uid
                 users?.userStatus = "Active"
@@ -201,30 +201,38 @@ public class userFunctions
                 print("created")
                 print(users!.name, users!.uid! , users!.userStatus)
                 
-                let dataDic:[String:Any] = ["name" : "\(users!.name)",
-                                            "email": "\(users!.email)",
-                                            "uid"  : "\(users!.uid!)"
+                let dataDic:[String:Any] = ["name"          : "\(users!.name)",
+                                            "email"         : "\(users!.email)",
+                                            "uid"           : "\(users!.uid!)",
+                                            "User Type"     : "\(users!.userType)",
+                                            "User Status"   : "\(users!.userStatus)",
+                                            "Reports"       : "Nil"
                                             ]
                     
-                ref = self.db.collection("\(users!.userType)").document("\(users!.uid!)").collection("\(users!.userStatus)").document("\(users!.email)")
+                //ref = self.db.collection("\(users!.userType)").document("\(users!.uid!)").collection("\(users!.userStatus)").document("\(users!.email)")
                 
+                ref = self.db.collection("Users").document("\(users!.uid!)")
                 ref?.setData(dataDic)
                 {
-                    err in
-                    if let err = err
+                    error in
+                    if let err = error
                     {
-                        print("Error : \(err.localizedDescription)")
+                        print("Error : \(error!.localizedDescription)")
+                        completion(nil,nil,false,error?.localizedDescription)
                     }
                     else
                     {
                         print("Created")
+                        completion(nil,users,true,nil)
                     }
                 }
-                completion(users,true,nil)
+                //completion(nil,users,true,nil)
             }
             else
             {
-                completion(nil, false , err?.localizedDescription)
+                let authError = mainErr?.localizedDescription
+                //print(authError)
+                completion(authError ,nil, false , nil)
             }
         }
     }
