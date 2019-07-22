@@ -40,7 +40,7 @@ class ReportListController: UIViewController {
 
         reportList.delegate     = self
         reportList.dataSource   = self
-        // Do any additional setup after loading the view.
+        
         checkReport()
     }
     
