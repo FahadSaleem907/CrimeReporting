@@ -11,8 +11,12 @@ import UIKit
 class DashboardController: UIViewController
 {
     
-    let layout = UICollectionViewFlowLayout()
-
+    var layoutSize:CGSize?
+    func getSize()
+    {
+        layoutSize = reportNumbers.frame.size
+    }
+    
     //Marks: Outlets
     
     @IBOutlet weak var reportNumbers: UICollectionView!
@@ -23,6 +27,7 @@ class DashboardController: UIViewController
         reportNumbers.delegate      = self
         reportNumbers.dataSource    = self
         // Do any additional setup after loading the view.
+        getSize()
     }
     
 
@@ -49,6 +54,12 @@ extension DashboardController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat
     {
         return 0
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+    {
+        return layoutSize!
     }
     
     
