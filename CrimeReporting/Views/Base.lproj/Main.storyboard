@@ -521,8 +521,8 @@ Would You Like To File A New Report ?</string>
                     </view>
                     <connections>
                         <outlet property="city" destination="shg-dz-vZd" id="wll-0F-Vb0"/>
-                        <outlet property="reportType" destination="9jX-Lz-R4B" id="QuD-YV-PhG"/>
-                        <outlet property="time" destination="9jX-Lz-R4B" id="JCY-Bi-APm"/>
+                        <outlet property="reportType" destination="Bxa-We-5jx" id="jTB-bV-yXY"/>
+                        <outlet property="time" destination="9jX-Lz-R4B" id="lmb-vk-xay"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wl0-Ph-3Zn" userLabel="First Responder" sceneMemberID="firstResponder"/>
