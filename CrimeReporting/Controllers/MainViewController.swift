@@ -21,26 +21,56 @@ class MainViewController: UIViewController {
   
     @IBAction func login(_ sender: fancyUIButton1)
     {
-        let userServices = userFunctions()
-        
-        userServices.login(email: emaill.text!, password: pw.text!) { (user, success, error) in
-            guard let user = user else { return }
-            guard let success = success else { return }
-            guard let error = error else { return }
-            
-            if success == true
-            {
-                print("Success. User : \(user)")
-            }
-            else
-            {
-                print("Failed. Error : \(error)")
-            }
+        if emaill.text?.isEmpty == true
+        {
+            alert(msg: "Email Missing.\nEnter Email.", controller: self, textField: emaill)
+        }
+        else if pw.text?.isEmpty == true
+        {
+            alert(msg: "Password Missing.\nEnter Password.", controller: self, textField: pw)
+        }
+        else if pw.text!.count <= 5
+        {
+            alert(msg: "Password is too small", controller: self, textField: pw)
+        }
+        else
+        {
+            login()
         }
     }
     @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var forgotPwBtn: UIButton!
     
+    
+    func login()
+    {
+        let userServices = userFunctions()
+        
+        userServices.login(email: emaill.text!, password: pw.text!)
+        {
+            (user, success, error) in
+            
+            if let error = error
+            {
+                self.statusAlert(title: "Error", msg: "\(error)", controller: self)
+            }
+            else
+            {
+                guard let user = user else { return }
+                guard let success = success else { return }
+                
+                if success == true
+                {
+                    self.statusAlert(title: "Success", msg: "Logged in Successfully.\nUser: \(user)", controller: self)
+                }
+            }
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        self.view.endEditing(true)
+    }
     
     override func viewDidLoad()
     {
@@ -51,3 +81,24 @@ class MainViewController: UIViewController {
     }
 }
 
+extension MainViewController
+{
+    func alert(msg:String , controller:UIViewController, textField:UITextField)
+    {
+        let alertValidation = UIAlertController(title: "Error", message: msg, preferredStyle: .alert)
+        let buttonOK = UIAlertAction(title: "Okay", style: .default)
+        {
+            (_) in textField.becomeFirstResponder()
+        }
+        alertValidation.addAction(buttonOK)
+        present(alertValidation, animated: true, completion: nil)
+    }
+    
+    func statusAlert(title:String, msg:String, controller:UIViewController)
+    {
+        let alertValidation = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        let buttonOK = UIAlertAction(title: "Okay", style: .default, handler: {_ in self.navigationController?.popViewController(animated: true) })
+        alertValidation.addAction(buttonOK)
+        present(alertValidation, animated: true, completion: nil)
+    }
+}

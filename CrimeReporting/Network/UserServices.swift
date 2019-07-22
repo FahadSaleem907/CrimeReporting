@@ -40,139 +40,37 @@ public class userFunctions
             
             var ref:DocumentReference? = nil
             
-            let type = ["Admin","User"]
-            let status = ["Active","Inactive"]
+            //let type = ["Admin","User"]
+            //let status = ["Active","Inactive"]
             
-            for i in type
-            {
-                if i == "Admin"
+            ref = self.db.collection("Users").document("\(uid)")
+            ref?.getDocument(completion:
                 {
-                    for j in status
+                    (snapshot, error) in
+                    if let snapshot = snapshot
                     {
-                        if j == "Active"
+                        if snapshot.data() != nil
                         {
-                            ref = self.db.collection("Admin").document("\(uid)").collection("Active").document("\(email)")
-                            ref?.getDocument(completion:
-                                {
-                                    (snapshot, error) in
-                                    if let snapshot = snapshot
-                                    {
-                                        if snapshot.data() != nil
-                                        {
-                                            self.delegate.currentUser?.uid = snapshot.data()!["uid"] as! String
-                                            self.delegate.currentUser?.email = snapshot.data()!["email"] as! String
-                                            self.delegate.currentUser?.name = snapshot.data()!["name"] as! String
-                                            self.delegate.currentUser?.userType = "Admin"
-                                            self.delegate.currentUser?.userStatus = "Active"
-                                            print("Active Admin Cached document data: \(self.delegate.currentUser)")
-                                        }
-                                        else
-                                        {
-                                            print(error?.localizedDescription)
-                                        }
-                                    }
-                                    else
-                                    {
-                                        print("Document does not exist in cache")
-                                    }
-                                })
+                            self.delegate.currentUser?.uid = snapshot.data()!["uid"] as! String
+                            self.delegate.currentUser?.email = snapshot.data()!["email"] as! String
+                            self.delegate.currentUser?.name = snapshot.data()!["name"] as! String
+                            self.delegate.currentUser?.userType = snapshot.data()!["User Type"] as! String
+                            self.delegate.currentUser?.userStatus = snapshot.data()!["User Status"] as! String
+                            //print("Active Admin Cached document data: \(self.delegate.currentUser)")
+                            completion(self.delegate.currentUser,true,nil)
                         }
-                        if j == "Inactive"
+                        else
                         {
-                            ref = self.db.collection("Admin").document("\(uid)").collection("Inactive").document("\(email)")
-                            ref?.getDocument(completion:
-                                {
-                                    (snapshot, error) in
-                                    if let snapshot = snapshot
-                                    {
-                                        if snapshot.data() != nil
-                                        {
-                                            self.delegate.currentUser?.uid = snapshot.data()!["uid"] as! String
-                                            self.delegate.currentUser?.email = snapshot.data()!["email"] as! String
-                                            self.delegate.currentUser?.name = snapshot.data()!["name"] as! String
-                                            self.delegate.currentUser?.userType = "Admin"
-                                            self.delegate.currentUser?.userStatus = "Inactive"
-                                            print("Inactive Admin Cached document data: \(self.delegate.currentUser)")
-                                        }
-                                        else
-                                        {
-                                            print(error?.localizedDescription)
-                                        }
-                                    }
-                                    else
-                                    {
-                                        print("Document does not exist in cache")
-                                    }
-                                })
+                            //print(error?.localizedDescription)
+                            completion(nil,false,error?.localizedDescription)
                         }
                     }
-                }
-                if i == "User"
-                {
-                    for j in status
+                    else
                     {
-                        if j == "Active"
-                        {
-                            ref = self.db.collection("User").document("\(uid)").collection("Active").document("\(email)")
-                            ref?.getDocument(completion:
-                                {
-                                    (snapshot, error) in
-                                    if let snapshot = snapshot
-                                    {
-                                        //let dataDescription = snapshot.data().map(String.init(describing:)) ?? "nil"
-                                        if snapshot.data() != nil
-                                        {
-                                            //print("DDDDD \(snapshot.data())")
-                                            self.delegate.currentUser?.uid = (snapshot.data()!["uid"] as! String)
-                                            self.delegate.currentUser?.email = snapshot.data()!["email"] as! String
-                                            self.delegate.currentUser?.name = snapshot.data()!["name"] as! String
-                                            self.delegate.currentUser?.userType = "User"
-                                            self.delegate.currentUser?.userStatus = "Active"
-                                            print("Active User Cached document data: \(self.delegate.currentUser!)")
-                                        }
-                                        else
-                                        {
-                                            print(error?.localizedDescription)
-                                        }
-                                    }
-                                    else
-                                    {
-                                        print("Document does not exist in cache")
-                                    }
-                                })
-                        }
-                        if j == "Inactive"
-                        {
-                            ref = self.db.collection("User").document("\(uid)").collection("Inactive").document("\(email)")
-                            ref?.getDocument(completion:
-                                {
-                                    (snapshot, error) in
-                                    if let snapshot = snapshot
-                                    {
-                                        if snapshot.data() != nil
-                                        {
-                                            print("FFFFFF \(snapshot.data())")
-                                            self.delegate.currentUser?.uid = snapshot.data()!["uid"] as! String
-                                            self.delegate.currentUser?.email = snapshot.data()!["email"] as! String
-                                            self.delegate.currentUser?.name = snapshot.data()!["name"] as! String
-                                            self.delegate.currentUser?.userType = "User"
-                                            self.delegate.currentUser?.userStatus = "Inactive"
-                                            print("Inactive User Cached document data: \(self.delegate.currentUser)")
-                                        }
-                                        else
-                                        {
-                                            print(error?.localizedDescription)
-                                        }
-                                    }
-                                    else
-                                    {
-                                        print("Document does not exist in cache")
-                                    }
-                                })
-                        }
+                        //print("Document does not exist in cache")
+                        completion(nil,false,error?.localizedDescription)
                     }
-                }
-            }
+            })
             
             
             

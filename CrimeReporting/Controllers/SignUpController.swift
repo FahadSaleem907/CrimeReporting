@@ -1,11 +1,3 @@
-//
-//  SignUpController.swift
-//  CrimeReporting
-//
-//  Created by FahadSaleem on 17/07/2019.
-//  Copyright © 2019 FahadSaleem. All rights reserved.
-//
-
 import Foundation
 import UIKit
 import MaterialComponents.MaterialTextFields
@@ -23,38 +15,30 @@ class SignUpController: UIViewController
     
     @IBAction func createUser(_ sender: fancyUIButton1)
     {
-        
-        createuser()
-//        userServices.createUser(user: user1)
-//
-//        {
-//            (mainError, user, success, error)  in
-//            guard let mainError = mainError else { return }
-//            guard let success = success else { return }
-//            guard let error = error else { return }
-//            guard let user = user else { return }
-//            let newUser = user
-//
-//            print("\(mainError) $$$$$$")
-//            print("\(error) =======")
-//            if success == true
-//            {
-//                print("\(newUser)")
-//                print("created")
-//            }
-//
-//            if success == false
-//            {
-//                if mainError != nil
-//                {
-//                    print("Main Error: \(mainError)")
-//                }
-//                else
-//                {
-//                    print("Error: \(error)")
-//                }
-//            }
-//        }
+        if name.text?.isEmpty == true
+        {
+            alert(msg: "Name Field is Empty.\nEnter Name", controller: self, textField: name)
+        }
+        else if email.text?.isEmpty == true
+        {
+            alert(msg: "Email Field is Empty.\nEnter Email", controller: self, textField: email)
+        }
+        else if password.text?.isEmpty == true
+        {
+            alert(msg: "Password Field is Empty.\nEnter Password", controller: self, textField: password)
+        }
+        else if password.text!.count <= 5
+        {
+            alert(msg: "Small Password.\nPassword Must Have 6 or more characters.", controller: self, textField: password)
+        }
+        else if accountType.text?.isEmpty == true
+        {
+            alert(msg: "Account Type Field is Empty.\nEnter Account Type", controller: self, textField: accountType)
+        }
+        else
+        {
+            createuser()
+        }
     }
         
         
@@ -63,6 +47,8 @@ class SignUpController: UIViewController
     
     //Marks : Constants
     let userServices = userFunctions()
+    let userType = ["Admin","User"]
+    let type = UIPickerView()
     
     // MARKS : FUNCTIONS
     
@@ -71,27 +57,152 @@ class SignUpController: UIViewController
         let user1 = User(uid: nil, name: "\(name.text!)", email: "\(email.text!)", pw: "\(password.text!)", userType: "\(accountType.text!)", image: nil, userStatus: "Inactive", reportID: [])
         
         
-        userServices.createUser(user: user1) { (authError, user, success, dataError) in
-            
-            guard let authError = authError else { return }
-            guard let user = user else { return }
-            guard let success = success else { return }
-            guard let dataError = dataError else { return }
-            
-            let newUser = user
-            
-            print("\(authError) .....")
-            print("\(dataError) -----")
-            print(user)
-            
+        userServices.createUser(user: user1)
+        {
+            (authError, user, success, dataError) in
+                if let authError = authError
+                {
+                    self.statusAlert(title: "Error", msg: "\(authError)", controller: self)
+                }
+                else
+                {
+                    if let dataError = dataError
+                    {
+                        self.statusAlert(title: "Error", msg: "\(dataError)", controller: self)
+                    }
+                    else
+                    {
+                        guard let user = user else { return }
+                        guard let success = success else { return }
+                    
+                        let newUser = user
+                    
+                        if success ==  true
+                        {
+                            self.statusAlert(title: "Success", msg: "User Created Successfully.\n\(newUser)", controller: self)
+                        }
+                    
+                    }
+                }
         }
     }
 
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        self.view.endEditing(true)
+    }
+    
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        accountType.inputView   = type
+        accountType.delegate    = self
+        type.delegate           = self
+        
+        accountTypeToolbar()
+    }
+    
+}
 
-        // Do any additional setup after loading the view.
+extension SignUpController
+{
+    func alert(msg:String , controller:UIViewController, textField:UITextField)
+    {
+        let alertValidation = UIAlertController(title: "Error", message: msg, preferredStyle: .alert)
+        let buttonOK = UIAlertAction(title: "Okay", style: .default)
+        {
+            (_) in textField.becomeFirstResponder()
+        }
+        alertValidation.addAction(buttonOK)
+        present(alertValidation, animated: true, completion: nil)
+    }
+    
+    func statusAlert(title:String, msg:String, controller:UIViewController)
+    {
+        let alertValidation = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        let buttonOK = UIAlertAction(title: "Okay", style: .default, handler: {_ in self.navigationController?.popViewController(animated: true) })
+        alertValidation.addAction(buttonOK)
+        present(alertValidation, animated: true, completion: nil)
+    }
+}
+
+extension SignUpController: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UINavigationControllerDelegate
+{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int
+    {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+        return userType.count
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+    {
+        return userType[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        accountType.text = String(userType[row])
+        let acc = userType[row]
+        print("zzzzz\(acc)zzzz")
+    }
+    //
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView
+    {
+        var label:UILabel
+        
+        if let view = view as? UILabel
+        {
+            label = view
+        }
+        else
+        {
+            label = UILabel()
+        }
+        
+        label.textColor = .black
+        label.textAlignment = .center
+        label.font = UIFont(name: "Menlo-Regular", size: 20)
+        
+        label.text = userType[row]
+        
+        return label
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    {
+        if textField == accountType
+        {
+            return false
+        }
+        else
+        {
+            return true
+        }
+    }
+    
+    @objc private func typeSelected()
+    {
+        self.view.endEditing(true)
+    }
+    
+    func accountTypeToolbar()
+    {
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(typeSelected))
+        toolBar.setItems([doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        toolBar.barTintColor = .black
+        
+        accountType.inputAccessoryView = toolBar
     }
     
 }
