@@ -15,6 +15,8 @@ import FirebaseFirestore
 
 public class reportFunctions
 {
+    var reportList = [Report?]()
+    
     let delegate = UIApplication.shared.delegate as! AppDelegate
     let db = Firestore.firestore()
     
@@ -53,10 +55,34 @@ public class reportFunctions
         
     }
 
-    func viewReports()
+    func viewReports(completion:@escaping([Report?]?)->Void)
     {
         //var ref:DocumentReference? = nil
+
+        let reportRef = self.db.collection("Reports")
+        let query = reportRef.whereField("uid", isEqualTo: "\(delegate.currentUser!.uid!)")
         
+        query.getDocuments { (snapshot, error) in
+            if let error = error
+            {
+                print("ERROR: \(error.localizedDescription)")
+                completion(nil)
+            }
+            else
+            {
+                for i in snapshot!.documents
+                {
+                    //print("\(i.data())")
+                    
+                    let tmpReport = Report(city: i.data()["city"] as! String, descField: i.data()["reportDescription"] as! String, reportType: i.data()["reportType"] as! String, userID: i.data()["uid"] as! String, time: i.data()["time"] as! String, img: nil, pending: i.data()["pending"] as? Bool, inProgress: i.data()["inProgress"] as? Bool, completed: i.data()["completed"] as? Bool)
+                    
+                    self.reportList.append(tmpReport)
+                    
+                    //print(self.reportList.count)
+                }
+                completion(self.reportList)
+            }
+        }
         
     }
     

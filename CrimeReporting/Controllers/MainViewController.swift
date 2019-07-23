@@ -54,6 +54,9 @@ class MainViewController: UIViewController {
                 if success == true
                 {
                     self.statusAlert(title: "Success", msg: "Logged in Successfully.\nUser: \(user)", controller: self)
+                    
+                    let reportServices = reportFunctions()
+                    //reportServices.viewReports()
                 }
             }
         }

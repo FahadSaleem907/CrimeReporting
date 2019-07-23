@@ -14,6 +14,8 @@ import FirebaseFirestore
 
 public class userFunctions
 {
+    var reportList = [Report?]()
+    
     let delegate = UIApplication.shared.delegate as! AppDelegate
     let db = Firestore.firestore()
     
@@ -56,6 +58,13 @@ public class userFunctions
                             self.delegate.currentUser?.userType = snapshot.data()!["User Type"] as! String
                             self.delegate.currentUser?.userStatus = snapshot.data()!["User Status"] as! String
                             //print("Active Admin Cached document data: \(self.delegate.currentUser)")
+                            let reportService = reportFunctions()
+                            
+//                            reportService.viewReports(completion: { (<#[Report?]?#>) in
+//                                <#code#>
+//                            })
+                            print(self.reportList)
+                            self.delegate.currentUser?.reportsID = self.reportList
                             completion(self.delegate.currentUser,true,nil)
                         }
                         else
