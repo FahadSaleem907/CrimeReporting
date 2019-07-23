@@ -22,15 +22,20 @@ public class reportFunctions
     {
         var ref:DocumentReference? = nil
         
-        var report1 = Report(city: reports!.city, descField: reports!.descriptionField, reportType: reports!.reportType, user: reports!.user, time: reports!.time, img: reports?.image)
+        let report1 = Report(city: reports!.city, descField: reports!.descriptionField, reportType: reports!.reportType, userID: delegate.currentUser!.uid!, time: reports!.time, img: reports?.image, pending: true, inProgress: false, completed: false)
         
-        let dataDic = ["city":"\(report1.city)",
-                       "time":"\(report1.time)",
-                       "reportType":"\(report1.reportType)",
-                       "reportDescription":"\(report1.descriptionField)"
+        let dataDic = [
+                        "uid":"\(delegate.currentUser!.uid!)",
+                        "city":"\(report1.city)",
+                        "time":"\(report1.time)",
+                        "reportType":"\(report1.reportType)",
+                        "reportDescription":"\(report1.descriptionField)",
+                        "pending":"\(report1.isPending!)",
+                        "inProgress":"\(report1.isInProgress!)",
+                        "completed":"\(report1.isCompleted!)"
                       ]
         
-        ref = db.collection("Reports").addDocument(data: dataDic)
+        ref = self.db.collection("Reports").addDocument(data: dataDic)
         {
             err in
             if let err = err

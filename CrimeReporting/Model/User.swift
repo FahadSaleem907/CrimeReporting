@@ -18,9 +18,9 @@ struct User //: Codable
     var userType    : String
     var image       : UIImage?
     var userStatus  : String
-    var reportsID   : [String?]
+    var reportsID   : [Report?]
     
-    init(uid:String?,name:String,email:String,pw:String?,userType:String,image:UIImage?,userStatus:String, reportID:[String?])
+    init(uid:String?,name:String,email:String,pw:String?,userType:String,image:UIImage?,userStatus:String, reportID:[Report?])
     {
         self.uid        =   uid
         self.name       =   name

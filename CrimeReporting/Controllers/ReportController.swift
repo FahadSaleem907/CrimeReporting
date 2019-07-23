@@ -33,32 +33,38 @@ class ReportController: UIViewController {
     @IBOutlet weak var reportType: MDCTextField!
     @IBOutlet weak var time: MDCTextField!
     
+    @IBOutlet weak var reportDesc: MDCIntrinsicHeightTextView!
+    
     //Marks : Actions
 
     //Marks : Functions
     
     @IBAction func createReport(_ sender: UIButton)
     {
-        let tmpReport = Report(city: "\(city.text!)", descField: "testing", reportType: "\(reportType.text!)", user: nil, time: "\(time.text!)", img: nil)
+        let tmpReport = Report(city: "\(city.text!)", descField: "\(reportDesc.text!)", reportType: "\(reportType.text!)", userID: (delegate.currentUser?.uid!)!, time: "\(time.text!)", img: nil, pending: true, inProgress: false, completed: false)
         
         reportServices.createReport(reports: tmpReport)
         {
             (report, success, error) in
             
-            guard let report = report else { return }
-            guard let success = success else { return }
-            guard let error = error else { return }
-            let newReport = report
-            
-            if success == true
-            {
-                print("\(newReport)")
-                print("Report Created")
-            }
-            else
+            if let error = error
             {
                 print("Not Created. Error: \(error)")
             }
+            else
+            {
+                guard let report = report else { return }
+                guard let success = success else { return }
+                
+                if success == true
+                {
+                    let newReport = report
+                    
+                    print("\(newReport)")
+                    print("Report Created")
+                }
+            }
+            
         }
     }
     

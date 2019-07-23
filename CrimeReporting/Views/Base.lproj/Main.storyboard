@@ -337,6 +337,12 @@ Would You Like To File A New Report ?</string>
                         <viewLayoutGuide key="safeArea" id="t6U-Pc-y7P"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" id="f6x-RC-ZG5"/>
+                    <connections>
+                        <outlet property="emailLbl" destination="KKC-9o-5DN" id="nh9-cQ-Uti"/>
+                        <outlet property="lastReportLbl" destination="8Mf-iF-14v" id="syB-Pe-M9p"/>
+                        <outlet property="nameLbl" destination="tsK-sM-VKM" id="JXN-A2-9EX"/>
+                        <outlet property="reportCountLbl" destination="kj6-nQ-7a6" id="s05-es-r6w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zt7-T6-3Nr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -448,48 +454,49 @@ Would You Like To File A New Report ?</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Pmq-4F-MGN">
-                                <rect key="frame" x="83" y="311.5" width="248" height="278"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="QEU-Ps-f4J">
+                                <rect key="frame" x="83" y="385.5" width="269" height="244.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="shg-dz-vZd" customClass="MDCTextField">
-                                        <rect key="frame" x="0.0" y="0.0" width="248" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="y4B-2C-0kR"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bxa-We-5jx" customClass="MDCTextField">
-                                        <rect key="frame" x="0.0" y="50" width="248" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="X3s-u4-WNq"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9jX-Lz-R4B" customClass="MDCTextField">
-                                        <rect key="frame" x="0.0" y="100" width="248" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="SvF-8R-U9T"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Pmq-4F-MGN">
+                                        <rect key="frame" x="0.0" y="0.0" width="269" height="130"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="shg-dz-vZd" customClass="MDCTextField">
+                                                <rect key="frame" x="0.0" y="0.0" width="269" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="y4B-2C-0kR"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bxa-We-5jx" customClass="MDCTextField">
+                                                <rect key="frame" x="0.0" y="50" width="269" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="X3s-u4-WNq"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9jX-Lz-R4B" customClass="MDCTextField">
+                                                <rect key="frame" x="0.0" y="100" width="269" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="SvF-8R-U9T"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8Et-7k-t8M" customClass="MDCIntrinsicHeightTextView">
-                                        <rect key="frame" x="0.0" y="150" width="248" height="128"/>
+                                        <rect key="frame" x="0.0" y="155" width="269" height="89.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="9jX-Lz-R4B" firstAttribute="width" secondItem="shg-dz-vZd" secondAttribute="width" id="Scn-cA-sqG"/>
-                                    <constraint firstItem="8Et-7k-t8M" firstAttribute="width" secondItem="shg-dz-vZd" secondAttribute="width" id="WNS-zs-hg4"/>
-                                    <constraint firstItem="Bxa-We-5jx" firstAttribute="width" secondItem="shg-dz-vZd" secondAttribute="width" id="tia-a5-3Bb"/>
-                                </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ti-e7-iaI">
                                 <rect key="frame" x="0.0" y="763" width="414" height="30"/>
@@ -498,8 +505,8 @@ Would You Like To File A New Report ?</string>
                                     <action selector="createReport:" destination="TN3-jL-ZP0" eventType="touchUpInside" id="GMe-8r-7pX"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dWl-mh-43X">
-                                <rect key="frame" x="140" y="152" width="134" height="134.5"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWl-mh-43X">
+                                <rect key="frame" x="140" y="226" width="134" height="134.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dWl-mh-43X" secondAttribute="height" multiplier="1:1" id="wid-y9-S5P"/>
                                 </constraints>
@@ -507,20 +514,22 @@ Would You Like To File A New Report ?</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="8Et-7k-t8M" firstAttribute="width" secondItem="Iv2-el-3Bo" secondAttribute="width" multiplier="0.65" id="02c-A6-iax"/>
                             <constraint firstItem="3Ti-e7-iaI" firstAttribute="width" secondItem="Iv2-el-3Bo" secondAttribute="width" id="7Zh-9M-86b"/>
                             <constraint firstItem="dWl-mh-43X" firstAttribute="height" secondItem="Iv2-el-3Bo" secondAttribute="height" multiplier="0.15" id="E8H-qM-c49"/>
-                            <constraint firstItem="Pmq-4F-MGN" firstAttribute="top" secondItem="dWl-mh-43X" secondAttribute="bottom" constant="25" id="Idk-jR-gJ2"/>
-                            <constraint firstItem="Pmq-4F-MGN" firstAttribute="centerX" secondItem="qAo-dr-fps" secondAttribute="centerX" id="QvQ-yI-McY"/>
-                            <constraint firstItem="Pmq-4F-MGN" firstAttribute="centerY" secondItem="qAo-dr-fps" secondAttribute="centerY" id="bai-os-VHe"/>
+                            <constraint firstItem="9jX-Lz-R4B" firstAttribute="width" secondItem="Iv2-el-3Bo" secondAttribute="width" multiplier="0.65" id="WMM-Be-xPd"/>
+                            <constraint firstItem="8Et-7k-t8M" firstAttribute="height" secondItem="Iv2-el-3Bo" secondAttribute="height" multiplier="0.1" id="ZJ2-yb-i50"/>
                             <constraint firstItem="dWl-mh-43X" firstAttribute="centerX" secondItem="qAo-dr-fps" secondAttribute="centerX" id="gIb-eh-bOn"/>
                             <constraint firstItem="3Ti-e7-iaI" firstAttribute="centerX" secondItem="qAo-dr-fps" secondAttribute="centerX" id="mua-mH-hOc"/>
+                            <constraint firstItem="Bxa-We-5jx" firstAttribute="width" secondItem="Iv2-el-3Bo" secondAttribute="width" multiplier="0.65" id="q2b-di-LHi"/>
                             <constraint firstItem="qAo-dr-fps" firstAttribute="bottom" secondItem="3Ti-e7-iaI" secondAttribute="bottom" constant="20" id="svY-sS-H2M"/>
-                            <constraint firstItem="shg-dz-vZd" firstAttribute="width" secondItem="Iv2-el-3Bo" secondAttribute="width" multiplier="0.6" id="tur-sM-ee0"/>
+                            <constraint firstItem="shg-dz-vZd" firstAttribute="width" secondItem="Iv2-el-3Bo" secondAttribute="width" multiplier="0.65" id="xba-TF-RSf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qAo-dr-fps"/>
                     </view>
                     <connections>
                         <outlet property="city" destination="shg-dz-vZd" id="wll-0F-Vb0"/>
+                        <outlet property="reportDesc" destination="8Et-7k-t8M" id="o9o-nd-Tyd"/>
                         <outlet property="reportType" destination="Bxa-We-5jx" id="jTB-bV-yXY"/>
                         <outlet property="time" destination="9jX-Lz-R4B" id="lmb-vk-xay"/>
                     </connections>

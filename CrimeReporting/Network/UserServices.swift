@@ -17,7 +17,6 @@ public class userFunctions
     let delegate = UIApplication.shared.delegate as! AppDelegate
     let db = Firestore.firestore()
     
-    
     func login(email:String,password:String,completion:@escaping(User?,Bool?,String?)->Void)
     {
         
@@ -61,13 +60,11 @@ public class userFunctions
                         }
                         else
                         {
-                            //print(error?.localizedDescription)
                             completion(nil,false,error?.localizedDescription)
                         }
                     }
                     else
                     {
-                        //print("Document does not exist in cache")
                         completion(nil,false,error?.localizedDescription)
                     }
             })
@@ -112,11 +109,11 @@ public class userFunctions
                 ref = self.db.collection("Users").document("\(users!.uid!)")
                 ref?.setData(dataDic)
                 {
-                    error in
-                    if let err = error
+                    err in
+                    if let err = err
                     {
-                        print("Error : \(error!.localizedDescription)")
-                        completion(nil,nil,false,error?.localizedDescription)
+                        print("Error : \(err.localizedDescription)")
+                        completion(nil,nil,false,err.localizedDescription)
                     }
                     else
                     {
