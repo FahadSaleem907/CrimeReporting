@@ -7,6 +7,11 @@ class AdminReportListController: UIViewController
 
     @IBOutlet weak var reportList: UITableView!
     
+    // MARK: - Constants
+    // MARK: - Variables
+    // MARK: - Outlets
+    // MARK: - Actions
+    // MARK: - Functions
     
     override func viewDidLoad()
     {
@@ -50,5 +55,19 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 75
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        let cell = reportList.cellForRow(at: indexPath) as! AdminReportTableViewCell
+        
+        cell.reportDetails.isHidden = false
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath)
+    {
+        let cell = reportList.cellForRow(at: indexPath) as! AdminReportTableViewCell
+        
+        cell.reportDetails.isHidden = true
     }
 }

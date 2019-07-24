@@ -54,23 +54,27 @@ public class reportFunctions
         let reportRef = self.db.collection("Reports")
         let query = reportRef.whereField("uid", isEqualTo: "\(delegate.currentUser!.uid!)")
         
-        query.getDocuments { (snapshot, error) in
-            if let error = error
+        query.getDocuments
             {
-                print("ERROR: \(error.localizedDescription)")
-                completion([])
-            }
-            else
-            {
-                for i in snapshot!.documents
+                (snapshot, error) in
+                if let error = error
                 {
-                    let tmpReport = Report(city: i.data()["city"] as! String, descField: i.data()["reportDescription"] as! String, reportType: i.data()["reportType"] as! String, userID: i.data()["uid"] as! String, time: i.data()["time"] as! String, img: nil, pending: i.data()["pending"] as? Bool, inProgress: i.data()["inProgress"] as? Bool, completed: i.data()["completed"] as? Bool)
-                    
-                    self.reportList.append(tmpReport)
+                    print("ERROR: \(error.localizedDescription)")
+                    completion([])
                 }
-                completion(self.reportList)
+                else
+                {
+                    for i in snapshot!.documents
+                    {
+                        let tmpReport = Report(city: i.data()["city"] as! String, descField: i.data()["reportDescription"] as! String, reportType: i.data()["reportType"] as! String, userID: i.data()["uid"] as! String, time: i.data()["time"] as! String, img: nil, pending: i.data()["pending"] as? Bool, inProgress: i.data()["inProgress"] as? Bool, completed: i.data()["completed"] as? Bool)
+                        
+                        self.reportList.append(tmpReport)
+                    }
+                    completion(self.reportList)
+                }
             }
-        }
+        
+        
         
     }
     

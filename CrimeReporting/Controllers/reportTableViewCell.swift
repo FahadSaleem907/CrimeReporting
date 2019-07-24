@@ -5,10 +5,13 @@ class reportTableViewCell: UITableViewCell
 {
 
     @IBOutlet weak var reportID: UILabel!
+    @IBOutlet weak var reportDetails: UIButton!
     
-    
-    override func awakeFromNib() {
+    override func awakeFromNib()
+    {
         super.awakeFromNib()
+        
+        reportDetails.isHidden = true
         // Initialization code
     }
 

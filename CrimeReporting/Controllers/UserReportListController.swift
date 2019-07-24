@@ -157,4 +157,42 @@ extension UserReportListController: UITableViewDelegate,UITableViewDataSource
     {
         return 75
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        let cell = reportList.cellForRow(at: indexPath) as! reportTableViewCell
+        
+        if userReports[indexPath.row]?.isPending == true
+        {
+            let yellowBGColorView = UIView()
+            //yellowBGColorView.backgroundColor = .yellow
+            
+            yellowBGColorView.backgroundColor = .init(red: 0, green: 0, blue: 0, alpha: 0.2)
+            cell.selectedBackgroundView = yellowBGColorView
+        }
+        else if userReports[indexPath.row]?.isInProgress == true
+        {
+            let orangeBGColorView = UIView()
+            //orangeBGColorView.backgroundColor = .red
+            orangeBGColorView.backgroundColor = .init(red: 0, green: 0, blue: 0, alpha: 0.2)
+            
+            cell.selectedBackgroundView = orangeBGColorView
+        }
+        else if userReports[indexPath.row]?.isCompleted == true
+        {
+            let greenBGColorView = UIView()
+            //greenBGColorView.backgroundColor = .white
+    
+            greenBGColorView.backgroundColor = .init(red: 0, green: 0, blue: 0, alpha: 0.2)
+            cell.selectedBackgroundView = greenBGColorView
+        }
+        cell.reportDetails.isHidden = false
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath)
+    {
+        let cell = reportList.cellForRow(at: indexPath) as! reportTableViewCell
+        
+        cell.reportDetails.isHidden = true
+    }
 }

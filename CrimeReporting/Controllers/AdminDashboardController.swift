@@ -3,7 +3,13 @@ import UIKit
 
 class AdminDashboardController: UIViewController
 {
-
+    // MARK: - Constants
+    // MARK: - Variables
+    // MARK: - Outlets
+    // MARK: - Actions
+    // MARK: - Functions
+    
+    
     let delegate = UIApplication.shared.delegate as! AppDelegate
     var layoutSize:CGSize?
     

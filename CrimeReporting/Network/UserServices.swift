@@ -52,7 +52,7 @@ public class userFunctions
                     {
                         if snapshot.data() != nil
                         {
-                            self.delegate.currentUser?.uid = snapshot.data()!["uid"] as! String
+                            self.delegate.currentUser?.uid = (snapshot.data()!["uid"] as! String)
                             self.delegate.currentUser?.email = snapshot.data()!["email"] as! String
                             self.delegate.currentUser?.name = snapshot.data()!["name"] as! String
                             self.delegate.currentUser?.userType = snapshot.data()!["User Type"] as! String
@@ -82,8 +82,6 @@ public class userFunctions
                         completion(nil,false,error?.localizedDescription)
                     }
             })
-            
-            
             
         }
     }

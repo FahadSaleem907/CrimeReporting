@@ -78,6 +78,7 @@
                         <outlet property="pw" destination="971-hw-0o0" id="zu9-Hc-9cM"/>
                         <outlet property="signUpBtn" destination="zc7-4n-6x1" id="4PK-zv-ga3"/>
                         <segue destination="7YN-aa-l1h" kind="show" identifier="loginUser" id="41q-qA-4i1"/>
+                        <segue destination="FKY-RA-DsO" kind="show" identifier="loginAdmin" id="lt2-JJ-Ash"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -202,14 +203,24 @@ Would You Like To File A New Report ?</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSb-MT-KBq">
+                                                    <rect key="frame" x="352" y="154.5" width="47" height="30"/>
+                                                    <state key="normal" title="Details"/>
+                                                    <connections>
+                                                        <segue destination="Fc7-DW-XWZ" kind="presentation" id="wQB-6j-7ob"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="V3l-5x-Ftw" firstAttribute="centerY" secondItem="Tbe-tz-yho" secondAttribute="centerY" id="A6K-TT-hDt"/>
+                                                <constraint firstAttribute="bottom" secondItem="DSb-MT-KBq" secondAttribute="bottom" constant="5" id="FYA-EV-9WK"/>
+                                                <constraint firstAttribute="trailing" secondItem="DSb-MT-KBq" secondAttribute="trailing" constant="15" id="fio-Hp-jj9"/>
                                                 <constraint firstItem="V3l-5x-Ftw" firstAttribute="centerX" secondItem="Tbe-tz-yho" secondAttribute="centerX" id="kxc-QB-mQ0"/>
                                                 <constraint firstItem="V3l-5x-Ftw" firstAttribute="width" secondItem="Tbe-tz-yho" secondAttribute="width" multiplier="0.5" id="p1F-HF-hdO"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="reportDetails" destination="DSb-MT-KBq" id="nTO-jH-v7q"/>
                                             <outlet property="reportID" destination="V3l-5x-Ftw" id="G4I-Ge-Kne"/>
                                         </connections>
                                     </tableViewCell>
@@ -392,32 +403,40 @@ Would You Like To File A New Report ?</string>
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="121" id="S8g-6w-ZAq" customClass="AdminReportTableViewCell" customModule="CrimeReporting" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="121"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="144" id="S8g-6w-ZAq" customClass="AdminReportTableViewCell" customModule="CrimeReporting" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="144"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S8g-6w-ZAq" id="vkZ-eb-26R">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="120.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="143.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63J-Za-1lk">
-                                                    <rect key="frame" x="103.5" y="50" width="207" height="21"/>
+                                                    <rect key="frame" x="103.5" y="61.5" width="207" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTo-f1-Dyn">
-                                                    <rect key="frame" x="337" y="80" width="47" height="30"/>
-                                                    <state key="normal" title="Details"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GKa-ak-J47">
+                                                    <rect key="frame" x="323" y="78" width="46" height="30"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="reportDetails:" destination="S8g-6w-ZAq" eventType="touchUpInside" id="YrX-Vh-D5e"/>
+                                                        <segue destination="JCJ-Ti-ym5" kind="presentation" id="IcL-Re-qTW"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="63J-Za-1lk" firstAttribute="centerX" secondItem="vkZ-eb-26R" secondAttribute="centerX" id="0C0-Uh-MnU"/>
                                                 <constraint firstItem="63J-Za-1lk" firstAttribute="centerY" secondItem="vkZ-eb-26R" secondAttribute="centerY" id="5ZP-0c-0w7"/>
-                                                <constraint firstItem="zTo-f1-Dyn" firstAttribute="bottom" secondItem="vkZ-eb-26R" secondAttribute="bottomMargin" id="UpO-vj-tAU"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="GKa-ak-J47" secondAttribute="bottom" constant="25" id="H68-AN-JsZ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="GKa-ak-J47" secondAttribute="trailing" constant="25" id="SKt-PA-TCz"/>
                                                 <constraint firstItem="63J-Za-1lk" firstAttribute="width" secondItem="vkZ-eb-26R" secondAttribute="width" multiplier="0.5" id="jsq-Yj-N25"/>
-                                                <constraint firstItem="zTo-f1-Dyn" firstAttribute="trailing" secondItem="vkZ-eb-26R" secondAttribute="trailingMargin" constant="-10" id="mVA-kY-C41"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="reportDetails" destination="GKa-ak-J47" id="fva-ze-pdc"/>
+                                            <outlet property="reportID" destination="63J-Za-1lk" id="0Pd-SQ-gXn"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -442,7 +461,7 @@ Would You Like To File A New Report ?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4e-Nl-kaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2520" y="1096"/>
+            <point key="canvasLocation" x="-2520.289855072464" y="1095.5357142857142"/>
         </scene>
         <!--Report Details Controller-->
         <scene sceneID="ICQ-YO-Jaz">
@@ -453,11 +472,11 @@ Would You Like To File A New Report ?</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I8f-1k-q6b">
-                                <rect key="frame" x="52" y="229" width="310.5" height="448"/>
+                                <rect key="frame" x="52" y="204.5" width="310.5" height="448"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="I8f-1k-q6b" firstAttribute="centerX" secondItem="5mw-8R-6fH" secondAttribute="centerX" id="BZg-oO-GHO"/>
                             <constraint firstItem="I8f-1k-q6b" firstAttribute="width" secondItem="It0-e5-gPG" secondAttribute="width" multiplier="0.75" id="C6E-Gw-Ngf"/>
@@ -469,7 +488,7 @@ Would You Like To File A New Report ?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LDT-eX-Nq9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1826.0869565217392" y="1095.5357142857142"/>
+            <point key="canvasLocation" x="-2520" y="450"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="crb-D0-37p">
@@ -521,7 +540,7 @@ Would You Like To File A New Report ?</string>
                                         </constraints>
                                         <connections>
                                             <outlet property="reportCount" destination="MZk-Ai-gxx" id="MaR-Rc-7eq"/>
-                                            <outlet property="reportLbl" destination="fWO-XH-nAf" id="Fod-Ky-bd2"/>
+                                            <outlet property="reportText" destination="fWO-XH-nAf" id="A0w-1U-mB9"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -758,19 +777,30 @@ Would You Like To File A New Report ?</string>
         <scene sceneID="dgL-op-W3L">
             <objects>
                 <viewController modalPresentationStyle="overCurrentContext" id="Fc7-DW-XWZ" customClass="UserReportDetailsController" customModule="CrimeReporting" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" tag="1" contentMode="scaleToFill" id="qca-Lc-7DY">
+                    <view key="view" contentMode="scaleToFill" id="qca-Lc-7DY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nww-dt-bCO">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="cover:" destination="Fc7-DW-XWZ" eventType="touchUpInside" id="10f-W5-rrS"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0sF-fU-kGA">
-                                <rect key="frame" x="52" y="229" width="310.5" height="448"/>
+                                <rect key="frame" x="52" y="204.5" width="310.5" height="448"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="nww-dt-bCO" firstAttribute="leading" secondItem="gPt-Ed-ffi" secondAttribute="leading" id="DB6-ON-Qou"/>
                             <constraint firstItem="0sF-fU-kGA" firstAttribute="width" secondItem="qca-Lc-7DY" secondAttribute="width" multiplier="0.75" id="Lhk-Ux-bCn"/>
+                            <constraint firstItem="nww-dt-bCO" firstAttribute="top" secondItem="gPt-Ed-ffi" secondAttribute="top" id="RD9-Ot-ji4"/>
+                            <constraint firstItem="gPt-Ed-ffi" firstAttribute="trailing" secondItem="nww-dt-bCO" secondAttribute="trailing" id="aM7-Yq-y4L"/>
                             <constraint firstItem="0sF-fU-kGA" firstAttribute="centerX" secondItem="gPt-Ed-ffi" secondAttribute="centerX" id="b1Q-a4-umF"/>
+                            <constraint firstItem="gPt-Ed-ffi" firstAttribute="bottom" secondItem="nww-dt-bCO" secondAttribute="bottom" id="lT6-sg-aqA"/>
                             <constraint firstItem="0sF-fU-kGA" firstAttribute="height" secondItem="qca-Lc-7DY" secondAttribute="height" multiplier="0.5" id="mzR-Jf-aJq"/>
                             <constraint firstItem="0sF-fU-kGA" firstAttribute="centerY" secondItem="gPt-Ed-ffi" secondAttribute="centerY" id="uvN-Rn-5q3"/>
                         </constraints>
@@ -779,7 +809,7 @@ Would You Like To File A New Report ?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xgX-Pm-OiF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1006" y="647"/>
+            <point key="canvasLocation" x="1005.7971014492755" y="646.875"/>
         </scene>
         <!--Reports-->
         <scene sceneID="aTS-a9-PeG">

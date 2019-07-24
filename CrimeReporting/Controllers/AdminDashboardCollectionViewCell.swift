@@ -10,8 +10,13 @@ import UIKit
 
 class AdminDashboardCollectionViewCell: UICollectionViewCell
 {
+    /// MARK: - Constants
+    /// MARK: - Variables
+    /// MARK: - Actions
+    /// MARK: - Functions
     
+    // MARK: - Outlets
     @IBOutlet weak var reportCount: UILabel!
-    @IBOutlet weak var reportLbl: UILabel!
-
+    @IBOutlet weak var reportText: UILabel!
+    
 }
