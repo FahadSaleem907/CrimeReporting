@@ -4,14 +4,43 @@ import UIKit
 
 class AdminReportListController: UIViewController
 {
-
-    @IBOutlet weak var reportList: UITableView!
-    
     // MARK: - Constants
+    let delegate = UIApplication.shared.delegate as! AppDelegate
+    let reportServices = reportFunctions()
+    
+    
     // MARK: - Variables
+    var userReports = [Report?]()
+    {
+        didSet
+        {
+            reportList.reloadData()
+        }
+    }
+    var filterCount = 0
+    
+    
     // MARK: - Outlets
+    @IBOutlet weak var reportList: UITableView!
+    @IBOutlet weak var msgLbl: UILabel!
+    
     // MARK: - Actions
+    
+    
     // MARK: - Functions
+    func checkReport()
+    {
+        if delegate.currentUser?.reports.count == 0
+        {
+            reportList.isHidden = true
+            msgLbl.isHidden = false
+        }
+        else
+        {
+            reportList.isHidden = false
+            msgLbl.isHidden = true
+        }
+    }
     
     override func viewDidLoad()
     {
@@ -19,6 +48,8 @@ class AdminReportListController: UIViewController
 
         reportList.delegate     = self
         reportList.dataSource   = self
+        
+        checkReport()
     }
 
 }

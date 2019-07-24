@@ -3,13 +3,16 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    // Mark: - Variables
+    // MARK: - Constants
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     
-    // Mark: - Outlets
+    // MARK: - Variables
+    
+    // MARK: - Outlets
     @IBOutlet weak var emaill: UITextField!
     @IBOutlet weak var pw: UITextField!
     
-    //Mark: - Actions
+    //MARK: - Actions
   
     @IBAction func login(_ sender: fancyUIButton1)
     {
@@ -54,9 +57,7 @@ class MainViewController: UIViewController {
                 if success == true
                 {
                     self.statusAlert(title: "Success", msg: "Logged in Successfully.\nUser: \(user)", controller: self)
-                    
-                    let reportServices = reportFunctions()
-                    //reportServices.viewReports()
+                
                 }
             }
         }
@@ -93,7 +94,14 @@ extension MainViewController
     {
         let alertValidation = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         let buttonOK = UIAlertAction(title: "Okay", style: .default, handler: {_ in //self.navigationController?.popViewController(animated: true) })
-            self.performSegue(withIdentifier: "loginUser", sender: self) })
+            if self.delegate.currentUser!.userType == "User"
+            {
+                self.performSegue(withIdentifier: "loginUser", sender: self)
+            }
+            if self.delegate.currentUser!.userType == "Admin"
+            {
+                self.performSegue(withIdentifier: "loginAdmin", sender: self)
+            } })
         alertValidation.addAction(buttonOK)
         present(alertValidation, animated: true, completion: nil)
     }

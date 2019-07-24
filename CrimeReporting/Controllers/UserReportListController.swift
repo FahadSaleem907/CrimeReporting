@@ -1,8 +1,23 @@
 import Foundation
 import UIKit
 
-class UserReportListController: UIViewController {
-
+class UserReportListController: UIViewController
+{    
+    // MARK: - Constants
+    let delegate = UIApplication.shared.delegate as! AppDelegate
+    let reportServices = reportFunctions()
+    
+    // MARK: - Variables
+    var userReports = [Report?]()
+    {
+        didSet
+        {
+            reportList.reloadData()
+        }
+    }
+    var filterCount = 0
+    
+    
     // MARK: - Outlets
     
     @IBOutlet weak var reportList: UITableView!
@@ -18,21 +33,6 @@ class UserReportListController: UIViewController {
         
         applyFilter()
     }
-    
-    
-    
-    // MARK: - Constants
-    let delegate = UIApplication.shared.delegate as! AppDelegate
-    
-    let reportServices = reportFunctions()
-    
-    // MARK: - Variables
-    var userReports = [Report?](){
-        didSet{
-            reportList.reloadData()
-        }
-    }
-    var filterCount = 0
     
     
     // MARK: - Functions

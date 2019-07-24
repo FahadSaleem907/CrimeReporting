@@ -3,26 +3,33 @@ import UIKit
 
 class UserDashboardController: UIViewController
 {
-    
+    // MARK: - Constants
     let delegate = UIApplication.shared.delegate as! AppDelegate
+    
+    // MARK: - Variables
     var layoutSize:CGSize?
     
     
+    // MARK: - Actions
+    
+    
+    
+    // MARK: - Outlets
+    @IBOutlet weak var reportNumbers: UICollectionView!
+    
+    // MARK: - Functions
     func getSize()
     {
         layoutSize = reportNumbers.frame.size
     }
     
-    //Marks: Outlets
-    
-    @IBOutlet weak var reportNumbers: UICollectionView!
-    
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
         reportNumbers.delegate      = self
         reportNumbers.dataSource    = self
-        // Do any additional setup after loading the view.
+        
         getSize()
     }
 }

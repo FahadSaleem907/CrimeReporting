@@ -382,23 +382,14 @@ Would You Like To File A New Report ?</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="UtL-yq-vFD">
-                                <rect key="frame" x="41.5" y="401" width="331" height="99"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIO-ef-x1f">
-                                        <rect key="frame" x="0.0" y="0.0" width="331" height="41"/>
-                                        <string key="text">You Have No Reports Filed.
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIO-ef-x1f">
+                                <rect key="frame" x="41.5" y="430" width="331" height="41"/>
+                                <string key="text">You Have No Reports Filed.
 Would You Like To File A New Report ?</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXp-aY-G9R">
-                                        <rect key="frame" x="103.5" y="69" width="124" height="30"/>
-                                        <state key="normal" title="Submit Report"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="70T-YD-EMP">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -443,19 +434,19 @@ Would You Like To File A New Report ?</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="UtL-yq-vFD" firstAttribute="centerY" secondItem="hIV-Og-uUT" secondAttribute="centerY" id="0JD-Jh-iJq"/>
-                            <constraint firstItem="YXp-aY-G9R" firstAttribute="width" secondItem="uvj-un-GdB" secondAttribute="width" multiplier="0.3" id="31R-yh-65S"/>
-                            <constraint firstItem="gIO-ef-x1f" firstAttribute="width" secondItem="uvj-un-GdB" secondAttribute="width" multiplier="0.8" id="3Ig-Mj-GVz"/>
+                            <constraint firstItem="gIO-ef-x1f" firstAttribute="width" secondItem="uvj-un-GdB" secondAttribute="width" multiplier="0.8" id="AY1-JK-FJQ"/>
                             <constraint firstItem="70T-YD-EMP" firstAttribute="leading" secondItem="hIV-Og-uUT" secondAttribute="leading" id="GhX-lJ-n7E"/>
+                            <constraint firstItem="gIO-ef-x1f" firstAttribute="centerX" secondItem="hIV-Og-uUT" secondAttribute="centerX" id="M0X-eO-njM"/>
                             <constraint firstItem="hIV-Og-uUT" firstAttribute="trailing" secondItem="70T-YD-EMP" secondAttribute="trailing" id="Tgy-CQ-86Z"/>
                             <constraint firstItem="70T-YD-EMP" firstAttribute="top" secondItem="hIV-Og-uUT" secondAttribute="top" id="Wgu-w5-Gh0"/>
+                            <constraint firstItem="gIO-ef-x1f" firstAttribute="centerY" secondItem="hIV-Og-uUT" secondAttribute="centerY" id="lDz-X0-Rbv"/>
                             <constraint firstItem="hIV-Og-uUT" firstAttribute="bottom" secondItem="70T-YD-EMP" secondAttribute="bottom" id="wFC-rE-XfR"/>
-                            <constraint firstItem="UtL-yq-vFD" firstAttribute="centerX" secondItem="hIV-Og-uUT" secondAttribute="centerX" id="xLQ-in-wvf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hIV-Og-uUT"/>
                     </view>
                     <navigationItem key="navigationItem" title="Reports" id="msw-A7-R05"/>
                     <connections>
+                        <outlet property="msgLbl" destination="gIO-ef-x1f" id="efB-bP-unI"/>
                         <outlet property="reportList" destination="70T-YD-EMP" id="9SX-76-Azk"/>
                     </connections>
                 </viewController>
@@ -498,18 +489,18 @@ Would You Like To File A New Report ?</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SAw-Tq-Xqb">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SAw-Tq-Xqb">
                                 <rect key="frame" x="0.0" y="49" width="414" height="269"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8yZ-dh-aB7">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8yZ-dh-aB7">
                                     <size key="itemSize" width="410" height="297"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="lIa-4w-ZWK" customClass="AdminDashboardCollectionViewCell" customModule="CrimeReporting" customModuleProvider="target">
-                                        <rect key="frame" x="2" y="0.0" width="410" height="297"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="lIa-4w-ZWK" customClass="AdminDashboardCollectionViewCell" customModule="CrimeReporting" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="-14" width="410" height="297"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="410" height="297"/>

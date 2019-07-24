@@ -4,29 +4,33 @@ import UIKit
 class AdminDashboardController: UIViewController
 {
     // MARK: - Constants
-    // MARK: - Variables
-    // MARK: - Outlets
-    // MARK: - Actions
-    // MARK: - Functions
-    
-    
     let delegate = UIApplication.shared.delegate as! AppDelegate
+    
+    // MARK: - Variables
     var layoutSize:CGSize?
     
+
+    // MARK: - Actions
     
+
+    
+    // MARK: - Outlets
+    @IBOutlet weak var reportNumbers: UICollectionView!
+    
+    // MARK: - Functions
     func getSize()
     {
         layoutSize = reportNumbers.frame.size
     }
     
-    @IBOutlet weak var reportNumbers: UICollectionView!
-    
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        reportNumbers.delegate      = self
+        reportNumbers.dataSource    = self
+        
+        getSize()
     }
 }
 
