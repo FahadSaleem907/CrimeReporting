@@ -41,30 +41,48 @@ class ReportController: UIViewController {
     
     @IBAction func createReport(_ sender: UIButton)
     {
-        let tmpReport = Report(city: "\(city.text!)", descField: "\(reportDesc.text!)", reportType: "\(reportType.text!)", userID: (delegate.currentUser?.uid!)!, time: "\(time.text!)", img: nil, pending: true, inProgress: false, completed: false)
-        
-        reportServices.createReport(reports: tmpReport)
+        if city.text?.isEmpty == true
         {
-            (report, success, error) in
+            alert(msg: "Enter City.", controller: self, textField: city)
+        }
+        else if reportType.text?.isEmpty == true
+        {
+            alert(msg: "Enter Report Type.", controller: self, textField: reportType)
+        }
+        else if time.text?.isEmpty == true
+        {
+            alert(msg: "Enter Time.", controller: self, textField: time)
+        }
+        else if reportDesc.text.isEmpty == true
+        {
+            alert1(msg: "Enter Report Details.", controller: self, textView: reportDesc)
+        }
+        else
+        {
+            let tmpReport = Report(city: "\(city.text!)", descField: "\(reportDesc.text!)", reportType: "\(reportType.text!)", userID: (delegate.currentUser?.uid!)!, time: "\(time.text!)", img: nil, pending: true, inProgress: false, completed: false)
+        
+            reportServices.createReport(reports: tmpReport)
+            {
+                (report, success, error) in
             
-            if let error = error
-            {
-                print("Not Created. Error: \(error)")
-            }
-            else
-            {
-                guard let report = report else { return }
-                guard let success = success else { return }
-                
-                if success == true
+                if let error = error
                 {
-                    let newReport = report
-                    
-                    print("\(newReport)")
-                    print("Report Created")
+                    self.statusAlert(title: "Error", msg: "\(error)", controller: self)
                 }
-            }
+                else
+                {
+                    guard let report = report else { return }
+                    guard let success = success else { return }
+                
+                    if success == true
+                    {
+                        let newReport = report
+                    
+                        self.statusAlert(title: "Success", msg: "Report Created Successfully.\n\(newReport)", controller: self)
+                    }
+                }
             
+            }
         }
     }
     
@@ -239,4 +257,37 @@ extension ReportController
         time.inputAccessoryView = toolBar
     }
     
+}
+
+extension ReportController
+{
+    func alert(msg:String , controller:UIViewController, textField:UITextField)
+    {
+        let alertValidation = UIAlertController(title: "Error", message: msg, preferredStyle: .alert)
+        let buttonOK = UIAlertAction(title: "Okay", style: .default)
+        {
+            (_) in textField.becomeFirstResponder()
+        }
+        alertValidation.addAction(buttonOK)
+        present(alertValidation, animated: true, completion: nil)
+    }
+    
+    func alert1(msg:String , controller:UIViewController, textView:UITextView)
+    {
+        let alertValidation = UIAlertController(title: "Error", message: msg, preferredStyle: .alert)
+        let buttonOK = UIAlertAction(title: "Okay", style: .default)
+        {
+            (_) in textView.becomeFirstResponder()
+        }
+        alertValidation.addAction(buttonOK)
+        present(alertValidation, animated: true, completion: nil)
+    }
+    
+    func statusAlert(title:String, msg:String, controller:UIViewController)
+    {
+        let alertValidation = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        let buttonOK = UIAlertAction(title: "Okay", style: .default, handler: {_ in self.navigationController?.popViewController(animated: true) })
+        alertValidation.addAction(buttonOK)
+        present(alertValidation, animated: true, completion: nil)
+    }
 }

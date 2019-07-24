@@ -80,48 +80,46 @@ extension DashboardController: UICollectionViewDelegate, UICollectionViewDataSou
             }
             if indexPath.item == 1
             {
+                var tmpArray = [Report?]()
+                
                 for i in delegate.currentUser!.reports
                 {
                     if i?.isPending == true
                     {
-                        var tmpArray = [Report?]()
                         tmpArray.append(i)
-                        
-                        cell.reportCount.text = String(tmpArray.count)
                     }
                 }
                 
+                cell.reportCount.text = String(tmpArray.count)
                 cell.reportText.text  = "Pending Reports"
                 cell.backgroundColor = .yellow
             }
             if indexPath.item == 2
             {
+                var tmpArray = [Report?]()
                 for i in delegate.currentUser!.reports
                 {
                     if i?.isInProgress == true
                     {
-                        var tmpArray = [Report?]()
                         tmpArray.append(i)
-                        
-                        cell.reportCount.text = String(tmpArray.count)
                     }
                 }
+                
+                cell.reportCount.text = String(tmpArray.count)
                 cell.reportText.text = "Reports In Progress"
                 cell.backgroundColor = .orange
             }
             if indexPath.item == 3
             {
+                var tmpArray = [Report?]()
                 for i in delegate.currentUser!.reports
                 {
                     if i?.isCompleted == true
                     {
-                        var tmpArray = [Report?]()
                         tmpArray.append(i)
-                        
-                        cell.reportCount.text = String(tmpArray.count)
                     }
                 }
-                
+                cell.reportCount.text = String(tmpArray.count)
                 cell.reportText.text = "Completed Reports"
                 cell.backgroundColor = .green
             }

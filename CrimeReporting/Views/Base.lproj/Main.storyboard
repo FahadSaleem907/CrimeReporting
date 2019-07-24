@@ -223,12 +223,20 @@ Would You Like To File A New Report ?</string>
                         <viewLayoutGuide key="safeArea" id="F9J-Zd-x4Y"/>
                     </view>
                     <navigationItem key="navigationItem" title="Reports" id="ulB-cy-g8v">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="GeF-q9-ph7">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <segue destination="TN3-jL-ZP0" kind="show" id="dC8-CD-rD0"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="GeF-q9-ph7">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="TN3-jL-ZP0" kind="show" id="dC8-CD-rD0"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="action" id="duE-a4-DOk">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="filter:" destination="WF6-3V-Ic0" id="yZq-6i-UMr"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="firstReportBtn" destination="KaT-fI-7D9" id="byU-6B-Oe7"/>
@@ -505,10 +513,10 @@ Would You Like To File A New Report ?</string>
                                     <action selector="createReport:" destination="TN3-jL-ZP0" eventType="touchUpInside" id="GMe-8r-7pX"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWl-mh-43X">
-                                <rect key="frame" x="140" y="226" width="134" height="134.5"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dWl-mh-43X">
+                                <rect key="frame" x="140" y="138" width="134" height="134.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="dWl-mh-43X" secondAttribute="height" multiplier="1:1" id="wid-y9-S5P"/>
+                                    <constraint firstAttribute="width" secondItem="dWl-mh-43X" secondAttribute="height" multiplier="1:1" id="MKw-7N-IHj"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -516,10 +524,11 @@ Would You Like To File A New Report ?</string>
                         <constraints>
                             <constraint firstItem="8Et-7k-t8M" firstAttribute="width" secondItem="Iv2-el-3Bo" secondAttribute="width" multiplier="0.65" id="02c-A6-iax"/>
                             <constraint firstItem="3Ti-e7-iaI" firstAttribute="width" secondItem="Iv2-el-3Bo" secondAttribute="width" id="7Zh-9M-86b"/>
-                            <constraint firstItem="dWl-mh-43X" firstAttribute="height" secondItem="Iv2-el-3Bo" secondAttribute="height" multiplier="0.15" id="E8H-qM-c49"/>
+                            <constraint firstItem="dWl-mh-43X" firstAttribute="centerX" secondItem="qAo-dr-fps" secondAttribute="centerX" id="Nda-nZ-k3Z"/>
+                            <constraint firstItem="dWl-mh-43X" firstAttribute="top" secondItem="qAo-dr-fps" secondAttribute="top" constant="50" id="WHr-3h-Zm2"/>
                             <constraint firstItem="9jX-Lz-R4B" firstAttribute="width" secondItem="Iv2-el-3Bo" secondAttribute="width" multiplier="0.65" id="WMM-Be-xPd"/>
                             <constraint firstItem="8Et-7k-t8M" firstAttribute="height" secondItem="Iv2-el-3Bo" secondAttribute="height" multiplier="0.1" id="ZJ2-yb-i50"/>
-                            <constraint firstItem="dWl-mh-43X" firstAttribute="centerX" secondItem="qAo-dr-fps" secondAttribute="centerX" id="gIb-eh-bOn"/>
+                            <constraint firstItem="dWl-mh-43X" firstAttribute="height" secondItem="Iv2-el-3Bo" secondAttribute="height" multiplier="0.15" id="h0i-x1-4WD"/>
                             <constraint firstItem="3Ti-e7-iaI" firstAttribute="centerX" secondItem="qAo-dr-fps" secondAttribute="centerX" id="mua-mH-hOc"/>
                             <constraint firstItem="Bxa-We-5jx" firstAttribute="width" secondItem="Iv2-el-3Bo" secondAttribute="width" multiplier="0.65" id="q2b-di-LHi"/>
                             <constraint firstItem="qAo-dr-fps" firstAttribute="bottom" secondItem="3Ti-e7-iaI" secondAttribute="bottom" constant="20" id="svY-sS-H2M"/>
