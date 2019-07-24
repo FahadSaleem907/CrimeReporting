@@ -1,14 +1,7 @@
-//
-//  ReportListController.swift
-//  CrimeReporting
-//
-//  Created by FahadSaleem on 21/07/2019.
-//  Copyright © 2019 FahadSaleem. All rights reserved.
-//
-
+import Foundation
 import UIKit
 
-class ReportListController: UIViewController {
+class UserReportListController: UIViewController {
 
     // MARK: - Outlets
     
@@ -132,7 +125,7 @@ class ReportListController: UIViewController {
 
 }
 
-extension ReportListController: UITableViewDelegate,UITableViewDataSource
+extension UserReportListController: UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {

@@ -10,6 +10,8 @@
 		98CCB56FCD894F1651662E2F /* Pods_CrimeReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E06C2FE0A0E143B14AD5CB53 /* Pods_CrimeReporting.framework */; };
 		B315864D7790B4359FD9F680 /* Pods_CrimeReportingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CEC2AF72703A1ED98C904E /* Pods_CrimeReportingTests.framework */; };
 		CB1E13F861A60591F60F9691 /* Pods_CrimeReportingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 193EA65E7ABC16FCCAF29BA9 /* Pods_CrimeReportingUITests.framework */; };
+		E1A1DFCD22E8876A00388AF3 /* AdminReportListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A1DFCC22E8876A00388AF3 /* AdminReportListController.swift */; };
+		E1A1DFCF22E887B600388AF3 /* AdminDashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A1DFCE22E887B600388AF3 /* AdminDashboardController.swift */; };
 		FA07BDBC22DE15C000822D85 /* fancyUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BDBB22DE15C000822D85 /* fancyUITextField.swift */; };
 		FA07BDBE22DE15D000822D85 /* fancyUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BDBD22DE15D000822D85 /* fancyUIButton.swift */; };
 		FA07BDC022DE15DD00822D85 /* roundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BDBF22DE15DD00822D85 /* roundedImageView.swift */; };
@@ -23,8 +25,8 @@
 		FA6CB1BA22DDE9750037120D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA6CB1B922DDE9750037120D /* GoogleService-Info.plist */; };
 		FA7DBE4722E328E000067F78 /* ReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7DBE4622E328E000067F78 /* ReportController.swift */; };
 		FA8AD66222E4BEF4001436BB /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8AD66122E4BEF4001436BB /* ProfileController.swift */; };
-		FA8AD66422E4BF12001436BB /* ReportListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8AD66322E4BF12001436BB /* ReportListController.swift */; };
-		FA8AD66622E4BF33001436BB /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8AD66522E4BF33001436BB /* DashboardController.swift */; };
+		FA8AD66422E4BF12001436BB /* UserReportListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8AD66322E4BF12001436BB /* UserReportListController.swift */; };
+		FA8AD66622E4BF33001436BB /* UserDashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8AD66522E4BF33001436BB /* UserDashboardController.swift */; };
 		FA8AD66822E4BF86001436BB /* reportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8AD66722E4BF86001436BB /* reportTableViewCell.swift */; };
 		FA8AD66A22E4BF9C001436BB /* dashboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8AD66922E4BF9C001436BB /* dashboardCollectionViewCell.swift */; };
 		FA8AD66C22E4D5EE001436BB /* support.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8AD66B22E4D5EE001436BB /* support.swift */; };
@@ -63,6 +65,8 @@
 		C660521AFD84640A4BFE73EA /* Pods-CrimeReportingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrimeReportingTests.debug.xcconfig"; path = "Target Support Files/Pods-CrimeReportingTests/Pods-CrimeReportingTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E01E9FDA1115A67C886790FF /* Pods-CrimeReportingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrimeReportingTests.release.xcconfig"; path = "Target Support Files/Pods-CrimeReportingTests/Pods-CrimeReportingTests.release.xcconfig"; sourceTree = "<group>"; };
 		E06C2FE0A0E143B14AD5CB53 /* Pods_CrimeReporting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrimeReporting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1A1DFCC22E8876A00388AF3 /* AdminReportListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminReportListController.swift; sourceTree = "<group>"; };
+		E1A1DFCE22E887B600388AF3 /* AdminDashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardController.swift; sourceTree = "<group>"; };
 		FA07BDBB22DE15C000822D85 /* fancyUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fancyUITextField.swift; sourceTree = "<group>"; };
 		FA07BDBD22DE15D000822D85 /* fancyUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fancyUIButton.swift; sourceTree = "<group>"; };
 		FA07BDBF22DE15DD00822D85 /* roundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roundedImageView.swift; sourceTree = "<group>"; };
@@ -82,8 +86,8 @@
 		FA6CB1B922DDE9750037120D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA7DBE4622E328E000067F78 /* ReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportController.swift; sourceTree = "<group>"; };
 		FA8AD66122E4BEF4001436BB /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
-		FA8AD66322E4BF12001436BB /* ReportListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportListController.swift; sourceTree = "<group>"; };
-		FA8AD66522E4BF33001436BB /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
+		FA8AD66322E4BF12001436BB /* UserReportListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReportListController.swift; sourceTree = "<group>"; };
+		FA8AD66522E4BF33001436BB /* UserDashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDashboardController.swift; sourceTree = "<group>"; };
 		FA8AD66722E4BF86001436BB /* reportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reportTableViewCell.swift; sourceTree = "<group>"; };
 		FA8AD66922E4BF9C001436BB /* dashboardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dashboardCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA8AD66B22E4D5EE001436BB /* support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = support.swift; sourceTree = "<group>"; };
@@ -229,10 +233,12 @@
 				FAF62ECA22DF25FC006DCA98 /* SignUpController.swift */,
 				FA7DBE4622E328E000067F78 /* ReportController.swift */,
 				FA8AD66122E4BEF4001436BB /* ProfileController.swift */,
-				FA8AD66322E4BF12001436BB /* ReportListController.swift */,
-				FA8AD66522E4BF33001436BB /* DashboardController.swift */,
+				FA8AD66322E4BF12001436BB /* UserReportListController.swift */,
+				FA8AD66522E4BF33001436BB /* UserDashboardController.swift */,
 				FA8AD66722E4BF86001436BB /* reportTableViewCell.swift */,
 				FA8AD66922E4BF9C001436BB /* dashboardCollectionViewCell.swift */,
+				E1A1DFCC22E8876A00388AF3 /* AdminReportListController.swift */,
+				E1A1DFCE22E887B600388AF3 /* AdminDashboardController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -488,14 +494,16 @@
 				FAF62EC222DF174C006DCA98 /* Report.swift in Sources */,
 				FA8AD66222E4BEF4001436BB /* ProfileController.swift in Sources */,
 				FA7DBE4722E328E000067F78 /* ReportController.swift in Sources */,
-				FA8AD66622E4BF33001436BB /* DashboardController.swift in Sources */,
+				FA8AD66622E4BF33001436BB /* UserDashboardController.swift in Sources */,
 				FA07BDBE22DE15D000822D85 /* fancyUIButton.swift in Sources */,
+				E1A1DFCD22E8876A00388AF3 /* AdminReportListController.swift in Sources */,
 				FA07BDBC22DE15C000822D85 /* fancyUITextField.swift in Sources */,
 				FAF62EC722DF22A5006DCA98 /* ReportServices.swift in Sources */,
 				FA6CB18C22DDE8B50037120D /* AppDelegate.swift in Sources */,
 				FAF62ECB22DF25FC006DCA98 /* SignUpController.swift in Sources */,
 				FAF62EC022DF173C006DCA98 /* reportStatus.swift in Sources */,
-				FA8AD66422E4BF12001436BB /* ReportListController.swift in Sources */,
+				E1A1DFCF22E887B600388AF3 /* AdminDashboardController.swift in Sources */,
+				FA8AD66422E4BF12001436BB /* UserReportListController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

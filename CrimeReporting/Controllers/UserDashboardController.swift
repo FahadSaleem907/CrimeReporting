@@ -1,14 +1,7 @@
-//
-//  DashboardController.swift
-//  CrimeReporting
-//
-//  Created by FahadSaleem on 21/07/2019.
-//  Copyright © 2019 FahadSaleem. All rights reserved.
-//
-
+import Foundation
 import UIKit
 
-class DashboardController: UIViewController
+class UserDashboardController: UIViewController
 {
     
     let delegate = UIApplication.shared.delegate as! AppDelegate
@@ -32,21 +25,9 @@ class DashboardController: UIViewController
         // Do any additional setup after loading the view.
         getSize()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
-extension DashboardController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+extension UserDashboardController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int

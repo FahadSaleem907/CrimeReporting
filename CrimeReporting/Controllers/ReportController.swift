@@ -1,11 +1,3 @@
-//
-//  ReportController.swift
-//  CrimeReporting
-//
-//  Created by FahadSaleem on 20/07/2019.
-//  Copyright © 2019 FahadSaleem. All rights reserved.
-//
-
 import Foundation
 import UIKit
 import MaterialComponents.MaterialTextFields

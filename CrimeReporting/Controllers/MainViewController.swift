@@ -44,7 +44,7 @@ class MainViewController: UIViewController {
             
             if let error = error
             {
-                self.statusAlert(title: "Error", msg: "\(error)", controller: self)
+                self.statusAlert1(title: "Error", msg: "\(error)", controller: self)
             }
             else
             {
@@ -94,6 +94,17 @@ extension MainViewController
         let alertValidation = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         let buttonOK = UIAlertAction(title: "Okay", style: .default, handler: {_ in //self.navigationController?.popViewController(animated: true) })
             self.performSegue(withIdentifier: "loginUser", sender: self) })
+        alertValidation.addAction(buttonOK)
+        present(alertValidation, animated: true, completion: nil)
+    }
+    
+    func statusAlert1(title:String, msg:String, controller:UIViewController)
+    {
+        let alertValidation = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        let buttonOK = UIAlertAction(title: "Okay", style: .default, handler: {_ in //self.navigationController?.popViewController(animated: true) })
+            //self.performSegue(withIdentifier: "loginUser", sender: self)
+            return
+        })
         alertValidation.addAction(buttonOK)
         present(alertValidation, animated: true, completion: nil)
     }

@@ -33,7 +33,7 @@ public class userFunctions
                 let uid = result?.user.uid
             else
             {
-                print("ERROR : \(error?.localizedDescription)")
+                print("ERROR : \(error!.localizedDescription)")
                 completion(nil,false,error!.localizedDescription)
                 return
             }
@@ -60,7 +60,7 @@ public class userFunctions
                             //print("Active Admin Cached document data: \(self.delegate.currentUser)")
                             let reportService = reportFunctions()
                             
-                            reportService.viewReports(completion:
+                            reportService.viewUserReports(completion:
                                 {
                                     (report) in
                                     
@@ -117,8 +117,6 @@ public class userFunctions
                                             "User Status"   : "\(users!.userStatus)",
                                             "Reports"       : "Nil"
                                             ]
-                    
-                //ref = self.db.collection("\(users!.userType)").document("\(users!.uid!)").collection("\(users!.userStatus)").document("\(users!.email)")
                 
                 ref = self.db.collection("Users").document("\(users!.uid!)")
                 ref?.setData(dataDic)

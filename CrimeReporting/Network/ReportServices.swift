@@ -1,11 +1,3 @@
-//
-//  ReportServices.swift
-//  CrimeReporting
-//
-//  Created by FahadSaleem on 17/07/2019.
-//  Copyright © 2019 FahadSaleem. All rights reserved.
-//
-
 import Foundation
 import UIKit
 import Firebase
@@ -55,7 +47,7 @@ public class reportFunctions
         
     }
 
-    func viewReports(completion:@escaping([Report?])->Void)
+    func viewUserReports(completion:@escaping([Report?])->Void)
     {
         //var ref:DocumentReference? = nil
 
@@ -72,13 +64,9 @@ public class reportFunctions
             {
                 for i in snapshot!.documents
                 {
-                    //print("\(i.data())")
-                    
                     let tmpReport = Report(city: i.data()["city"] as! String, descField: i.data()["reportDescription"] as! String, reportType: i.data()["reportType"] as! String, userID: i.data()["uid"] as! String, time: i.data()["time"] as! String, img: nil, pending: i.data()["pending"] as? Bool, inProgress: i.data()["inProgress"] as? Bool, completed: i.data()["completed"] as? Bool)
                     
                     self.reportList.append(tmpReport)
-                    
-                    //print(self.reportList.count)
                 }
                 completion(self.reportList)
             }

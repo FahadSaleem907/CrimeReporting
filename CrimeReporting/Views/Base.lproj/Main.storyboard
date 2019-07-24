@@ -158,7 +158,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Agg-6I-91s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1881.1594202898552" y="1665.4017857142856"/>
+            <point key="canvasLocation" x="-971.01449275362324" y="1665.4017857142856"/>
         </scene>
         <!--Reports-->
         <scene sceneID="jZj-qR-4dJ">
@@ -246,7 +246,7 @@ Would You Like To File A New Report ?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xcY-w8-tG2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="95.652173913043484" y="1338.6160714285713"/>
+            <point key="canvasLocation" x="1005.7971014492755" y="1338.6160714285713"/>
         </scene>
         <!--Profile-->
         <scene sceneID="9hU-oZ-JId">
@@ -354,7 +354,57 @@ Would You Like To File A New Report ?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zt7-T6-3Nr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-814" y="626"/>
+            <point key="canvasLocation" x="95.652173913043484" y="625.44642857142856"/>
+        </scene>
+        <!--Admin Report List Controller-->
+        <scene sceneID="lel-y2-c2T">
+            <objects>
+                <viewController id="k19-OD-i32" customClass="AdminReportListController" customModule="CrimeReporting" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uvj-un-GdB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="hIV-Og-uUT"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="msw-A7-R05"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N4e-Nl-kaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2389.8550724637685" y="1095.5357142857142"/>
+        </scene>
+        <!--Dashboard-->
+        <scene sceneID="crb-D0-37p">
+            <objects>
+                <viewController id="wgU-wz-N7W" customClass="AdminDashboardController" customModule="CrimeReporting" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oNW-SH-7LB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="bf2-mm-OOM"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Dashboard" id="gDV-H3-ThE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PjP-oG-uPf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3299" y="450"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="sNo-hl-KHa">
+            <objects>
+                <tabBarController id="FKY-RA-DsO" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ico-6W-6VW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="wgU-wz-N7W" kind="relationship" relationship="viewControllers" id="ior-VY-2sB"/>
+                        <segue destination="ct3-OR-acX" kind="relationship" relationship="viewControllers" id="Spj-TE-qZV"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CeQ-Vt-47B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4216" y="770"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="a8f-ER-Lsy">
@@ -366,14 +416,14 @@ Would You Like To File A New Report ?</string>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <segue destination="buH-Aa-7Be" kind="relationship" relationship="viewControllers" id="5xd-Nd-fma"/>
                         <segue destination="Nj3-Ww-vzX" kind="relationship" relationship="viewControllers" id="rOZ-MQ-OMp"/>
                         <segue destination="7LI-uA-eVt" kind="relationship" relationship="viewControllers" id="lAJ-4r-E1E"/>
-                        <segue destination="buH-Aa-7Be" kind="relationship" relationship="viewControllers" id="5xd-Nd-fma"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NyR-ZE-Q94" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1881" y="891"/>
+            <point key="canvasLocation" x="-971.01449275362324" y="890.625"/>
         </scene>
         <!--Sign Up Controller-->
         <scene sceneID="aMw-Cj-8VU">
@@ -545,7 +595,7 @@ Would You Like To File A New Report ?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wl0-Ph-3Zn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="965" y="1339"/>
+            <point key="canvasLocation" x="1873.913043478261" y="1338.6160714285713"/>
         </scene>
         <!--Reports-->
         <scene sceneID="aTS-a9-PeG">
@@ -564,7 +614,26 @@ Would You Like To File A New Report ?</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQX-rL-HCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-814.49275362318849" y="1338.6160714285713"/>
+            <point key="canvasLocation" x="95.652173913043484" y="1338.6160714285713"/>
+        </scene>
+        <!--Reports-->
+        <scene sceneID="4Lc-39-mq3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ct3-OR-acX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Reports" id="xRB-YF-FVc"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4nX-y7-sbG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="k19-OD-i32" kind="relationship" relationship="rootViewController" id="Lgg-ey-D4K"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6FM-NH-CfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3300.0000000000005" y="1095.5357142857142"/>
         </scene>
     </scenes>
 </document>
