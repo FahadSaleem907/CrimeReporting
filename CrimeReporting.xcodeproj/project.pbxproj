@@ -12,6 +12,10 @@
 		CB1E13F861A60591F60F9691 /* Pods_CrimeReportingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 193EA65E7ABC16FCCAF29BA9 /* Pods_CrimeReportingUITests.framework */; };
 		E1A1DFCD22E8876A00388AF3 /* AdminReportListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A1DFCC22E8876A00388AF3 /* AdminReportListController.swift */; };
 		E1A1DFCF22E887B600388AF3 /* AdminDashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A1DFCE22E887B600388AF3 /* AdminDashboardController.swift */; };
+		E1A1DFD122E8941B00388AF3 /* AdminReportDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A1DFD022E8941B00388AF3 /* AdminReportDetailsController.swift */; };
+		E1A1DFD322E8964600388AF3 /* UserReportDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A1DFD222E8964600388AF3 /* UserReportDetailsController.swift */; };
+		E1A1DFD522E898AB00388AF3 /* AdminReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A1DFD422E898AB00388AF3 /* AdminReportTableViewCell.swift */; };
+		E1A1DFD722E899C400388AF3 /* AdminDashboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A1DFD622E899C400388AF3 /* AdminDashboardCollectionViewCell.swift */; };
 		FA07BDBC22DE15C000822D85 /* fancyUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BDBB22DE15C000822D85 /* fancyUITextField.swift */; };
 		FA07BDBE22DE15D000822D85 /* fancyUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BDBD22DE15D000822D85 /* fancyUIButton.swift */; };
 		FA07BDC022DE15DD00822D85 /* roundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BDBF22DE15DD00822D85 /* roundedImageView.swift */; };
@@ -67,6 +71,10 @@
 		E06C2FE0A0E143B14AD5CB53 /* Pods_CrimeReporting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrimeReporting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A1DFCC22E8876A00388AF3 /* AdminReportListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminReportListController.swift; sourceTree = "<group>"; };
 		E1A1DFCE22E887B600388AF3 /* AdminDashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardController.swift; sourceTree = "<group>"; };
+		E1A1DFD022E8941B00388AF3 /* AdminReportDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminReportDetailsController.swift; sourceTree = "<group>"; };
+		E1A1DFD222E8964600388AF3 /* UserReportDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReportDetailsController.swift; sourceTree = "<group>"; };
+		E1A1DFD422E898AB00388AF3 /* AdminReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminReportTableViewCell.swift; sourceTree = "<group>"; };
+		E1A1DFD622E899C400388AF3 /* AdminDashboardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashboardCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA07BDBB22DE15C000822D85 /* fancyUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fancyUITextField.swift; sourceTree = "<group>"; };
 		FA07BDBD22DE15D000822D85 /* fancyUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fancyUIButton.swift; sourceTree = "<group>"; };
 		FA07BDBF22DE15DD00822D85 /* roundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roundedImageView.swift; sourceTree = "<group>"; };
@@ -239,6 +247,10 @@
 				FA8AD66922E4BF9C001436BB /* dashboardCollectionViewCell.swift */,
 				E1A1DFCC22E8876A00388AF3 /* AdminReportListController.swift */,
 				E1A1DFCE22E887B600388AF3 /* AdminDashboardController.swift */,
+				E1A1DFD022E8941B00388AF3 /* AdminReportDetailsController.swift */,
+				E1A1DFD222E8964600388AF3 /* UserReportDetailsController.swift */,
+				E1A1DFD422E898AB00388AF3 /* AdminReportTableViewCell.swift */,
+				E1A1DFD622E899C400388AF3 /* AdminDashboardCollectionViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -485,6 +497,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA07BDC022DE15DD00822D85 /* roundedImageView.swift in Sources */,
+				E1A1DFD722E899C400388AF3 /* AdminDashboardCollectionViewCell.swift in Sources */,
+				E1A1DFD322E8964600388AF3 /* UserReportDetailsController.swift in Sources */,
 				FA8AD66C22E4D5EE001436BB /* support.swift in Sources */,
 				FAF62EC522DF2296006DCA98 /* UserServices.swift in Sources */,
 				FA6CB18E22DDE8B50037120D /* MainViewController.swift in Sources */,
@@ -504,6 +518,8 @@
 				FAF62EC022DF173C006DCA98 /* reportStatus.swift in Sources */,
 				E1A1DFCF22E887B600388AF3 /* AdminDashboardController.swift in Sources */,
 				FA8AD66422E4BF12001436BB /* UserReportListController.swift in Sources */,
+				E1A1DFD122E8941B00388AF3 /* AdminReportDetailsController.swift in Sources */,
+				E1A1DFD522E898AB00388AF3 /* AdminReportTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

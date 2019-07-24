@@ -87,7 +87,7 @@
         <!--Dashboard-->
         <scene sceneID="cZB-lv-D3n">
             <objects>
-                <viewController id="buH-Aa-7Be" customClass="DashboardController" customModule="CrimeReporting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="buH-Aa-7Be" customClass="UserDashboardController" customModule="CrimeReporting" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JTo-ix-qdT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -111,7 +111,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOy-UJ-1n0">
                                                     <rect key="frame" x="0.0" y="106" width="407" height="53"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -163,25 +163,28 @@
         <!--Reports-->
         <scene sceneID="jZj-qR-4dJ">
             <objects>
-                <viewController id="WF6-3V-Ic0" customClass="ReportListController" customModule="CrimeReporting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WF6-3V-Ic0" customClass="UserReportListController" customModule="CrimeReporting" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uo3-dK-sAv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6x-9Z-9HB">
-                                <rect key="frame" x="60" y="268" width="294" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">You Have No Reports Filed.
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="ic5-ad-ER5">
+                                <rect key="frame" x="41.5" y="401" width="331" height="99"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6x-9Z-9HB">
+                                        <rect key="frame" x="0.0" y="0.0" width="331" height="41"/>
+                                        <string key="text">You Have No Reports Filed.
 Would You Like To File A New Report ?</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KaT-fI-7D9">
-                                <rect key="frame" x="158" y="337" width="99" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Submit Report"/>
-                            </button>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KaT-fI-7D9">
+                                        <rect key="frame" x="103.5" y="69" width="124" height="30"/>
+                                        <state key="normal" title="Submit Report"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i04-LG-Vse">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -215,7 +218,11 @@ Would You Like To File A New Report ?</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="KaT-fI-7D9" firstAttribute="width" secondItem="Uo3-dK-sAv" secondAttribute="width" multiplier="0.3" id="DYW-jF-NN3"/>
+                            <constraint firstItem="ic5-ad-ER5" firstAttribute="centerX" secondItem="F9J-Zd-x4Y" secondAttribute="centerX" id="JuD-qX-2Id"/>
+                            <constraint firstItem="ic5-ad-ER5" firstAttribute="centerY" secondItem="F9J-Zd-x4Y" secondAttribute="centerY" id="QR5-UL-e9z"/>
                             <constraint firstItem="F9J-Zd-x4Y" firstAttribute="trailing" secondItem="i04-LG-Vse" secondAttribute="trailing" id="dtT-7H-0iM"/>
+                            <constraint firstItem="i6x-9Z-9HB" firstAttribute="width" secondItem="Uo3-dK-sAv" secondAttribute="width" multiplier="0.8" id="e8i-bm-5Ry"/>
                             <constraint firstItem="i04-LG-Vse" firstAttribute="leading" secondItem="F9J-Zd-x4Y" secondAttribute="leading" id="il6-T4-Voh"/>
                             <constraint firstItem="i04-LG-Vse" firstAttribute="top" secondItem="F9J-Zd-x4Y" secondAttribute="top" id="o9e-Xi-f8p"/>
                             <constraint firstItem="F9J-Zd-x4Y" firstAttribute="bottom" secondItem="i04-LG-Vse" secondAttribute="bottom" id="rnC-yN-Y3V"/>
@@ -356,21 +363,113 @@ Would You Like To File A New Report ?</string>
             </objects>
             <point key="canvasLocation" x="95.652173913043484" y="625.44642857142856"/>
         </scene>
-        <!--Admin Report List Controller-->
+        <!--Reports-->
         <scene sceneID="lel-y2-c2T">
             <objects>
                 <viewController id="k19-OD-i32" customClass="AdminReportListController" customModule="CrimeReporting" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uvj-un-GdB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="UtL-yq-vFD">
+                                <rect key="frame" x="41.5" y="401" width="331" height="99"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIO-ef-x1f">
+                                        <rect key="frame" x="0.0" y="0.0" width="331" height="41"/>
+                                        <string key="text">You Have No Reports Filed.
+Would You Like To File A New Report ?</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXp-aY-G9R">
+                                        <rect key="frame" x="103.5" y="69" width="124" height="30"/>
+                                        <state key="normal" title="Submit Report"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="70T-YD-EMP">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="121" id="S8g-6w-ZAq" customClass="AdminReportTableViewCell" customModule="CrimeReporting" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="121"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S8g-6w-ZAq" id="vkZ-eb-26R">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="120.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63J-Za-1lk">
+                                                    <rect key="frame" x="103.5" y="50" width="207" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTo-f1-Dyn">
+                                                    <rect key="frame" x="337" y="80" width="47" height="30"/>
+                                                    <state key="normal" title="Details"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="63J-Za-1lk" firstAttribute="centerX" secondItem="vkZ-eb-26R" secondAttribute="centerX" id="0C0-Uh-MnU"/>
+                                                <constraint firstItem="63J-Za-1lk" firstAttribute="centerY" secondItem="vkZ-eb-26R" secondAttribute="centerY" id="5ZP-0c-0w7"/>
+                                                <constraint firstItem="zTo-f1-Dyn" firstAttribute="bottom" secondItem="vkZ-eb-26R" secondAttribute="bottomMargin" id="UpO-vj-tAU"/>
+                                                <constraint firstItem="63J-Za-1lk" firstAttribute="width" secondItem="vkZ-eb-26R" secondAttribute="width" multiplier="0.5" id="jsq-Yj-N25"/>
+                                                <constraint firstItem="zTo-f1-Dyn" firstAttribute="trailing" secondItem="vkZ-eb-26R" secondAttribute="trailingMargin" constant="-10" id="mVA-kY-C41"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UtL-yq-vFD" firstAttribute="centerY" secondItem="hIV-Og-uUT" secondAttribute="centerY" id="0JD-Jh-iJq"/>
+                            <constraint firstItem="YXp-aY-G9R" firstAttribute="width" secondItem="uvj-un-GdB" secondAttribute="width" multiplier="0.3" id="31R-yh-65S"/>
+                            <constraint firstItem="gIO-ef-x1f" firstAttribute="width" secondItem="uvj-un-GdB" secondAttribute="width" multiplier="0.8" id="3Ig-Mj-GVz"/>
+                            <constraint firstItem="70T-YD-EMP" firstAttribute="leading" secondItem="hIV-Og-uUT" secondAttribute="leading" id="GhX-lJ-n7E"/>
+                            <constraint firstItem="hIV-Og-uUT" firstAttribute="trailing" secondItem="70T-YD-EMP" secondAttribute="trailing" id="Tgy-CQ-86Z"/>
+                            <constraint firstItem="70T-YD-EMP" firstAttribute="top" secondItem="hIV-Og-uUT" secondAttribute="top" id="Wgu-w5-Gh0"/>
+                            <constraint firstItem="hIV-Og-uUT" firstAttribute="bottom" secondItem="70T-YD-EMP" secondAttribute="bottom" id="wFC-rE-XfR"/>
+                            <constraint firstItem="UtL-yq-vFD" firstAttribute="centerX" secondItem="hIV-Og-uUT" secondAttribute="centerX" id="xLQ-in-wvf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="hIV-Og-uUT"/>
                     </view>
-                    <navigationItem key="navigationItem" id="msw-A7-R05"/>
+                    <navigationItem key="navigationItem" title="Reports" id="msw-A7-R05"/>
+                    <connections>
+                        <outlet property="reportList" destination="70T-YD-EMP" id="9SX-76-Azk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4e-Nl-kaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2389.8550724637685" y="1095.5357142857142"/>
+            <point key="canvasLocation" x="-2520" y="1096"/>
+        </scene>
+        <!--Report Details Controller-->
+        <scene sceneID="ICQ-YO-Jaz">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="JCJ-Ti-ym5" customClass="ReportDetailsController" customModule="CrimeReporting" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" tag="1" contentMode="scaleToFill" id="It0-e5-gPG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I8f-1k-q6b">
+                                <rect key="frame" x="52" y="229" width="310.5" height="448"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="I8f-1k-q6b" firstAttribute="centerX" secondItem="5mw-8R-6fH" secondAttribute="centerX" id="BZg-oO-GHO"/>
+                            <constraint firstItem="I8f-1k-q6b" firstAttribute="width" secondItem="It0-e5-gPG" secondAttribute="width" multiplier="0.75" id="C6E-Gw-Ngf"/>
+                            <constraint firstItem="I8f-1k-q6b" firstAttribute="height" secondItem="It0-e5-gPG" secondAttribute="height" multiplier="0.5" id="F5m-Do-zlK"/>
+                            <constraint firstItem="I8f-1k-q6b" firstAttribute="centerY" secondItem="5mw-8R-6fH" secondAttribute="centerY" id="wTe-ha-9s9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5mw-8R-6fH"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LDT-eX-Nq9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1826.0869565217392" y="1095.5357142857142"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="crb-D0-37p">
@@ -379,14 +478,72 @@ Would You Like To File A New Report ?</string>
                     <view key="view" contentMode="scaleToFill" id="oNW-SH-7LB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SAw-Tq-Xqb">
+                                <rect key="frame" x="0.0" y="49" width="414" height="269"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8yZ-dh-aB7">
+                                    <size key="itemSize" width="410" height="297"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="lIa-4w-ZWK" customClass="AdminDashboardCollectionViewCell" customModule="CrimeReporting" customModuleProvider="target">
+                                        <rect key="frame" x="2" y="0.0" width="410" height="297"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="410" height="297"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZk-Ai-gxx">
+                                                    <rect key="frame" x="0.0" y="40" width="410" height="35"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWO-XH-nAf">
+                                                    <rect key="frame" x="0.0" y="87.5" width="410" height="24"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="fWO-XH-nAf" firstAttribute="centerX" secondItem="lIa-4w-ZWK" secondAttribute="centerX" id="Anh-MQ-DyQ"/>
+                                            <constraint firstItem="fWO-XH-nAf" firstAttribute="top" secondItem="MZk-Ai-gxx" secondAttribute="bottom" constant="12.5" id="F1I-4L-vaa"/>
+                                            <constraint firstItem="MZk-Ai-gxx" firstAttribute="top" secondItem="lIa-4w-ZWK" secondAttribute="top" constant="40" id="apz-My-Ecm"/>
+                                            <constraint firstItem="MZk-Ai-gxx" firstAttribute="centerX" secondItem="lIa-4w-ZWK" secondAttribute="centerX" id="ekD-Jd-hHP"/>
+                                            <constraint firstItem="MZk-Ai-gxx" firstAttribute="width" secondItem="lIa-4w-ZWK" secondAttribute="width" id="icJ-Pv-D9d"/>
+                                            <constraint firstItem="fWO-XH-nAf" firstAttribute="width" secondItem="lIa-4w-ZWK" secondAttribute="width" id="yBt-hm-B71"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="reportCount" destination="MZk-Ai-gxx" id="MaR-Rc-7eq"/>
+                                            <outlet property="reportLbl" destination="fWO-XH-nAf" id="Fod-Ky-bd2"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SAw-Tq-Xqb" firstAttribute="centerX" secondItem="bf2-mm-OOM" secondAttribute="centerX" id="CHv-jj-LZL"/>
+                            <constraint firstItem="SAw-Tq-Xqb" firstAttribute="width" secondItem="oNW-SH-7LB" secondAttribute="width" id="bmb-6c-z2q"/>
+                            <constraint firstItem="SAw-Tq-Xqb" firstAttribute="top" secondItem="bf2-mm-OOM" secondAttribute="top" constant="5" id="hyw-4x-ZU4"/>
+                            <constraint firstItem="SAw-Tq-Xqb" firstAttribute="height" secondItem="oNW-SH-7LB" secondAttribute="height" multiplier="0.3" id="nGo-zl-iM2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="bf2-mm-OOM"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Dashboard" id="gDV-H3-ThE"/>
+                    <connections>
+                        <outlet property="reportNumbers" destination="SAw-Tq-Xqb" id="j5e-V8-wU1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PjP-oG-uPf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3299" y="450"/>
+            <point key="canvasLocation" x="-3300.0000000000005" y="450"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="sNo-hl-KHa">
@@ -597,6 +754,33 @@ Would You Like To File A New Report ?</string>
             </objects>
             <point key="canvasLocation" x="1873.913043478261" y="1338.6160714285713"/>
         </scene>
+        <!--User Report Details Controller-->
+        <scene sceneID="dgL-op-W3L">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="Fc7-DW-XWZ" customClass="UserReportDetailsController" customModule="CrimeReporting" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" tag="1" contentMode="scaleToFill" id="qca-Lc-7DY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0sF-fU-kGA">
+                                <rect key="frame" x="52" y="229" width="310.5" height="448"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0sF-fU-kGA" firstAttribute="width" secondItem="qca-Lc-7DY" secondAttribute="width" multiplier="0.75" id="Lhk-Ux-bCn"/>
+                            <constraint firstItem="0sF-fU-kGA" firstAttribute="centerX" secondItem="gPt-Ed-ffi" secondAttribute="centerX" id="b1Q-a4-umF"/>
+                            <constraint firstItem="0sF-fU-kGA" firstAttribute="height" secondItem="qca-Lc-7DY" secondAttribute="height" multiplier="0.5" id="mzR-Jf-aJq"/>
+                            <constraint firstItem="0sF-fU-kGA" firstAttribute="centerY" secondItem="gPt-Ed-ffi" secondAttribute="centerY" id="uvN-Rn-5q3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gPt-Ed-ffi"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xgX-Pm-OiF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1006" y="647"/>
+        </scene>
         <!--Reports-->
         <scene sceneID="aTS-a9-PeG">
             <objects>
@@ -622,7 +806,7 @@ Would You Like To File A New Report ?</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ct3-OR-acX" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Reports" id="xRB-YF-FVc"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4nX-y7-sbG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="4nX-y7-sbG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
