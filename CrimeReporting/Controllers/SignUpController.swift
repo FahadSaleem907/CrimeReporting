@@ -54,7 +54,7 @@ class SignUpController: UIViewController
     
     func createuser()
     {
-        let user1 = User(uid: nil, name: "\(name.text!)", email: "\(email.text!)", pw: "\(password.text!)", userType: "\(accountType.text!)", image: nil, userStatus: "Inactive", reportID: [])
+        let user1 = User(uid: nil, name: "\(name.text!)", email: "\(email.text!)", pw: "\(password.text!)", userType: "\(accountType.text!)", image: nil, userStatus: "Inactive", report: [])
         
         
         userServices.createUser(user: user1)

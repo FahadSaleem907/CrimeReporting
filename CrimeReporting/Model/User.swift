@@ -18,9 +18,9 @@ struct User //: Codable
     var userType    : String
     var image       : UIImage?
     var userStatus  : String
-    var reportsID   : [Report?]
+    var reports   : [Report?]
     
-    init(uid:String?,name:String,email:String,pw:String?,userType:String,image:UIImage?,userStatus:String, reportID:[Report?])
+    init(uid:String?,name:String,email:String,pw:String?,userType:String,image:UIImage?,userStatus:String, report : [Report?])
     {
         self.uid        =   uid
         self.name       =   name
@@ -29,7 +29,7 @@ struct User //: Codable
         self.userType   =   userType
         self.image      =   image
         self.userStatus =   userStatus
-        self.reportsID  =   reportID
+        self.reports    =   report
     }
     
 //    enum CodingKeys: String, CodingKey

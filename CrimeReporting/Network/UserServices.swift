@@ -14,15 +14,15 @@ import FirebaseFirestore
 
 public class userFunctions
 {
-    var reportList = [Report?]()
     
     let delegate = UIApplication.shared.delegate as! AppDelegate
     let db = Firestore.firestore()
     
     func login(email:String,password:String,completion:@escaping(User?,Bool?,String?)->Void)
     {
+        var reportList = [Report?]()
         
-        delegate.currentUser = User(uid: "asd", name: "asd", email: "asd", pw: nil, userType: "asd", image: nil, userStatus: "asd", reportID: [])
+        delegate.currentUser = User(uid: "asd", name: "asd", email: "asd", pw: nil, userType: "asd", image: nil, userStatus: "asd", report: [])
         
         Auth.auth().signIn(withEmail: email, password: password)
         {
@@ -60,11 +60,16 @@ public class userFunctions
                             //print("Active Admin Cached document data: \(self.delegate.currentUser)")
                             let reportService = reportFunctions()
                             
-//                            reportService.viewReports(completion: { (<#[Report?]?#>) in
-//                                <#code#>
-//                            })
-                            print(self.reportList)
-                            self.delegate.currentUser?.reportsID = self.reportList
+                            reportService.viewReports(completion:
+                                {
+                                    (report) in
+                                    
+                                    reportList = report
+                                    
+                                    print(reportList)
+                                    self.delegate.currentUser?.reports = reportList
+                                })
+
                             completion(self.delegate.currentUser,true,nil)
                         }
                         else
@@ -94,7 +99,7 @@ public class userFunctions
             
             if mainErr == nil
             {
-                var users:User? = User(uid: user!.uid, name: user!.name, email: user!.email, pw: user!.password, userType: user!.userType, image: nil, userStatus: "Active", reportID: [])
+                var users:User? = User(uid: user!.uid, name: user!.name, email: user!.email, pw: user!.password, userType: user!.userType, image: nil, userStatus: "Active", report: [])
                 
                 users?.uid = result!.user.uid
                 users?.userStatus = "Active"

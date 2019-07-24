@@ -20,7 +20,7 @@ class ReportListController: UIViewController {
     
     func checkReport()
     {
-        if delegate.currentUser?.reportsID.count == 0
+        if delegate.currentUser?.reports.count == 0
         {
             reportList.isHidden = true
             msgLbl.isHidden = false

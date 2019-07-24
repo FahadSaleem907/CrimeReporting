@@ -11,7 +11,10 @@ import UIKit
 class DashboardController: UIViewController
 {
     
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     var layoutSize:CGSize?
+    
+    
     func getSize()
     {
         layoutSize = reportNumbers.frame.size
@@ -48,7 +51,7 @@ extension DashboardController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return 3
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat
@@ -71,21 +74,56 @@ extension DashboardController: UICollectionViewDelegate, UICollectionViewDataSou
         {
             if indexPath.item == 0
             {
-                cell.reportCount.text = "10"
+                cell.reportCount.text = String(delegate.currentUser!.reports.count)
                 cell.reportText.text  = "Total Reports"
-                cell.backgroundColor = .red
+                cell.backgroundColor = .blue
             }
             if indexPath.item == 1
             {
-                cell.reportCount.text = "3"
-                cell.reportText.text = "Pending Reports"
-                cell.backgroundColor = .green
+                for i in delegate.currentUser!.reports
+                {
+                    if i?.isPending == true
+                    {
+                        var tmpArray = [Report?]()
+                        tmpArray.append(i)
+                        
+                        cell.reportCount.text = String(tmpArray.count)
+                    }
+                }
+                
+                cell.reportText.text  = "Pending Reports"
+                cell.backgroundColor = .yellow
             }
             if indexPath.item == 2
             {
-                cell.reportCount.text = "7"
+                for i in delegate.currentUser!.reports
+                {
+                    if i?.isInProgress == true
+                    {
+                        var tmpArray = [Report?]()
+                        tmpArray.append(i)
+                        
+                        cell.reportCount.text = String(tmpArray.count)
+                    }
+                }
+                cell.reportText.text = "Reports In Progress"
+                cell.backgroundColor = .orange
+            }
+            if indexPath.item == 3
+            {
+                for i in delegate.currentUser!.reports
+                {
+                    if i?.isCompleted == true
+                    {
+                        var tmpArray = [Report?]()
+                        tmpArray.append(i)
+                        
+                        cell.reportCount.text = String(tmpArray.count)
+                    }
+                }
+                
                 cell.reportText.text = "Completed Reports"
-                cell.backgroundColor = .blue
+                cell.backgroundColor = .green
             }
         }
         

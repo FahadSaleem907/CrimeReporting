@@ -27,15 +27,15 @@ public class reportFunctions
         let report1 = Report(city: reports!.city, descField: reports!.descriptionField, reportType: reports!.reportType, userID: delegate.currentUser!.uid!, time: reports!.time, img: reports?.image, pending: true, inProgress: false, completed: false)
         
         let dataDic = [
-                        "uid":"\(delegate.currentUser!.uid!)",
-                        "city":"\(report1.city)",
-                        "time":"\(report1.time)",
-                        "reportType":"\(report1.reportType)",
-                        "reportDescription":"\(report1.descriptionField)",
-                        "pending":"\(report1.isPending!)",
-                        "inProgress":"\(report1.isInProgress!)",
-                        "completed":"\(report1.isCompleted!)"
-                      ]
+                        "uid"               :"\(delegate.currentUser!.uid!)",
+                        "city"              :"\(report1.city)",
+                        "time"              :"\(report1.time)",
+                        "reportType"        :"\(report1.reportType)",
+                        "reportDescription" :"\(report1.descriptionField)",
+                        "pending"           : report1.isPending!,
+                        "inProgress"        : report1.isInProgress!,
+                        "completed"         : report1.isCompleted!
+                       ] as [String : Any]
         
         ref = self.db.collection("Reports").addDocument(data: dataDic)
         {
@@ -55,7 +55,7 @@ public class reportFunctions
         
     }
 
-    func viewReports(completion:@escaping([Report?]?)->Void)
+    func viewReports(completion:@escaping([Report?])->Void)
     {
         //var ref:DocumentReference? = nil
 
@@ -66,7 +66,7 @@ public class reportFunctions
             if let error = error
             {
                 print("ERROR: \(error.localizedDescription)")
-                completion(nil)
+                completion([])
             }
             else
             {

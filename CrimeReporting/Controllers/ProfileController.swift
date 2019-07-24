@@ -13,13 +13,14 @@ class ProfileController: UIViewController {
     
     func checkReports()
     {
-        if delegate.currentUser?.reportsID.count == 0
+        if delegate.currentUser?.reports.count == 0
         {
             lastReportLbl.text = "No Reports Filed"
         }
         else
         {
-            delegate.currentUser?.reportsID.last
+            let count = delegate.currentUser!.reports.count - 1
+            lastReportLbl.text = delegate.currentUser?.reports[count]?.time
         }
     }
     
@@ -29,6 +30,9 @@ class ProfileController: UIViewController {
 
         nameLbl.text    =   delegate.currentUser?.name
         emailLbl.text   =   delegate.currentUser?.email
+        reportCountLbl.text = String(delegate.currentUser!.reports.count)
+        
+        checkReports()
     }
     
 }

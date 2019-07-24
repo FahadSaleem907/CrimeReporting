@@ -93,30 +93,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r54-Aj-Jq9">
-                                <rect key="frame" x="52" y="294" width="310.5" height="269"/>
+                                <rect key="frame" x="0.0" y="49" width="414" height="269"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O6U-jR-li5">
-                                    <size key="itemSize" width="323" height="265"/>
+                                    <size key="itemSize" width="407" height="265"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="cell" id="SGo-yc-JX0" customClass="dashboardCollectionViewCell" customModule="CrimeReporting" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="2" width="323" height="265"/>
+                                        <rect key="frame" x="0.0" y="2" width="407" height="265"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="323" height="265"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="407" height="265"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOy-UJ-1n0">
-                                                    <rect key="frame" x="0.0" y="106" width="323" height="53"/>
+                                                    <rect key="frame" x="0.0" y="106" width="407" height="53"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQW-xu-6RU">
-                                                    <rect key="frame" x="0.0" y="39" width="323" height="79.5"/>
+                                                    <rect key="frame" x="0.0" y="39" width="407" height="79.5"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -144,9 +144,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="r54-Aj-Jq9" firstAttribute="top" secondItem="XVv-z6-oiS" secondAttribute="top" constant="5" id="1Ek-o6-jyA"/>
                             <constraint firstItem="r54-Aj-Jq9" firstAttribute="height" secondItem="JTo-ix-qdT" secondAttribute="height" multiplier="0.3" id="BnO-aT-hff"/>
-                            <constraint firstItem="r54-Aj-Jq9" firstAttribute="width" secondItem="JTo-ix-qdT" secondAttribute="width" multiplier="0.75" id="DQt-Ay-J3B"/>
-                            <constraint firstItem="r54-Aj-Jq9" firstAttribute="centerY" secondItem="XVv-z6-oiS" secondAttribute="centerY" id="I5m-x3-vqn"/>
+                            <constraint firstItem="r54-Aj-Jq9" firstAttribute="width" secondItem="JTo-ix-qdT" secondAttribute="width" id="DQt-Ay-J3B"/>
                             <constraint firstItem="r54-Aj-Jq9" firstAttribute="centerX" secondItem="XVv-z6-oiS" secondAttribute="centerX" id="oAM-rE-6Jl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XVv-z6-oiS"/>
