@@ -93,7 +93,7 @@ class UserReportListController: UIViewController
     
     func checkReport()
     {
-        if delegate.currentUser?.reports.count == 0
+        if userReports.count == 0
         {
             reportList.isHidden = true
             msgLbl.isHidden = false
@@ -127,7 +127,9 @@ class UserReportListController: UIViewController
         getData { (report) in
             self.userReports.removeAll()
             self.userReports = report
+            self.checkReport()
         }
+        
         //userReports = delegate.currentUser!.reports
     }
     
@@ -139,7 +141,7 @@ class UserReportListController: UIViewController
         reportList.delegate     = self
         reportList.dataSource   = self
         
-        checkReport()
+        //checkReport()
         
         //userReports = delegate.currentUser!.reports
     }
@@ -186,24 +188,18 @@ extension UserReportListController: UITableViewDelegate,UITableViewDataSource
         if userReports[indexPath.row]?.isPending == true
         {
             let yellowBGColorView = UIView()
-            //yellowBGColorView.backgroundColor = .yellow
-            
             yellowBGColorView.backgroundColor = .init(red: 0, green: 0, blue: 0, alpha: 0.2)
             cell.selectedBackgroundView = yellowBGColorView
         }
         else if userReports[indexPath.row]?.isInProgress == true
         {
             let orangeBGColorView = UIView()
-            //orangeBGColorView.backgroundColor = .red
             orangeBGColorView.backgroundColor = .init(red: 0, green: 0, blue: 0, alpha: 0.2)
-            
             cell.selectedBackgroundView = orangeBGColorView
         }
         else if userReports[indexPath.row]?.isCompleted == true
         {
             let greenBGColorView = UIView()
-            //greenBGColorView.backgroundColor = .white
-    
             greenBGColorView.backgroundColor = .init(red: 0, green: 0, blue: 0, alpha: 0.2)
             cell.selectedBackgroundView = greenBGColorView
         }

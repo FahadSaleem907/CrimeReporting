@@ -6,13 +6,15 @@ class AdminReportTableViewCell: UITableViewCell
 
     // MARK: - Constants
     // MARK: - Variables
-    // MARK: - Outlets
     // MARK: - Actions
     // MARK: - Functions
     
-    @IBOutlet weak var reportID: UILabel!
-    //@IBOutlet weak var reportDetails: UIButton!
+    // MARK: - Outlets
     
+    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var cityLbl: UILabel!
+    @IBOutlet weak var typeLbl: UILabel!
+    @IBOutlet weak var statusLbl: UILabel!
     
     override func awakeFromNib()
     {

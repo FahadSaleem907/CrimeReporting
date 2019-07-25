@@ -60,6 +60,8 @@ public class userFunctions
                             //print("Active Admin Cached document data: \(self.delegate.currentUser)")
                             let reportService = reportFunctions()
                             
+                            if self.delegate.currentUser!.userType == "User"
+                            {
                             reportService.viewUserReports(completion:
                                 {
                                     (report) in
@@ -69,7 +71,18 @@ public class userFunctions
                                     print(reportList)
                                     self.delegate.currentUser?.reports = reportList
                                 })
-
+                            }
+                            else
+                            {
+                                reportService.adminViewReports(completion:
+                                    {
+                                        (report) in
+                                    
+                                        reportList = report
+                                        print(reportList)
+                                        self.delegate.currentUser?.reports = reportList
+                                })
+                            }
                             completion(self.delegate.currentUser,true,nil)
                         }
                         else

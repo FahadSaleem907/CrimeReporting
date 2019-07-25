@@ -105,7 +105,29 @@ public class reportFunctions
     
     func adminViewReports(completion:@escaping([Report?])->Void)
     {
+        let reportRef = self.db.collection("Reports")
+        let query = reportRef.whereField("uid", isEqualTo: "\(delegate.currentUser!.uid!)")
         
+        reportRef.getDocuments
+            {
+                (snapshot, error) in
+                if let error = error
+                {
+                    print("ERROR: \(error.localizedDescription)")
+                    completion([])
+                }
+                else
+                {
+                    self.reportList = []
+                    for i in snapshot!.documents
+                    {
+                        let tmpReport = Report(reportID: "asd", city: i.data()["city"] as! String, descField: i.data()["reportDescription"] as! String, reportType: i.data()["reportType"] as! String, userID: i.data()["uid"] as! String, time: i.data()["time"] as! String, img: nil, pending: i.data()["pending"] as? Bool, inProgress: i.data()["inProgress"] as? Bool, completed: i.data()["completed"] as? Bool)
+                        
+                        self.reportList.append(tmpReport)
+                    }
+                    completion(self.reportList)
+                }
+        }
     }
     
     func cancelReport()
