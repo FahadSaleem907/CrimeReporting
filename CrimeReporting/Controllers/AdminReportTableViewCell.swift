@@ -11,14 +11,14 @@ class AdminReportTableViewCell: UITableViewCell
     // MARK: - Functions
     
     @IBOutlet weak var reportID: UILabel!
-    @IBOutlet weak var reportDetails: UIButton!
+    //@IBOutlet weak var reportDetails: UIButton!
     
     
     override func awakeFromNib()
     {
         super.awakeFromNib()
         // Initialization code
-        reportDetails.isHidden = true
+        //reportDetails.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool)

@@ -92,13 +92,13 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
     {
         let cell = reportList.cellForRow(at: indexPath) as! AdminReportTableViewCell
         
-        cell.reportDetails.isHidden = false
+        //cell.reportDetails.isHidden = false
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath)
     {
         let cell = reportList.cellForRow(at: indexPath) as! AdminReportTableViewCell
         
-        cell.reportDetails.isHidden = true
+        //cell.reportDetails.isHidden = true
     }
 }

@@ -16,6 +16,7 @@ class UserReportListController: UIViewController
         }
     }
     var filterCount = 0
+    var reportsList = [Report?]()
     
     
     // MARK: - Outlets
@@ -106,10 +107,30 @@ class UserReportListController: UIViewController
         }
     }
     
+    func getData(completion:@escaping([Report?])->Void)
+    {
+        reportServices.viewUserReports
+            {
+                (report) in
+                
+                self.delegate.currentUser!.reports.removeAll()
+                //self.reportsList.removeAll()
+                self.reportsList = report
+                
+                self.delegate.currentUser?.reports = self.reportsList
+                completion(self.delegate.currentUser!.reports)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool)
     {
-        userReports = delegate.currentUser!.reports
+        getData { (report) in
+            self.userReports.removeAll()
+            self.userReports = report
+        }
+        //userReports = delegate.currentUser!.reports
     }
+    
     
     override func viewDidLoad()
     {
@@ -120,7 +141,7 @@ class UserReportListController: UIViewController
         
         checkReport()
         
-        userReports = delegate.currentUser!.reports
+        //userReports = delegate.currentUser!.reports
     }
 
 }

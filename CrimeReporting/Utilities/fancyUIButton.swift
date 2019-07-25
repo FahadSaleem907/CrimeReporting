@@ -1,11 +1,3 @@
-//
-//  fancyUIButton.swift
-//  CrimeReporting
-//
-//  Created by FahadSaleem on 16/07/2019.
-//  Copyright © 2019 FahadSaleem. All rights reserved.
-//
-
 import Foundation
 import UIKit
 

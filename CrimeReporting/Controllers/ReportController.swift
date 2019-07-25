@@ -6,7 +6,7 @@ import MaterialComponents.MaterialTextFields
 class ReportController: UIViewController {
 
     //Marks : Variables
-    
+    //var reportsList = [Report?]()
     
     //Marks : Constants
     let reportTypes = ["Kidnapping","Homicide","Mugging","Assault And Batter","Sexual Assault","Hit and Run", "Breaking and Entering", "Destruction of Public Property","Embezzlement", "Forgery"]
@@ -28,8 +28,6 @@ class ReportController: UIViewController {
     @IBOutlet weak var reportDesc: MDCIntrinsicHeightTextView!
     
     //Marks : Actions
-
-    //Marks : Functions
     
     @IBAction func createReport(_ sender: UIButton)
     {
@@ -51,7 +49,7 @@ class ReportController: UIViewController {
         }
         else
         {
-            let tmpReport = Report(city: "\(city.text!)", descField: "\(reportDesc.text!)", reportType: "\(reportType.text!)", userID: (delegate.currentUser?.uid!)!, time: "\(time.text!)", img: nil, pending: true, inProgress: false, completed: false)
+            let tmpReport = Report(reportID: "id", city: "\(city.text!)", descField: "\(reportDesc.text!)", reportType: "\(reportType.text!)", userID: (delegate.currentUser?.uid!)!, time: "\(time.text!)", img: nil, pending: true, inProgress: false, completed: false)
         
             reportServices.createReport(reports: tmpReport)
             {
@@ -77,6 +75,8 @@ class ReportController: UIViewController {
             }
         }
     }
+    
+    //Marks : Functions
     
     override func  touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
@@ -278,7 +278,9 @@ extension ReportController
     func statusAlert(title:String, msg:String, controller:UIViewController)
     {
         let alertValidation = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        let buttonOK = UIAlertAction(title: "Okay", style: .default, handler: {_ in self.navigationController?.popViewController(animated: true) })
+        let buttonOK = UIAlertAction(title: "Okay", style: .default, handler: {_ in
+            //self.getData()
+            self.navigationController?.popViewController(animated: true) })
         alertValidation.addAction(buttonOK)
         present(alertValidation, animated: true, completion: nil)
     }
