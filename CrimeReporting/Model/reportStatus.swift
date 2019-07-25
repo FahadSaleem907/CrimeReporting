@@ -11,7 +11,6 @@ import Foundation
 
 struct reportStatus
 {
-    
     var reportID        : String
     var status          : String
     var uid             : String

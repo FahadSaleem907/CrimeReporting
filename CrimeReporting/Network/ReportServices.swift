@@ -129,6 +129,41 @@ public class reportFunctions
                 }
         }
     }
+
+//    func adminGetUserData(completion:@escaping(User?)->Void)
+//    {
+//        let userRef = self.db.collection("Users")
+//        
+//        userRef.getDocuments
+//            {
+//                (snapshot, error) in
+//            
+//                if error != nil
+//                {
+//                    print(error!.localizedDescription)
+//                }
+//                else
+//                {
+//                    for i in snapshot!.documents
+//                    {
+//                        adminViewReports(completion:
+//                            {
+//                                (report) in
+//                                
+//                                for j in report
+//                                {
+//                                    while i.data()["uid"] as! String == j?.uid
+//                                    {
+//                                        return
+//                                    }
+//                                }
+//                        })
+//                    }
+//                }
+//        }
+//    }
+    
+    
     
     func cancelReport()
     {
