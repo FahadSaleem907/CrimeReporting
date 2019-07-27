@@ -166,7 +166,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XVv-z6-oiS"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Dashboard" id="FDL-tx-zRW"/>
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="dashboard" id="FDL-tx-zRW"/>
                     <connections>
                         <outlet property="reportNumbers" destination="r54-Aj-Jq9" id="RhG-U8-nMW"/>
                     </connections>
@@ -384,7 +384,7 @@ Would You Like To File A New Report ?</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="t6U-Pc-y7P"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="f6x-RC-ZG5"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="f6x-RC-ZG5"/>
                     <connections>
                         <outlet property="emailLbl" destination="KKC-9o-5DN" id="nh9-cQ-Uti"/>
                         <outlet property="lastReportLbl" destination="8Mf-iF-14v" id="syB-Pe-M9p"/>
@@ -415,7 +415,7 @@ Would You Like To File A New Report ?</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="70T-YD-EMP">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="70T-YD-EMP">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -423,7 +423,7 @@ Would You Like To File A New Report ?</string>
                                         <rect key="frame" x="0.0" y="28" width="414" height="213"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S8g-6w-ZAq" id="vkZ-eb-26R">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="212.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="213"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Nbq-OE-3Ib">
@@ -591,30 +591,38 @@ Would You Like To File A New Report ?</string>
                                             <rect key="frame" x="0.0" y="0.0" width="410" height="297"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hXa-CO-vF0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="410" height="297"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZk-Ai-gxx">
                                                     <rect key="frame" x="0.0" y="40" width="410" height="35"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWO-XH-nAf">
                                                     <rect key="frame" x="0.0" y="87.5" width="410" height="24"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
+                                            <constraint firstItem="hXa-CO-vF0" firstAttribute="width" secondItem="lIa-4w-ZWK" secondAttribute="width" id="AZL-Ub-P8o"/>
                                             <constraint firstItem="fWO-XH-nAf" firstAttribute="centerX" secondItem="lIa-4w-ZWK" secondAttribute="centerX" id="Anh-MQ-DyQ"/>
                                             <constraint firstItem="fWO-XH-nAf" firstAttribute="top" secondItem="MZk-Ai-gxx" secondAttribute="bottom" constant="12.5" id="F1I-4L-vaa"/>
+                                            <constraint firstItem="hXa-CO-vF0" firstAttribute="centerY" secondItem="lIa-4w-ZWK" secondAttribute="centerY" id="MOF-Mm-Agt"/>
+                                            <constraint firstItem="hXa-CO-vF0" firstAttribute="centerX" secondItem="lIa-4w-ZWK" secondAttribute="centerX" id="QnF-gP-0Vl"/>
+                                            <constraint firstItem="hXa-CO-vF0" firstAttribute="height" secondItem="lIa-4w-ZWK" secondAttribute="height" id="ZWY-x1-sMA"/>
                                             <constraint firstItem="MZk-Ai-gxx" firstAttribute="top" secondItem="lIa-4w-ZWK" secondAttribute="top" constant="40" id="apz-My-Ecm"/>
                                             <constraint firstItem="MZk-Ai-gxx" firstAttribute="centerX" secondItem="lIa-4w-ZWK" secondAttribute="centerX" id="ekD-Jd-hHP"/>
                                             <constraint firstItem="MZk-Ai-gxx" firstAttribute="width" secondItem="lIa-4w-ZWK" secondAttribute="width" id="icJ-Pv-D9d"/>
                                             <constraint firstItem="fWO-XH-nAf" firstAttribute="width" secondItem="lIa-4w-ZWK" secondAttribute="width" id="yBt-hm-B71"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="backgroundImg" destination="hXa-CO-vF0" id="1Qo-jA-EbA"/>
                                             <outlet property="reportCount" destination="MZk-Ai-gxx" id="MaR-Rc-7eq"/>
                                             <outlet property="reportText" destination="fWO-XH-nAf" id="A0w-1U-mB9"/>
                                         </connections>
@@ -635,7 +643,7 @@ Would You Like To File A New Report ?</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bf2-mm-OOM"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Dashboard" id="gDV-H3-ThE"/>
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="dashboard" id="gDV-H3-ThE"/>
                     <connections>
                         <outlet property="reportNumbers" destination="SAw-Tq-Xqb" id="j5e-V8-wU1"/>
                     </connections>
@@ -648,10 +656,11 @@ Would You Like To File A New Report ?</string>
         <scene sceneID="sNo-hl-KHa">
             <objects>
                 <tabBarController id="FKY-RA-DsO" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ico-6W-6VW">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="Ico-6W-6VW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="wgU-wz-N7W" kind="relationship" relationship="viewControllers" id="ior-VY-2sB"/>
@@ -666,10 +675,11 @@ Would You Like To File A New Report ?</string>
         <scene sceneID="a8f-ER-Lsy">
             <objects>
                 <tabBarController id="7YN-aa-l1h" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MbT-jC-Xmr">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="MbT-jC-Xmr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="buH-Aa-7Be" kind="relationship" relationship="viewControllers" id="5xd-Nd-fma"/>
@@ -784,7 +794,7 @@ Would You Like To File A New Report ?</string>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Pmq-4F-MGN">
                                         <rect key="frame" x="0.0" y="0.0" width="269" height="130"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4OP-cU-dzq" customClass="fancyTextField" customModule="CrimeReporting" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4OP-cU-dzq" customClass="MDCTextField">
                                                 <rect key="frame" x="0.0" y="0.0" width="269" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="r6F-Os-MHJ"/>
@@ -793,7 +803,7 @@ Would You Like To File A New Report ?</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uM9-0k-wrX" customClass="fancyTextField" customModule="CrimeReporting" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uM9-0k-wrX" customClass="MDCTextField">
                                                 <rect key="frame" x="0.0" y="50" width="269" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="BUY-4F-lnt"/>
@@ -802,7 +812,7 @@ Would You Like To File A New Report ?</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F2t-wc-9f5" customClass="fancyTextField" customModule="CrimeReporting" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F2t-wc-9f5" customClass="MDCTextField">
                                                 <rect key="frame" x="0.0" y="100" width="269" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="X0w-0t-xRO"/>
@@ -903,7 +913,7 @@ Would You Like To File A New Report ?</string>
         <scene sceneID="aTS-a9-PeG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7LI-uA-eVt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Reports" id="Wre-Cs-rbG"/>
+                    <tabBarItem key="tabBarItem" title="Reports" image="list" id="Wre-Cs-rbG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="B62-BB-F0G">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -922,7 +932,7 @@ Would You Like To File A New Report ?</string>
         <scene sceneID="4Lc-39-mq3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ct3-OR-acX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Reports" id="xRB-YF-FVc"/>
+                    <tabBarItem key="tabBarItem" title="Reports" image="list" id="xRB-YF-FVc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="4nX-y7-sbG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -940,7 +950,10 @@ Would You Like To File A New Report ?</string>
     </scenes>
     <resources>
         <image name="background1" width="590" height="332"/>
+        <image name="dashboard" width="30" height="30"/>
         <image name="expand" width="40" height="40"/>
         <image name="filter" width="25" height="25"/>
+        <image name="list" width="30" height="30"/>
+        <image name="profile" width="30" height="30"/>
     </resources>
 </document>

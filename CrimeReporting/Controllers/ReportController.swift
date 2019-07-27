@@ -98,6 +98,10 @@ class ReportController: UIViewController {
         reportDesc.backgroundColor = .clear
         reportType.inputView = reportTypePickerView
         
+        city.keyboardAppearance         = .dark
+        reportType.keyboardAppearance   = .dark
+        time.keyboardAppearance         = .dark
+        
         city.delegate                   = self
         cityPickerView.delegate         = self
         
@@ -158,7 +162,9 @@ extension ReportController: UIPickerViewDelegate, UIPickerViewDataSource, UIText
             print("zzzzz\(acc)zzzz")
         }
     }
-    //
+    
+    
+    
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView
     {
         var label:UILabel
@@ -184,6 +190,7 @@ extension ReportController: UIPickerViewDelegate, UIPickerViewDataSource, UIText
         {
             label.text = reportTypes[row]
         }
+        
         
         return label
     }
@@ -221,6 +228,7 @@ extension ReportController: UIPickerViewDelegate, UIPickerViewDataSource, UIText
         city.inputAccessoryView         = toolBar
         reportType.inputAccessoryView   = toolBar
     }
+    
     
 }
 

@@ -69,7 +69,7 @@ extension AdminDashboardController: UICollectionViewDelegate, UICollectionViewDa
             {
                 cell.reportCount.text = String(delegate.currentUser!.reports.count)
                 cell.reportText.text  = "Total Reports"
-                cell.backgroundColor = .blue
+                cell.backgroundImg.image = UIImage.init(named: "red")
             }
             if indexPath.item == 1
             {
@@ -85,7 +85,7 @@ extension AdminDashboardController: UICollectionViewDelegate, UICollectionViewDa
                 
                 cell.reportCount.text = String(tmpArray.count)
                 cell.reportText.text  = "Pending Reports"
-                cell.backgroundColor = .yellow
+                cell.backgroundImg.image = UIImage.init(named: "yellow")
             }
             if indexPath.item == 2
             {
@@ -100,7 +100,8 @@ extension AdminDashboardController: UICollectionViewDelegate, UICollectionViewDa
                 
                 cell.reportCount.text = String(tmpArray.count)
                 cell.reportText.text = "Reports In Progress"
-                cell.backgroundColor = .orange
+                cell.backgroundImg.image = UIImage.init(named: "orange")
+                
             }
             if indexPath.item == 3
             {
@@ -114,7 +115,7 @@ extension AdminDashboardController: UICollectionViewDelegate, UICollectionViewDa
                 }
                 cell.reportCount.text = String(tmpArray.count)
                 cell.reportText.text = "Completed Reports"
-                cell.backgroundColor = .green
+                cell.backgroundImg.image = UIImage.init(named: "green")
             }
         }
         

@@ -129,9 +129,7 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
             cell.descriptionLbl.isHidden    = false
         }
         
-        print(userReports[indexPath.row])
-        
-        
+        cell.layer.cornerRadius = 10
         return cell
     }
     
@@ -182,18 +180,26 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
             else
             {
                 isCellTapped = false
-                
+
+//                if isCellTapped == false
+//                {
+//                    cell.staticDetailsLbl.isHidden = true
+//                    cell.staticNameLbl.isHidden = true
+//                    cell.detailTextLabel?.isHidden = true
+//                    cell.nameLbl.isHidden = true
+//                }
+//                print("For Animate = \(isCellTapped)")
                 tableView.reloadRows(at: [indexPath], with: .automatic)
             }
         }
         
         animate()
+        
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath)
     {
         let cell = reportList.cellForRow(at: indexPath) as! AdminReportTableViewCell
-        
         isCellTapped = false
     }
 }

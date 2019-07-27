@@ -18,5 +18,6 @@ class AdminDashboardCollectionViewCell: UICollectionViewCell
     // MARK: - Outlets
     @IBOutlet weak var reportCount: UILabel!
     @IBOutlet weak var reportText: UILabel!
+    @IBOutlet weak var backgroundImg: UIImageView!
     
 }
