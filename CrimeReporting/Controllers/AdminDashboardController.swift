@@ -23,6 +23,11 @@ class AdminDashboardController: UIViewController
         layoutSize = reportNumbers.frame.size
     }
     
+    override func viewWillAppear(_ animated: Bool)
+    {
+        reportNumbers.reloadData()
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -62,8 +67,8 @@ extension AdminDashboardController: UICollectionViewDelegate, UICollectionViewDa
         {
             if indexPath.item == 0
             {
-                //cell.reportCount.text = String(delegate.currentUser!.reports.count)
-                //cell.reportText.text  = "Total Reports"
+                cell.reportCount.text = String(delegate.currentUser!.reports.count)
+                cell.reportText.text  = "Total Reports"
                 cell.backgroundColor = .blue
             }
             if indexPath.item == 1
@@ -78,8 +83,8 @@ extension AdminDashboardController: UICollectionViewDelegate, UICollectionViewDa
                     }
                 }
                 
-                //cell.reportCount.text = String(tmpArray.count)
-                //cell.reportText.text  = "Pending Reports"
+                cell.reportCount.text = String(tmpArray.count)
+                cell.reportText.text  = "Pending Reports"
                 cell.backgroundColor = .yellow
             }
             if indexPath.item == 2
@@ -93,8 +98,8 @@ extension AdminDashboardController: UICollectionViewDelegate, UICollectionViewDa
                     }
                 }
                 
-                //cell.reportCount.text = String(tmpArray.count)
-                //cell.reportText.text = "Reports In Progress"
+                cell.reportCount.text = String(tmpArray.count)
+                cell.reportText.text = "Reports In Progress"
                 cell.backgroundColor = .orange
             }
             if indexPath.item == 3
@@ -107,8 +112,8 @@ extension AdminDashboardController: UICollectionViewDelegate, UICollectionViewDa
                         tmpArray.append(i)
                     }
                 }
-                //cell.reportCount.text = String(tmpArray.count)
-                //cell.reportText.text = "Completed Reports"
+                cell.reportCount.text = String(tmpArray.count)
+                cell.reportText.text = "Completed Reports"
                 cell.backgroundColor = .green
             }
         }

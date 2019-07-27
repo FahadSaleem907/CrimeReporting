@@ -72,6 +72,8 @@ class MainViewController: UIViewController {
     {
         super.viewDidLoad()
         
+        emaill.textColor = .init(red: 192, green: 192, blue: 192, alpha: 1)
+        pw.textColor = .init(red: 192, green: 192, blue: 192, alpha: 1)
         emaill.text = "fahad@fahad.com"
         pw.text = "123123"
     }

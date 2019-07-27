@@ -25,14 +25,23 @@ class ProfileController: UIViewController {
         }
     }
     
+    func getData()
+    {
+        nameLbl.text    =   delegate.currentUser?.name
+        emailLbl.text   =   delegate.currentUser?.email
+        reportCountLbl.text = String(delegate.currentUser!.reports.count)
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        getData()
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
-        nameLbl.text    =   delegate.currentUser?.name
-        emailLbl.text   =   delegate.currentUser?.email
-        reportCountLbl.text = String(delegate.currentUser!.reports.count)
-        
+        getData()
         checkReports()
     }
     

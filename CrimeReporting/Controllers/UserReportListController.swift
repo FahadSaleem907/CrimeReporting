@@ -23,7 +23,6 @@ class UserReportListController: UIViewController
     
     @IBOutlet weak var reportList: UITableView!
     @IBOutlet weak var msgLbl: UILabel!
-    @IBOutlet weak var firstReportBtn: UIButton!
     
     
     // MARK: - Actions
@@ -97,13 +96,11 @@ class UserReportListController: UIViewController
         {
             reportList.isHidden = true
             msgLbl.isHidden = false
-            firstReportBtn.isHidden = false
         }
         else
         {
             reportList.isHidden = false
             msgLbl.isHidden = true
-            firstReportBtn.isHidden = true
         }
     }
     
@@ -114,9 +111,7 @@ class UserReportListController: UIViewController
                 (report) in
                 
                 self.delegate.currentUser!.reports.removeAll()
-                //self.reportsList.removeAll()
                 self.reportsList = report
-                
                 self.delegate.currentUser?.reports = self.reportsList
                 completion(self.delegate.currentUser!.reports)
         }
@@ -171,6 +166,7 @@ extension UserReportListController: UITableViewDelegate,UITableViewDataSource
         {
             cell.backgroundColor = .green
         }
+        cell.layer.cornerRadius = 10
         cell.reportID.text = userReports[indexPath.row]?.reportType
         
         return cell

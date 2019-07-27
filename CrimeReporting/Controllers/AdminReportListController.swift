@@ -107,8 +107,30 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
             cell.backgroundColor = .green
         }
 
+        cell.nameLbl.text = userReports[indexPath.row]?.userName
         cell.cityLbl.text = userReports[indexPath.row]?.city
         cell.typeLbl.text = userReports[indexPath.row]?.reportType
+        cell.descriptionLbl.text = userReports[indexPath.row]?.descriptionField
+        
+        if isCellTapped == false
+        {
+            cell.animateImg.image = UIImage.init(named: "expand")
+            cell.staticNameLbl.isHidden     = true
+            cell.nameLbl.isHidden           = true
+            cell.staticDetailsLbl.isHidden  = true
+            cell.descriptionLbl.isHidden    = true
+        }
+        else
+        {
+            cell.animateImg.image = UIImage.init(named: "collapse")
+            cell.staticNameLbl.isHidden     = false
+            cell.nameLbl.isHidden           = false
+            cell.staticDetailsLbl.isHidden  = false
+            cell.descriptionLbl.isHidden    = false
+        }
+        
+        print(userReports[indexPath.row])
+        
         
         return cell
     }
@@ -154,20 +176,18 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
             {
                 selectedIndex = indexPath.row
                 isCellTapped = true
-            
+    
                 tableView.reloadRows(at: [indexPath], with: .automatic)
             }
             else
             {
                 isCellTapped = false
+                
                 tableView.reloadRows(at: [indexPath], with: .automatic)
             }
         }
         
         animate()
-        
-        //tableView.reloadRows(at: [indexPath], with: .automatic)
-        //isCellTapped = !isCellTapped
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath)

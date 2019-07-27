@@ -5,10 +5,12 @@ class UserDashboardController: UIViewController
 {
     // MARK: - Constants
     let delegate = UIApplication.shared.delegate as! AppDelegate
+    let reportServices = reportFunctions()
     
     // MARK: - Variables
     var layoutSize:CGSize?
-    
+    var reportsList = [Report?]()
+    var userReports = [Report?]()
     
     // MARK: - Actions
     
@@ -21,6 +23,30 @@ class UserDashboardController: UIViewController
     func getSize()
     {
         layoutSize = reportNumbers.frame.size
+    }
+    
+//    func getData(completion:@escaping([Report?])->Void)
+//    {
+//        reportServices.viewUserReports
+//            {
+//                (report) in
+//
+//                self.delegate.currentUser!.reports.removeAll()
+//                self.reportsList = report
+//                self.delegate.currentUser?.reports = self.reportsList
+//                completion(self.delegate.currentUser!.reports)
+//        }
+//    }
+    
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+//        getData { (report) in
+//            self.userReports.removeAll()
+//            self.userReports = report
+//        }
+        reportNumbers.reloadData()
+        
     }
     
     override func viewDidLoad()
@@ -65,6 +91,7 @@ extension UserDashboardController: UICollectionViewDelegate, UICollectionViewDat
                 cell.reportCount.text = String(delegate.currentUser!.reports.count)
                 cell.reportText.text  = "Total Reports"
                 cell.backgroundColor = .blue
+                cell.layer.cornerRadius = 15
             }
             if indexPath.item == 1
             {
@@ -81,6 +108,7 @@ extension UserDashboardController: UICollectionViewDelegate, UICollectionViewDat
                 cell.reportCount.text = String(tmpArray.count)
                 cell.reportText.text  = "Pending Reports"
                 cell.backgroundColor = .yellow
+                cell.layer.cornerRadius = 15
             }
             if indexPath.item == 2
             {
@@ -96,6 +124,7 @@ extension UserDashboardController: UICollectionViewDelegate, UICollectionViewDat
                 cell.reportCount.text = String(tmpArray.count)
                 cell.reportText.text = "Reports In Progress"
                 cell.backgroundColor = .orange
+                cell.layer.cornerRadius = 15
             }
             if indexPath.item == 3
             {
@@ -110,6 +139,7 @@ extension UserDashboardController: UICollectionViewDelegate, UICollectionViewDat
                 cell.reportCount.text = String(tmpArray.count)
                 cell.reportText.text = "Completed Reports"
                 cell.backgroundColor = .green
+                cell.layer.cornerRadius = 15
             }
         }
         

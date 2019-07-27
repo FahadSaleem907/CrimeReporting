@@ -21,9 +21,9 @@ class ReportController: UIViewController {
     let delegate = UIApplication.shared.delegate as! AppDelegate
     
     //Marks : Outlets
-    @IBOutlet weak var city: MDCTextField!
-    @IBOutlet weak var reportType: MDCTextField!
-    @IBOutlet weak var time: MDCTextField!
+    @IBOutlet weak var city: UITextField!
+    @IBOutlet weak var reportType: UITextField!
+    @IBOutlet weak var time: UITextField!
     
     @IBOutlet weak var reportDesc: MDCIntrinsicHeightTextView!
     
@@ -88,6 +88,14 @@ class ReportController: UIViewController {
         super.viewDidLoad()
 
         city.inputView = cityPickerView
+        city.textColor = .init(red: 192, green: 192, blue: 192, alpha: 1)
+        city.backgroundColor = .clear
+        reportType.textColor = .init(red: 192, green: 192, blue: 192, alpha: 1)
+        reportType.backgroundColor = .clear
+        time.textColor = .init(red: 192, green: 192, blue: 192, alpha: 1)
+        time.backgroundColor = .clear
+        reportDesc.textColor = .init(red: 192, green: 192, blue: 192, alpha: 1)
+        reportDesc.backgroundColor = .clear
         reportType.inputView = reportTypePickerView
         
         city.delegate                   = self
