@@ -49,7 +49,7 @@ class ReportController: UIViewController {
         }
         else
         {
-            let tmpReport = Report(reportID: "id", city: "\(city.text!)", descField: "\(reportDesc.text!)", reportType: "\(reportType.text!)", userID: (delegate.currentUser?.uid!)!, time: "\(time.text!)", img: nil, pending: true, inProgress: false, completed: false)
+            let tmpReport = Report(reportID: "id", city: "\(city.text!)", descField: "\(reportDesc.text!)", reportType: "\(reportType.text!)", userID: (delegate.currentUser?.uid!)!, time: "\(time.text!)", img: nil, pending: true, inProgress: false, completed: false, userName: delegate.currentUser!.name)
         
             reportServices.createReport(reports: tmpReport)
             {

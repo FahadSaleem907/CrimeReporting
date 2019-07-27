@@ -13,8 +13,9 @@ struct Report
     var isPending           : Bool?
     var isInProgress        : Bool?
     var isCompleted         : Bool?
+    var userName            : String
     
-    init(reportID : String , city : String , descField : String , reportType : String , userID : String , time : String , img : UIImage? , pending : Bool? , inProgress : Bool? , completed : Bool? )
+    init(reportID : String , city : String , descField : String , reportType : String , userID : String , time : String , img : UIImage? , pending : Bool? , inProgress : Bool? , completed : Bool? , userName : String)
     {
         self.reportID           =   reportID
         self.city               =   city
@@ -26,5 +27,6 @@ struct Report
         self.isPending          =   pending
         self.isInProgress       =   inProgress
         self.isCompleted        =   completed
+        self.userName           =   userName
     }
 }

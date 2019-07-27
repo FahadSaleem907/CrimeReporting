@@ -16,7 +16,7 @@ public class reportFunctions
     {
         var ref:DocumentReference? = nil
         
-        let report1 = Report(reportID: reports!.reportID, city: reports!.city, descField: reports!.descriptionField, reportType: reports!.reportType, userID: delegate.currentUser!.uid!, time: reports!.time, img: reports?.image, pending: true, inProgress: false, completed: false)
+        let report1 = Report(reportID: reports!.reportID, city: reports!.city, descField: reports!.descriptionField, reportType: reports!.reportType, userID: delegate.currentUser!.uid!, time: reports!.time, img: reports?.image, pending: true, inProgress: false, completed: false, userName: delegate.currentUser!.name)
         
 
         ref = self.db.collection("Reports").document()
@@ -30,7 +30,8 @@ public class reportFunctions
                         "reportDescription" :"\(report1.descriptionField)",
                         "pending"           : report1.isPending!,
                         "inProgress"        : report1.isInProgress!,
-                        "completed"         : report1.isCompleted!
+                        "completed"         : report1.isCompleted!,
+                        "userName"          :"\(delegate.currentUser!.name)"
                        ] as [String : Any]
         
         ref?.setData(dataDic, completion:
@@ -47,26 +48,6 @@ public class reportFunctions
                     completion(reports,true,nil)
                 }
             })
-        
-
-//        ref = self.db.collection("Reports").addDocument(data: dataDic)
-//        {
-//            err in
-//            if let err = err
-//            {
-//                print("Error : \(err.localizedDescription)")
-//                completion(nil,false,err.localizedDescription)
-//            }
-//            else
-//            {
-//                dataDic["reportID"] = ref!.documentID
-//                print(ref?.documentID)
-//                print("Created")
-//                completion(reports,true,nil)
-//            }
-//        }
-        
-        
     }
 
     func viewUserReports(completion:@escaping([Report?])->Void)
@@ -89,7 +70,7 @@ public class reportFunctions
                     self.reportList = []
                     for i in snapshot!.documents
                     {
-                        let tmpReport = Report(reportID: "asd", city: i.data()["city"] as! String, descField: i.data()["reportDescription"] as! String, reportType: i.data()["reportType"] as! String, userID: i.data()["uid"] as! String, time: i.data()["time"] as! String, img: nil, pending: i.data()["pending"] as? Bool, inProgress: i.data()["inProgress"] as? Bool, completed: i.data()["completed"] as? Bool)
+                        let tmpReport = Report(reportID: "asd", city: i.data()["city"] as! String, descField: i.data()["reportDescription"] as! String, reportType: i.data()["reportType"] as! String, userID: i.data()["uid"] as! String, time: i.data()["time"] as! String, img: nil, pending: i.data()["pending"] as? Bool, inProgress: i.data()["inProgress"] as? Bool, completed: i.data()["completed"] as? Bool, userName: i.data()["userName"] as! String)
                         
                         
                         self.reportList.append(tmpReport)
@@ -121,7 +102,7 @@ public class reportFunctions
                     self.reportList = []
                     for i in snapshot!.documents
                     {
-                        let tmpReport = Report(reportID: "asd", city: i.data()["city"] as! String, descField: i.data()["reportDescription"] as! String, reportType: i.data()["reportType"] as! String, userID: i.data()["uid"] as! String, time: i.data()["time"] as! String, img: nil, pending: i.data()["pending"] as? Bool, inProgress: i.data()["inProgress"] as? Bool, completed: i.data()["completed"] as? Bool)
+                        let tmpReport = Report(reportID: "asd", city: i.data()["city"] as! String, descField: i.data()["reportDescription"] as! String, reportType: i.data()["reportType"] as! String, userID: i.data()["uid"] as! String, time: i.data()["time"] as! String, img: nil, pending: i.data()["pending"] as? Bool, inProgress: i.data()["inProgress"] as? Bool, completed: i.data()["completed"] as? Bool, userName: i.data()["userName"] as! String)
                         
                         self.reportList.append(tmpReport)
                     }
@@ -130,40 +111,6 @@ public class reportFunctions
         }
     }
 
-//    func adminGetUserData(completion:@escaping(User?)->Void)
-//    {
-//        let userRef = self.db.collection("Users")
-//        
-//        userRef.getDocuments
-//            {
-//                (snapshot, error) in
-//            
-//                if error != nil
-//                {
-//                    print(error!.localizedDescription)
-//                }
-//                else
-//                {
-//                    for i in snapshot!.documents
-//                    {
-//                        adminViewReports(completion:
-//                            {
-//                                (report) in
-//                                
-//                                for j in report
-//                                {
-//                                    while i.data()["uid"] as! String == j?.uid
-//                                    {
-//                                        return
-//                                    }
-//                                }
-//                        })
-//                    }
-//                }
-//        }
-//    }
-    
-    
     
     func cancelReport()
     {

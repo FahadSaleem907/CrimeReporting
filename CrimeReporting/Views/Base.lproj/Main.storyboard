@@ -170,7 +170,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="ic5-ad-ER5">
-                                <rect key="frame" x="41.5" y="401" width="331" height="99"/>
+                                <rect key="frame" x="41.5" y="430" width="331" height="41"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6x-9Z-9HB">
                                         <rect key="frame" x="0.0" y="0.0" width="331" height="41"/>
@@ -180,10 +180,6 @@ Would You Like To File A New Report ?</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KaT-fI-7D9">
-                                        <rect key="frame" x="103.5" y="69" width="124" height="30"/>
-                                        <state key="normal" title="Submit Report"/>
-                                    </button>
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i04-LG-Vse">
@@ -229,7 +225,6 @@ Would You Like To File A New Report ?</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="KaT-fI-7D9" firstAttribute="width" secondItem="Uo3-dK-sAv" secondAttribute="width" multiplier="0.3" id="DYW-jF-NN3"/>
                             <constraint firstItem="ic5-ad-ER5" firstAttribute="centerX" secondItem="F9J-Zd-x4Y" secondAttribute="centerX" id="JuD-qX-2Id"/>
                             <constraint firstItem="ic5-ad-ER5" firstAttribute="centerY" secondItem="F9J-Zd-x4Y" secondAttribute="centerY" id="QR5-UL-e9z"/>
                             <constraint firstItem="F9J-Zd-x4Y" firstAttribute="trailing" secondItem="i04-LG-Vse" secondAttribute="trailing" id="dtT-7H-0iM"/>
@@ -257,7 +252,6 @@ Would You Like To File A New Report ?</string>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="firstReportBtn" destination="KaT-fI-7D9" id="byU-6B-Oe7"/>
                         <outlet property="msgLbl" destination="i6x-9Z-9HB" id="AhW-GV-qts"/>
                         <outlet property="reportList" destination="i04-LG-Vse" id="fcA-mG-PUK"/>
                     </connections>
