@@ -87,40 +87,40 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        let numberOfRows = (userReports.count*2)
-        return numberOfRows
+        return userReports.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = reportList.dequeueReusableCell(withIdentifier: "cell") as! AdminReportTableViewCell
 
-        print(indexPath.row)
-        let newIndexPath = indexPath.row/2
         
-        if indexPath.row % 2 == 0
-        {
-            if userReports[newIndexPath]?.isPending == true
+        
+            if userReports[indexPath.row]?.isPending == true
             {
-                cell.backgroundColor = .yellow
+                cell.cellBackgroundView.backgroundColor = .yellow
             }
-            else if userReports[newIndexPath]?.isInProgress == true
+            else if userReports[indexPath.row]?.isInProgress == true
             {
-                cell.backgroundColor = .orange
+                cell.cellBackgroundView.backgroundColor = .orange
             }
-            else if userReports[newIndexPath]?.isCompleted == true
+            else if userReports[indexPath.row]?.isCompleted == true
             {
-                cell.backgroundColor = .green
+                cell.cellBackgroundView.backgroundColor = .green
             }
-            
-            cell.nameLbl.text = userReports[newIndexPath]?.userName
-            cell.cityLbl.text = userReports[newIndexPath]?.city
-            cell.typeLbl.text = userReports[newIndexPath]?.reportType
-            cell.descriptionLbl.text = userReports[newIndexPath]?.descriptionField
+        
+            cell.nameLbl.text = userReports[indexPath.row]?.userName
+            cell.cityLbl.text = userReports[indexPath.row]?.city
+            cell.typeLbl.text = userReports[indexPath.row]?.reportType
+            cell.descriptionLbl.text = userReports[indexPath.row]?.descriptionField
             
             if isCellTapped == false
             {
-                cell.animateImg.image = UIImage.init(named: "expand")
+                cell.staticCityLbl.text         = "ReportID:"
+                cell.cityLbl.text               = userReports[indexPath.row]?.reportID
+                cell.staticTypeLbl.isHidden     = true
+                cell.typeLbl.isHidden           = true
+                cell.animateImg.image           = UIImage.init(named: "expand")
                 cell.staticNameLbl.isHidden     = true
                 cell.nameLbl.isHidden           = true
                 cell.staticDetailsLbl.isHidden  = true
@@ -128,64 +128,54 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
             }
             else
             {
-                cell.animateImg.image = UIImage.init(named: "collapse")
+                cell.cityLbl.text               = userReports[indexPath.row]?.city
+                cell.staticCityLbl.text         = "City"
+                cell.typeLbl.isHidden           = false
+                cell.staticTypeLbl.isHidden     = false
+                cell.animateImg.image           = UIImage.init(named: "collapse")
                 cell.staticNameLbl.isHidden     = false
                 cell.nameLbl.isHidden           = false
                 cell.staticDetailsLbl.isHidden  = false
                 cell.descriptionLbl.isHidden    = false
             }
-            
-            cell.layer.cornerRadius = 10
-            print(indexPath.row)
+        
+        cell.backgroundColor = .clear
+            cell.cellBackgroundView.layer.cornerRadius = 10
             cell.animateImg.isHidden = false
             return cell
-        }
-        else
-        {
-            cell.backgroundColor = .clear
-            cell.animateImg.isHidden = true
-            return cell
-        }
+        
 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        if indexPath.row % 2 == 0
+        if isCellTapped == true && selectedIndex == indexPath.row
         {
-            if isCellTapped == true && selectedIndex == indexPath.row
-            {
-                return 300
-            }
-            else
-            {
-                return 100
-            }
+            return 300
         }
         else
         {
-            return 5
+            return 100
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         let cell = reportList.cellForRow(at: indexPath) as! AdminReportTableViewCell
-        let newIndexPath = indexPath.row/2
         
-        if userReports[newIndexPath]?.isPending == true
+        if userReports[indexPath.row]?.isPending == true
         {
             let yellowBGColorView = UIView()
             yellowBGColorView.backgroundColor = .init(red: 0, green: 0, blue: 0, alpha: 0.2)
             cell.selectedBackgroundView = yellowBGColorView
         }
-        else if userReports[newIndexPath]?.isInProgress == true
+        else if userReports[indexPath.row]?.isInProgress == true
         {
             let orangeBGColorView = UIView()
             orangeBGColorView.backgroundColor = .init(red: 0, green: 0, blue: 0, alpha: 0.2)
             cell.selectedBackgroundView = orangeBGColorView
         }
-        else if userReports[newIndexPath]?.isCompleted == true
+        else if userReports[indexPath.row]?.isCompleted == true
         {
             let greenBGColorView = UIView()
             greenBGColorView.backgroundColor = .init(red: 0, green: 0, blue: 0, alpha: 0.2)

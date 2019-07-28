@@ -102,7 +102,7 @@ public class reportFunctions
                     self.reportList = []
                     for i in snapshot!.documents
                     {
-                        let tmpReport = Report(reportID: "asd", city: i.data()["city"] as! String, descField: i.data()["reportDescription"] as! String, reportType: i.data()["reportType"] as! String, userID: i.data()["uid"] as! String, time: i.data()["time"] as! String, img: nil, pending: i.data()["pending"] as? Bool, inProgress: i.data()["inProgress"] as? Bool, completed: i.data()["completed"] as? Bool, userName: i.data()["userName"] as! String)
+                        let tmpReport = Report(reportID: i.documentID, city: i.data()["city"] as! String, descField: i.data()["reportDescription"] as! String, reportType: i.data()["reportType"] as! String, userID: i.data()["uid"] as! String, time: i.data()["time"] as! String, img: nil, pending: i.data()["pending"] as? Bool, inProgress: i.data()["inProgress"] as? Bool, completed: i.data()["completed"] as? Bool, userName: i.data()["userName"] as! String)
                         
                         self.reportList.append(tmpReport)
                     }

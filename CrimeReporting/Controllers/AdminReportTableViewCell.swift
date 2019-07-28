@@ -11,6 +11,8 @@ class AdminReportTableViewCell: UITableViewCell
     
     // MARK: - Outlets
     
+    
+    @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var cityLbl: UILabel!
     @IBOutlet weak var typeLbl: UILabel!
