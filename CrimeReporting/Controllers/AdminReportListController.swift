@@ -28,6 +28,10 @@ class AdminReportListController: UIViewController
     @IBOutlet weak var msgLbl: UILabel!
     
     // MARK: - Actions
+    @IBAction func applyFilter(_ sender: UIBarButtonItem)
+    {
+        getFilterSheet(title: "Filter By", msg: "---------")
+    }
     
     
     // MARK: - Functions
@@ -58,6 +62,11 @@ class AdminReportListController: UIViewController
                 self.delegate.currentUser?.reports = self.reportsList
                 completion(self.delegate.currentUser!.reports)
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        self.view.endEditing(true)
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -93,56 +102,57 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = reportList.dequeueReusableCell(withIdentifier: "cell") as! AdminReportTableViewCell
-
         
         
-            if userReports[indexPath.row]?.isPending == true
-            {
-                cell.cellBackgroundView.backgroundColor = .yellow
-            }
-            else if userReports[indexPath.row]?.isInProgress == true
-            {
-                cell.cellBackgroundView.backgroundColor = .orange
-            }
-            else if userReports[indexPath.row]?.isCompleted == true
-            {
-                cell.cellBackgroundView.backgroundColor = .green
-            }
         
-            cell.nameLbl.text = userReports[indexPath.row]?.userName
-            cell.cityLbl.text = userReports[indexPath.row]?.city
-            cell.typeLbl.text = userReports[indexPath.row]?.reportType
-            cell.descriptionLbl.text = userReports[indexPath.row]?.descriptionField
-            
-            if isCellTapped == false
-            {
-                cell.staticCityLbl.text         = "ReportID:"
-                cell.cityLbl.text               = userReports[indexPath.row]?.reportID
-                cell.staticTypeLbl.isHidden     = true
-                cell.typeLbl.isHidden           = true
-                cell.animateImg.image           = UIImage.init(named: "expand")
-                cell.staticNameLbl.isHidden     = true
-                cell.nameLbl.isHidden           = true
-                cell.staticDetailsLbl.isHidden  = true
-                cell.descriptionLbl.isHidden    = true
-            }
-            else
-            {
-                cell.cityLbl.text               = userReports[indexPath.row]?.city
-                cell.staticCityLbl.text         = "City"
-                cell.typeLbl.isHidden           = false
-                cell.staticTypeLbl.isHidden     = false
-                cell.animateImg.image           = UIImage.init(named: "collapse")
-                cell.staticNameLbl.isHidden     = false
-                cell.nameLbl.isHidden           = false
-                cell.staticDetailsLbl.isHidden  = false
-                cell.descriptionLbl.isHidden    = false
-            }
+        if userReports[indexPath.row]?.isPending == true
+        {
+            cell.cellBackgroundView.backgroundColor = .yellow
+        }
+        else if userReports[indexPath.row]?.isInProgress == true
+        {
+            cell.cellBackgroundView.backgroundColor = .orange
+        }
+        else if userReports[indexPath.row]?.isCompleted == true
+        {
+            cell.cellBackgroundView.backgroundColor = .green
+        }
+        
+        cell.actBtn.layer.backgroundColor = #colorLiteral(red: 0.4980392157, green: 0, blue: 1, alpha: 1)
+        cell.nameLbl.text = userReports[indexPath.row]?.userName
+        cell.cityLbl.text = userReports[indexPath.row]?.city
+        cell.typeLbl.text = userReports[indexPath.row]?.reportType
+        cell.descriptionLbl.text = userReports[indexPath.row]?.descriptionField
+        
+        if isCellTapped == false
+        {
+            cell.staticCityLbl.text         = "ReportID:"
+            cell.cityLbl.text               = userReports[indexPath.row]?.reportID
+            cell.staticTypeLbl.isHidden     = true
+            cell.typeLbl.isHidden           = true
+            cell.animateImg.image           = UIImage.init(named: "expand")
+            cell.staticNameLbl.isHidden     = true
+            cell.nameLbl.isHidden           = true
+            cell.staticDetailsLbl.isHidden  = true
+            cell.descriptionLbl.isHidden    = true
+        }
+        else
+        {
+            cell.cityLbl.text               = userReports[indexPath.row]?.city
+            cell.staticCityLbl.text         = "City"
+            cell.typeLbl.isHidden           = false
+            cell.staticTypeLbl.isHidden     = false
+            cell.animateImg.image           = UIImage.init(named: "collapse")
+            cell.staticNameLbl.isHidden     = false
+            cell.nameLbl.isHidden           = false
+            cell.staticDetailsLbl.isHidden  = false
+            cell.descriptionLbl.isHidden    = false
+        }
         
         cell.backgroundColor = .clear
-            cell.cellBackgroundView.layer.cornerRadius = 10
-            cell.animateImg.isHidden = false
-            return cell
+        cell.cellBackgroundView.layer.cornerRadius = 10
+        cell.animateImg.isHidden = false
+        return cell
         
 
     }
@@ -189,12 +199,14 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
                 selectedIndex = indexPath.row
                 isCellTapped = true
     
+                cell.actBtn.isHidden = true
                 tableView.reloadRows(at: [indexPath], with: .automatic)
             }
             else
             {
                 isCellTapped = false
 
+                cell.actBtn.isHidden = false
 //                if isCellTapped == false
 //                {
 //                    cell.staticDetailsLbl.isHidden = true
@@ -208,12 +220,74 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
         }
         
         animate()
-        
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath)
     {
         let cell = reportList.cellForRow(at: indexPath) as! AdminReportTableViewCell
         isCellTapped = false
+        
+        cell.actBtn.isHidden = true
     }
+}
+
+
+extension AdminReportListController
+{
+    func getFilterSheet(title:String, msg:String)
+    {
+        let filterOptions = UIAlertController(title: title, message: msg, preferredStyle: .actionSheet)
+        
+        let filterByCityAction = UIAlertAction(title: "City", style: .default)
+        {
+            (_) in
+            print("City")
+        }
+        
+        let filterByPendingAction = UIAlertAction(title: "Pending", style: .default)
+        {
+            (_) in
+            print("Pending")
+        }
+        
+        let filterByInProcessAction = UIAlertAction(title: "In Process", style: .default)
+        {
+            (_) in
+            print("In Process")
+        }
+        
+        let filterByCompletedAction = UIAlertAction(title: "Completed", style: .default)
+        {
+            (_) in
+            print("Completed")
+        }
+        
+        let filterByNameAction = UIAlertAction(title: "Name", style: .default)
+        {
+            (_) in
+            print("Name")
+        }
+        
+//        let filterTextField = UIAlertAction(title: "Name Input", style: .default)
+//        {
+//            (alertAction) in
+//            let textField = filterOptions.textFields![0] as UITextField
+//        }
+//        
+//        filterOptions.addTextField
+//            {
+//                (textField) in
+//                textField.placeholder = "Enter your name"
+//        }
+        
+        //filterOptions.addAction(filterTextField)
+        filterOptions.addAction(filterByCityAction)
+        filterOptions.addAction(filterByPendingAction)
+        filterOptions.addAction(filterByInProcessAction)
+        filterOptions.addAction(filterByCompletedAction)
+        filterOptions.addAction(filterByNameAction)
+        
+        self.present(filterOptions, animated: true, completion: nil)
+    }
+    
 }

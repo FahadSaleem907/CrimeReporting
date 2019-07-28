@@ -13,6 +13,9 @@ class AdminReportTableViewCell: UITableViewCell
     
     
     @IBOutlet weak var cellBackgroundView: UIView!
+    
+    @IBOutlet weak var actBtn: fancyUIButton1!
+    
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var cityLbl: UILabel!
     @IBOutlet weak var typeLbl: UILabel!
@@ -29,7 +32,7 @@ class AdminReportTableViewCell: UITableViewCell
     {
         super.awakeFromNib()
         // Initialization code
-        //reportDetails.isHidden = true
+        actBtn.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool)
