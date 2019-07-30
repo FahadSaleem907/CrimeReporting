@@ -33,6 +33,20 @@ class AdminReportTableViewCell: UITableViewCell
         super.awakeFromNib()
         // Initialization code
         actBtn.isHidden = true
+        
+        cityLbl.isHidden = true
+        staticCityLbl.isHidden = true
+        
+        //nameLbl.isHidden = true
+        //staticNameLbl.isHidden = true
+        
+        typeLbl.isHidden = true
+        staticTypeLbl.isHidden = true
+        
+        descriptionLbl.isHidden = true
+        staticDetailsLbl.isHidden = true
+        
+        animateImg.image = UIImage.init(named: "expand")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool)

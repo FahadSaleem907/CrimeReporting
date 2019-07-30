@@ -65,11 +65,13 @@ extension AdminDashboardController: UICollectionViewDelegate, UICollectionViewDa
         
         func setBackgroundColor()
         {
+            cell.mainCellView.backgroundColor = .clear
+            
             if indexPath.item == 0
             {
                 cell.reportCount.text = String(delegate.currentUser!.reports.count)
                 cell.reportText.text  = "Total Reports"
-                cell.backgroundImg.image = UIImage.init(named: "red")
+                cell.backgroundImg.image = UIImage.init(named: "1")
             }
             if indexPath.item == 1
             {

@@ -103,7 +103,37 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
     {
         let cell = reportList.dequeueReusableCell(withIdentifier: "cell") as! AdminReportTableViewCell
         
+        func emptyCell()
+        {
+            cell.actBtn.isHidden = true
+            
+            cell.cityLbl.isHidden = true
+            cell.staticCityLbl.isHidden = true
+            
+            cell.typeLbl.isHidden = true
+            cell.staticTypeLbl.isHidden = true
+            
+            cell.descriptionLbl.isHidden = true
+            cell.staticDetailsLbl.isHidden = true
+            
+            cell.animateImg.image = UIImage.init(named: "expand")
+        }
         
+        func refillCell()
+        {
+            cell.actBtn.isHidden = false
+            
+            cell.cityLbl.isHidden = false
+            cell.staticCityLbl.isHidden = false
+            
+            cell.typeLbl.isHidden = false
+            cell.staticTypeLbl.isHidden = false
+            
+            cell.descriptionLbl.isHidden = false
+            cell.staticDetailsLbl.isHidden = false
+            
+            cell.animateImg.image = UIImage.init(named: "expand")
+        }
         
         if userReports[indexPath.row]?.isPending == true
         {
@@ -118,40 +148,41 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
             cell.cellBackgroundView.backgroundColor = .green
         }
         
-        cell.actBtn.layer.backgroundColor = #colorLiteral(red: 0.4980392157, green: 0, blue: 1, alpha: 1)
-        cell.nameLbl.text = userReports[indexPath.row]?.userName
-        cell.cityLbl.text = userReports[indexPath.row]?.city
-        cell.typeLbl.text = userReports[indexPath.row]?.reportType
-        cell.descriptionLbl.text = userReports[indexPath.row]?.descriptionField
+//        cell.actBtn.layer.backgroundColor = #colorLiteral(red: 0.4980392157, green: 0, blue: 1, alpha: 1)
+//        cell.nameLbl.text = userReports[indexPath.row]?.userName
+//        cell.cityLbl.text = userReports[indexPath.row]?.city
+//        cell.typeLbl.text = userReports[indexPath.row]?.reportType
+//        cell.descriptionLbl.text = userReports[indexPath.row]?.descriptionField
         
         if isCellTapped == false
         {
-            cell.staticCityLbl.text         = "ReportID:"
-            cell.cityLbl.text               = userReports[indexPath.row]?.reportID
-            cell.staticTypeLbl.isHidden     = true
-            cell.typeLbl.isHidden           = true
-            cell.animateImg.image           = UIImage.init(named: "expand")
-            cell.staticNameLbl.isHidden     = true
-            cell.nameLbl.isHidden           = true
-            cell.staticDetailsLbl.isHidden  = true
-            cell.descriptionLbl.isHidden    = true
+            reportList.beginUpdates()
+            
+            emptyCell()
+            
+            cell.staticNameLbl.text = "Report ID:"
+            cell.nameLbl.text = userReports[indexPath.row]?.reportID
+            
+            reportList.endUpdates()
         }
         else
         {
-            cell.cityLbl.text               = userReports[indexPath.row]?.city
-            cell.staticCityLbl.text         = "City"
-            cell.typeLbl.isHidden           = false
-            cell.staticTypeLbl.isHidden     = false
-            cell.animateImg.image           = UIImage.init(named: "collapse")
-            cell.staticNameLbl.isHidden     = false
-            cell.nameLbl.isHidden           = false
-            cell.staticDetailsLbl.isHidden  = false
-            cell.descriptionLbl.isHidden    = false
+            reportList.beginUpdates()
+            
+            refillCell()
+            
+            cell.staticNameLbl.text = "Name: "
+            cell.actBtn.layer.backgroundColor = #colorLiteral(red: 0.4980392157, green: 0, blue: 1, alpha: 1)
+            cell.nameLbl.text = userReports[indexPath.row]?.userName
+            cell.cityLbl.text = userReports[indexPath.row]?.city
+            cell.typeLbl.text = userReports[indexPath.row]?.reportType
+            cell.descriptionLbl.text = userReports[indexPath.row]?.descriptionField
+            
+            reportList.endUpdates()
         }
         
         cell.backgroundColor = .clear
         cell.cellBackgroundView.layer.cornerRadius = 10
-        cell.animateImg.isHidden = false
         return cell
         
 
@@ -196,25 +227,17 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
         {
             if isCellTapped == false
             {
+                
                 selectedIndex = indexPath.row
                 isCellTapped = true
     
-                cell.actBtn.isHidden = true
                 tableView.reloadRows(at: [indexPath], with: .automatic)
+                
             }
             else
             {
                 isCellTapped = false
 
-                cell.actBtn.isHidden = false
-//                if isCellTapped == false
-//                {
-//                    cell.staticDetailsLbl.isHidden = true
-//                    cell.staticNameLbl.isHidden = true
-//                    cell.detailTextLabel?.isHidden = true
-//                    cell.nameLbl.isHidden = true
-//                }
-//                print("For Animate = \(isCellTapped)")
                 tableView.reloadRows(at: [indexPath], with: .automatic)
             }
         }
@@ -273,7 +296,7 @@ extension AdminReportListController
 //            (alertAction) in
 //            let textField = filterOptions.textFields![0] as UITextField
 //        }
-//        
+//
 //        filterOptions.addTextField
 //            {
 //                (textField) in
