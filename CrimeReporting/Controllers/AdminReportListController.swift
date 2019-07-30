@@ -21,7 +21,7 @@ class AdminReportListController: UIViewController
     var reportsList = [Report?]()
     var isCellTapped = false
     var selectedIndex = 0
-    
+    var hiddensCell = [Int]()
     
     // MARK: - Outlets
     @IBOutlet weak var reportList: UITableView!
@@ -56,7 +56,6 @@ class AdminReportListController: UIViewController
                 (report) in
             
                 self.delegate.currentUser!.reports.removeAll()
-                //self.reportsList.removeAll()
                 self.reportsList = report
                 
                 self.delegate.currentUser?.reports = self.reportsList
@@ -76,8 +75,6 @@ class AdminReportListController: UIViewController
             self.userReports = report
             self.checkReport()
         }
-        
-        //userReports = delegate.currentUser!.reports
     }
     override func viewDidLoad()
     {
@@ -148,13 +145,8 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
             cell.cellBackgroundView.backgroundColor = .green
         }
         
-//        cell.actBtn.layer.backgroundColor = #colorLiteral(red: 0.4980392157, green: 0, blue: 1, alpha: 1)
-//        cell.nameLbl.text = userReports[indexPath.row]?.userName
-//        cell.cityLbl.text = userReports[indexPath.row]?.city
-//        cell.typeLbl.text = userReports[indexPath.row]?.reportType
-//        cell.descriptionLbl.text = userReports[indexPath.row]?.descriptionField
         
-        if isCellTapped == false
+        if !self.hiddensCell.contains(indexPath.row)
         {
             reportList.beginUpdates()
             
@@ -204,6 +196,8 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
     {
         let cell = reportList.cellForRow(at: indexPath) as! AdminReportTableViewCell
         
+        selectedIndex = indexPath.row
+        
         if userReports[indexPath.row]?.isPending == true
         {
             let yellowBGColorView = UIView()
@@ -227,18 +221,36 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
         {
             if isCellTapped == false
             {
-                
-                selectedIndex = indexPath.row
+                //selectedIndex = indexPath.row
                 isCellTapped = true
-    
+                self.hiddensCell.append(indexPath.row)
                 tableView.reloadRows(at: [indexPath], with: .automatic)
-                
             }
             else
             {
-                isCellTapped = false
-
-                tableView.reloadRows(at: [indexPath], with: .automatic)
+//                if let index = self.hiddensCell.firstIndex(of: indexPath.row)
+//                {
+//                    self.hiddensCell.remove(at: index)
+//                }
+              
+                if selectedIndex != hiddensCell.last
+                {
+                    isCellTapped = false
+                    hiddensCell.removeLast()
+                    
+                    tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+                else
+                {
+                    if let index = self.hiddensCell.firstIndex(of: indexPath.row)
+                    {
+                        self.hiddensCell.remove(at: index)
+                    }
+                    isCellTapped = false
+                    tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+//                isCellTapped = false
+//                tableView.reloadRows(at: [indexPath], with: .automatic)
             }
         }
         
@@ -250,7 +262,7 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
         let cell = reportList.cellForRow(at: indexPath) as! AdminReportTableViewCell
         isCellTapped = false
         
-        cell.actBtn.isHidden = true
+        
     }
 }
 

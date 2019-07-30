@@ -71,7 +71,7 @@ extension AdminDashboardController: UICollectionViewDelegate, UICollectionViewDa
             {
                 cell.reportCount.text = String(delegate.currentUser!.reports.count)
                 cell.reportText.text  = "Total Reports"
-                cell.backgroundImg.image = UIImage.init(named: "1")
+                cell.backgroundImg.image = UIImage.init(named: "blue1")
             }
             if indexPath.item == 1
             {
@@ -117,7 +117,7 @@ extension AdminDashboardController: UICollectionViewDelegate, UICollectionViewDa
                 }
                 cell.reportCount.text = String(tmpArray.count)
                 cell.reportText.text = "Completed Reports"
-                cell.backgroundImg.image = UIImage.init(named: "green")
+                cell.backgroundImg.image = UIImage.init(named: "green1")
             }
         }
         

@@ -466,6 +466,9 @@ Would You Like To File A New Report ?</string>
                                                                 <constraint firstAttribute="height" constant="25" id="jeQ-zL-034"/>
                                                             </constraints>
                                                             <state key="normal" title="Act"/>
+                                                            <connections>
+                                                                <segue destination="knG-az-LNb" kind="showDetail" id="rmt-Gd-Zce"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -628,6 +631,76 @@ Would You Like To File A New Report ?</string>
             </objects>
             <point key="canvasLocation" x="-2520.289855072464" y="1095.5357142857142"/>
         </scene>
+        <!--Admin Response Controller-->
+        <scene sceneID="esh-Pw-ooa">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="knG-az-LNb" customClass="adminResponseController" customModule="CrimeReporting" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yhc-wp-tNP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" alpha="0.10000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQl-CV-yV5">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="backgroundBtn:" destination="knG-az-LNb" eventType="touchUpInside" id="54Z-Il-QRE"/>
+                                    <action selector="backgroundBtn:" destination="KVs-7b-ZBv" eventType="touchUpInside" id="IMj-HT-Oin"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4X-aU-vNJ">
+                                <rect key="frame" x="52" y="363.5" width="310.5" height="179"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="95W-co-pNN">
+                                <rect key="frame" x="101.5" y="406.5" width="211" height="93"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QqD-1p-63j">
+                                        <rect key="frame" x="0.0" y="0.0" width="93" height="93"/>
+                                        <color key="backgroundColor" red="0.0" green="0.95641588184931503" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="QqD-1p-63j" secondAttribute="height" id="A9z-w7-BO9"/>
+                                        </constraints>
+                                        <state key="normal" title="Start"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I1S-QW-Oqm">
+                                        <rect key="frame" x="118" y="0.0" width="93" height="93"/>
+                                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="I1S-QW-Oqm" secondAttribute="height" multiplier="1:1" id="kjm-5n-fBi"/>
+                                        </constraints>
+                                        <state key="normal" title="False Alarm"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QqD-1p-63j" firstAttribute="width" secondItem="P4X-aU-vNJ" secondAttribute="width" multiplier="0.3" id="BNs-aS-Gh9"/>
+                            <constraint firstItem="P4X-aU-vNJ" firstAttribute="centerX" secondItem="OPV-r9-6Sb" secondAttribute="centerX" id="J37-U1-FhD"/>
+                            <constraint firstItem="OPV-r9-6Sb" firstAttribute="trailing" secondItem="NQl-CV-yV5" secondAttribute="trailing" id="Jf2-Hb-mB6"/>
+                            <constraint firstItem="P4X-aU-vNJ" firstAttribute="height" secondItem="yhc-wp-tNP" secondAttribute="height" multiplier="0.2" id="SNT-fz-NQ2"/>
+                            <constraint firstItem="95W-co-pNN" firstAttribute="centerY" secondItem="P4X-aU-vNJ" secondAttribute="centerY" id="SY1-wb-gfV"/>
+                            <constraint firstItem="P4X-aU-vNJ" firstAttribute="centerY" secondItem="OPV-r9-6Sb" secondAttribute="centerY" id="Xv6-PZ-2Sq"/>
+                            <constraint firstItem="NQl-CV-yV5" firstAttribute="top" secondItem="OPV-r9-6Sb" secondAttribute="top" id="ZFM-Wb-0su"/>
+                            <constraint firstItem="NQl-CV-yV5" firstAttribute="leading" secondItem="OPV-r9-6Sb" secondAttribute="leading" id="fWr-Id-N9A"/>
+                            <constraint firstItem="95W-co-pNN" firstAttribute="centerX" secondItem="P4X-aU-vNJ" secondAttribute="centerX" id="qKB-YD-TbM"/>
+                            <constraint firstItem="OPV-r9-6Sb" firstAttribute="bottom" secondItem="NQl-CV-yV5" secondAttribute="bottom" id="thQ-tI-QgO"/>
+                            <constraint firstItem="I1S-QW-Oqm" firstAttribute="width" secondItem="P4X-aU-vNJ" secondAttribute="width" multiplier="0.3" id="w0h-YX-7VS"/>
+                            <constraint firstItem="P4X-aU-vNJ" firstAttribute="width" secondItem="yhc-wp-tNP" secondAttribute="width" multiplier="0.75" id="ywe-Ca-buu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OPV-r9-6Sb"/>
+                    </view>
+                    <connections>
+                        <outlet property="failureBtnOut" destination="I1S-QW-Oqm" id="7cx-RC-4bY"/>
+                        <outlet property="successBtnOut" destination="QqD-1p-63j" id="Nwv-Jc-OdT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F2r-sn-tS9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="KVs-7b-ZBv" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-1784.057971014493" y="1105.5803571428571"/>
+        </scene>
         <!--Dashboard-->
         <scene sceneID="crb-D0-37p">
             <objects>
@@ -659,7 +732,7 @@ Would You Like To File A New Report ?</string>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePk-y4-zQu">
                                                     <rect key="frame" x="0.0" y="0.0" width="410" height="297"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="hXa-CO-vF0">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hXa-CO-vF0">
                                                             <rect key="frame" x="0.0" y="0.0" width="410" height="297"/>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="QWb-hw-6Og">
@@ -668,13 +741,13 @@ Would You Like To File A New Report ?</string>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZk-Ai-gxx">
                                                                     <rect key="frame" x="0.0" y="0.0" width="205" height="34.5"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
-                                                                    <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="textColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWO-XH-nAf">
                                                                     <rect key="frame" x="0.0" y="49.5" width="205" height="23.5"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                                                    <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="textColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -1031,7 +1104,6 @@ Would You Like To File A New Report ?</string>
         </scene>
     </scenes>
     <resources>
-        <image name="1" width="846" height="480"/>
         <image name="background1" width="590" height="332"/>
         <image name="dashboard" width="30" height="30"/>
         <image name="expand" width="40" height="40"/>
