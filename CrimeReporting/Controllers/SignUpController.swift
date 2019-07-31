@@ -107,6 +107,7 @@ class SignUpController: UIViewController
     
 }
 
+// MARK: -Alerts
 extension SignUpController
 {
     func alert(msg:String , controller:UIViewController, textField:UITextField)
@@ -129,6 +130,7 @@ extension SignUpController
     }
 }
 
+// MARK: -PickerViews
 extension SignUpController: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UINavigationControllerDelegate
 {
     func numberOfComponents(in pickerView: UIPickerView) -> Int

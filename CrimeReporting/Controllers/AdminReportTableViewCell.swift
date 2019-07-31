@@ -34,8 +34,8 @@ class AdminReportTableViewCell: UITableViewCell
         // Initialization code
         actBtn.isHidden = true
         
-        cityLbl.isHidden = true
-        staticCityLbl.isHidden = true
+        //cityLbl.isHidden = true
+        //staticCityLbl.isHidden = true
         
         //nameLbl.isHidden = true
         //staticNameLbl.isHidden = true

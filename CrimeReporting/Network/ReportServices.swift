@@ -60,7 +60,7 @@ public class reportFunctions
         let reportRef = self.db.collection("Reports")
         let query = reportRef.whereField("uid", isEqualTo: "\(delegate.currentUser!.uid!)")
         
-        query.getDocuments
+        query.addSnapshotListener
             {
                 (snapshot, error) in
                 if let error = error
@@ -92,7 +92,7 @@ public class reportFunctions
         let reportRef = self.db.collection("Reports")
         let query = reportRef.whereField("uid", isEqualTo: "\(delegate.currentUser!.uid!)")
         
-        reportRef.getDocuments
+        reportRef.addSnapshotListener
             {
                 (snapshot, error) in
                 if let error = error
@@ -157,7 +157,7 @@ public class reportFunctions
         let ref = self.db.collection("Reports")
         let filterQuery = ref.whereField("city", isEqualTo: filterType)
         
-        filterQuery.getDocuments
+        filterQuery.addSnapshotListener
             {
                 (snapshot, error) in
                 if let error = error

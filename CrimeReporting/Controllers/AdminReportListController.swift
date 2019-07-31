@@ -14,6 +14,18 @@ class AdminReportListController: UIViewController
     {
         didSet
         {
+            self.userReports.sort { (a, b) -> Bool in
+                let isoDateA = a?.time
+                let isoDateB = b?.time
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd-MM-yyyy HH:MM:SS"
+                let dateA = dateFormatter.date(from: isoDateA!)
+                let dateB = dateFormatter.date(from: isoDateB!)
+                
+                return dateA! > dateB!
+            }
+            
             reportList.reloadData()
         }
     }
@@ -22,6 +34,7 @@ class AdminReportListController: UIViewController
     var isCellTapped = false
     var selectedIndex = 0
     var hiddensCell = [Int]()
+    var tmpReportID:String?
     
     // MARK: - Outlets
     @IBOutlet weak var reportList: UITableView!
@@ -109,8 +122,8 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
         {
             cell.actBtn.isHidden = true
             
-            cell.cityLbl.isHidden = true
-            cell.staticCityLbl.isHidden = true
+            //cell.cityLbl.isHidden = true
+            //cell.staticCityLbl.isHidden = true
             
             cell.typeLbl.isHidden = true
             cell.staticTypeLbl.isHidden = true
@@ -125,8 +138,8 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
         {
             cell.actBtn.isHidden = false
             
-            cell.cityLbl.isHidden = false
-            cell.staticCityLbl.isHidden = false
+            //cell.cityLbl.isHidden = false
+            //cell.staticCityLbl.isHidden = false
             
             cell.typeLbl.isHidden = false
             cell.staticTypeLbl.isHidden = false
@@ -157,8 +170,10 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
             
             emptyCell()
             
-            cell.staticNameLbl.text = "Report ID:"
-            cell.nameLbl.text = userReports[indexPath.row]?.reportID
+            //cell.staticNameLbl.text = "Report ID:"
+            //cell.nameLbl.text = userReports[indexPath.row]?.reportID
+            cell.nameLbl.text = userReports[indexPath.row]?.userName
+            cell.cityLbl.text = userReports[indexPath.row]?.city
             
             reportList.endUpdates()
         }
@@ -168,10 +183,10 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
             
             refillCell()
             
-            cell.staticNameLbl.text = "Name: "
+            //cell.staticNameLbl.text = "Name: "
             cell.actBtn.layer.backgroundColor = #colorLiteral(red: 0.4980392157, green: 0, blue: 1, alpha: 1)
             cell.nameLbl.text = userReports[indexPath.row]?.userName
-            cell.cityLbl.text = userReports[indexPath.row]?.city
+            //cell.cityLbl.text = userReports[indexPath.row]?.city
             cell.typeLbl.text = userReports[indexPath.row]?.reportType
             cell.descriptionLbl.text = userReports[indexPath.row]?.descriptionField
             cell.animateImg.image = UIImage.init(named: "collapse")
@@ -275,16 +290,18 @@ extension AdminReportListController
                     self.userReports.removeAll()
                     self.userReports = report
                     self.checkReport()
+                    
+                    self.userReports.removeAll()
+                    for j in self.delegate.currentUser!.reports
+                    {
+                        if j?.isPending == true
+                        {
+                            self.userReports.append(j)
+                        }
+                    }
             }
             
-            self.userReports.removeAll()
-            for j in self.delegate.currentUser!.reports
-            {
-                if j?.isPending == true
-                {
-                    self.userReports.append(j)
-                }
-            }
+            
             print(self.userReports.count)
         }
         
@@ -295,20 +312,21 @@ extension AdminReportListController
             self.getData
                 {
                     (report) in
-                    
+
                     self.userReports.removeAll()
                     self.userReports = report
                     self.checkReport()
+                    
+                    self.userReports.removeAll()
+                    for j in self.delegate.currentUser!.reports
+                    {
+                        if j?.isInProgress == true
+                        {
+                            self.userReports.append(j)
+                        }
+                    }
             }
             
-            self.userReports.removeAll()
-            for j in self.delegate.currentUser!.reports
-            {
-                if j?.isInProgress == true
-                {
-                    self.userReports.append(j)
-                }
-            }
             print(self.userReports.count)
         }
         
@@ -319,19 +337,21 @@ extension AdminReportListController
             self.getData
                 {
                     (report) in
-                    
+
                     self.userReports.removeAll()
                     self.userReports = report
                     self.checkReport()
+                    
+                    self.userReports.removeAll()
+                    for j in self.delegate.currentUser!.reports
+                    {
+                        if j?.isCompleted == true
+                        {
+                            self.userReports.append(j)
+                        }
+                    }
             }
-            self.userReports.removeAll()
-            for j in self.delegate.currentUser!.reports
-            {
-                if j?.isCompleted == true
-                {
-                    self.userReports.append(j)
-                }
-            }
+            
         }
         
         filterOptions.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:

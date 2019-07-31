@@ -11,8 +11,11 @@ import UIKit
 class adminResponseController: UIViewController {
 
     // MARK: - Constants
+    let reportServices = reportFunctions()
     
     // MARK: - Variables
+    var reportID:String?
+    var tmpReportID:String?
     
     // MARK: - Outlets
     @IBOutlet weak var failureBtnOut: UIButton!
@@ -28,6 +31,11 @@ class adminResponseController: UIViewController {
     @IBAction func viewBackground(_ sender: UIButton)
     {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func startProcessing(_ sender: UIButton)
+    {
+        
     }
     
     
@@ -51,4 +59,18 @@ class adminResponseController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+}
+
+extension adminResponseController
+{
+//    func statusAlert(title:String, msg:String, controller:UIViewController)
+//    {
+//        let alertValidation = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+//        let buttonOK = UIAlertAction(title: "Yes", style: .default, handler: {_ in
+//           
+//           reportServices.inProcessReportStatus(reportID: , value: <#T##Bool#>) self.navigationController?.popViewController(animated: true) })
+//        let buttonNo = UIAlertAction(title: "No", style: .default, handler: nil)
+//        alertValidation.addAction(buttonOK)
+//        present(alertValidation, animated: true, completion: nil)
+//    }
 }
