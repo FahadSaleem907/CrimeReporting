@@ -169,7 +169,7 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
             cell.cityLbl.text = userReports[indexPath.row]?.city
             cell.typeLbl.text = userReports[indexPath.row]?.reportType
             cell.descriptionLbl.text = userReports[indexPath.row]?.descriptionField
-            
+            cell.animateImg.image = UIImage.init(named: "collapse")
             reportList.endUpdates()
         }
         
@@ -182,7 +182,7 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        if isCellTapped == true && selectedIndex == indexPath.row
+        if hiddensCell.last == indexPath.row
         {
             return 300
         }
@@ -217,14 +217,13 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
             cell.selectedBackgroundView = greenBGColorView
         }
         
-        func animate()
+        func animate(cell: AdminReportTableViewCell)
         {
-            if isCellTapped == false
+            if !hiddensCell.contains(indexPath.row)
             {
-                //selectedIndex = indexPath.row
-                isCellTapped = true
+                print(hiddensCell)
+                self.hiddensCell.removeAll()
                 self.hiddensCell.append(indexPath.row)
-                tableView.reloadRows(at: [indexPath], with: .automatic)
             }
             else
             {
@@ -232,38 +231,25 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
 //                {
 //                    self.hiddensCell.remove(at: index)
 //                }
-              
-                if selectedIndex != hiddensCell.last
-                {
-                    isCellTapped = false
-                    hiddensCell.removeLast()
-                    
-                    tableView.reloadRows(at: [indexPath], with: .automatic)
-                }
-                else
-                {
-                    if let index = self.hiddensCell.firstIndex(of: indexPath.row)
-                    {
-                        self.hiddensCell.remove(at: index)
-                    }
-                    isCellTapped = false
-                    tableView.reloadRows(at: [indexPath], with: .automatic)
-                }
-//                isCellTapped = false
+
+                hiddensCell.removeLast()
+                print(hiddensCell)
+                
 //                tableView.reloadRows(at: [indexPath], with: .automatic)
             }
+            
         }
         
-        animate()
+        animate(cell: cell)
+        self.reportList.reloadData()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath)
     {
-        let cell = reportList.cellForRow(at: indexPath) as! AdminReportTableViewCell
-        isCellTapped = false
-        
-        
+//            hiddensCell.removeLast()
     }
+    
+    
 }
 
 

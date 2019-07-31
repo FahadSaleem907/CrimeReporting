@@ -25,6 +25,10 @@ class adminResponseController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func viewBackground(_ sender: UIButton)
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     
     // MARK: - Functions
@@ -37,9 +41,14 @@ class adminResponseController: UIViewController {
 
         let height1 = failureBtnOut.frame.height
         failureBtnOut.layer.cornerRadius = height1/2
+        failureBtnOut.layer.borderWidth = 2
+        //failureBtnOut.layer.borderColor = (UIColor.black as! CGColor)
         
         let height2 = successBtnOut.frame.height
         successBtnOut.layer.cornerRadius = height2/2
+        successBtnOut.layer.borderWidth = 2
+        //successBtnOut.layer.borderColor = (UIColor.black as! CGColor)
+        
         // Do any additional setup after loading the view.
     }
 }
