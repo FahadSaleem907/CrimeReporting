@@ -68,7 +68,7 @@ extension adminResponseController
 //        let alertValidation = UIAlertController(title: title, message: msg, preferredStyle: .alert)
 //        let buttonOK = UIAlertAction(title: "Yes", style: .default, handler: {_ in
 //           
-//           reportServices.inProcessReportStatus(reportID: , value: <#T##Bool#>) self.navigationController?.popViewController(animated: true) })
+//           reportServices.inProcessReportStatus(reportID: , value: true) self.navigationController?.popViewController(animated: true) })
 //        let buttonNo = UIAlertAction(title: "No", style: .default, handler: nil)
 //        alertValidation.addAction(buttonOK)
 //        present(alertValidation, animated: true, completion: nil)

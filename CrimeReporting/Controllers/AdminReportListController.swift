@@ -25,7 +25,6 @@ class AdminReportListController: UIViewController
                 
                 return dateA! > dateB!
             }
-            
             reportList.reloadData()
         }
     }
@@ -104,6 +103,12 @@ class AdminReportListController: UIViewController
         checkReport()
     }
 
+    // MARK: -Prepare for Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        
+    }
+    
 }
 
 
