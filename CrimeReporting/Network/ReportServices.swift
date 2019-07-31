@@ -7,10 +7,13 @@ import FirebaseFirestore
 
 public class reportFunctions
 {
-    var reportList = [Report?]()
     
     let delegate = UIApplication.shared.delegate as! AppDelegate
     let db = Firestore.firestore()
+    let cities = ["Karachi","Lahore","Islamabad","Faisalabad","Hyderabad","Peshawar","Murree"]
+    
+    
+    var reportList = [Report?]()
     
     func createReport(reports:Report?, completion:@escaping(Report?,Bool?,String?)->Void)
     {
@@ -118,11 +121,64 @@ public class reportFunctions
     }
 
 
-    func changeReportStatus()
+    func pendingReportStatus(reportID:String,value:Bool)
     {
+        let ref = self.db.collection("Reports")
+        let queryStatusChange = ref.whereField("reportID", isEqualTo: reportID)
+        
+        queryStatusChange.setValue(value, forKey: "pending")
+        queryStatusChange.setValue(!value, forKey: "inProgress")
+        queryStatusChange.setValue(!value, forKey: "completed")
+    }
     
+    func inProcessReportStatus(reportID:String,value:Bool)
+    {
+        let ref = self.db.collection("Reports")
+        let queryStatusChange = ref.whereField("reportID", isEqualTo: reportID)
+        
+        queryStatusChange.setValue(!value, forKey: "pending")
+        queryStatusChange.setValue(value, forKey: "inProgress")
+        queryStatusChange.setValue(!value, forKey: "completed")
+    }
+    
+    func completedReportStatus(reportID:String,value:Bool)
+    {
+        let ref = self.db.collection("Reports")
+        let queryStatusChange = ref.whereField("reportID", isEqualTo: reportID)
+        
+        queryStatusChange.setValue(!value, forKey: "pending")
+        queryStatusChange.setValue(!value, forKey: "inProgress")
+        queryStatusChange.setValue(value, forKey: "completed")
     }
     
     
-
+    func filterReports(filterType: String,completion:@escaping([Report?])->Void)
+    {
+        let ref = self.db.collection("Reports")
+        let filterQuery = ref.whereField("city", isEqualTo: filterType)
+        
+        filterQuery.getDocuments
+            {
+                (snapshot, error) in
+                if let error = error
+                {
+                    print("ERROR: \(error.localizedDescription)")
+                    completion([])
+                }
+                else
+                {
+                    self.reportList = []
+                    for i in snapshot!.documents
+                    {
+                        let tmpReport = Report(reportID: i.documentID, city: i.data()["city"] as! String, descField: i.data()["reportDescription"] as! String, reportType: i.data()["reportType"] as! String, userID: i.data()["uid"] as! String, time: i.data()["time"] as! String, img: nil, pending: i.data()["pending"] as? Bool, inProgress: i.data()["inProgress"] as? Bool, completed: i.data()["completed"] as? Bool, userName: i.data()["userName"] as! String)
+                        
+                        
+                        self.reportList.append(tmpReport)
+                    }
+                    
+                    completion(self.reportList)
+                }
+        }
+    }
+    
 }

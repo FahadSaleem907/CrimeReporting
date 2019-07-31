@@ -30,7 +30,12 @@ class AdminReportListController: UIViewController
     // MARK: - Actions
     @IBAction func applyFilter(_ sender: UIBarButtonItem)
     {
-        getFilterSheet(title: "Filter By", msg: "---------")
+        getFilterSheet1(title: "Filter By", msg: "---------")
+    }
+    
+    @IBAction func cityFilter(_ sender: UIBarButtonItem)
+    {
+        getFilterSheet2(title: "Filter By", msg: "---------")
     }
     
     
@@ -255,60 +260,149 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
 
 extension AdminReportListController
 {
-    func getFilterSheet(title:String, msg:String)
+    func getFilterSheet1(title:String, msg:String)
     {
         let filterOptions = UIAlertController(title: title, message: msg, preferredStyle: .actionSheet)
-        
-        let filterByCityAction = UIAlertAction(title: "City", style: .default)
-        {
-            (_) in
-            print("City")
-        }
         
         let filterByPendingAction = UIAlertAction(title: "Pending", style: .default)
         {
             (_) in
-            print("Pending")
+            
+            self.getData
+                {
+                    (report) in
+                    
+                    self.userReports.removeAll()
+                    self.userReports = report
+                    self.checkReport()
+            }
+            
+            self.userReports.removeAll()
+            for j in self.delegate.currentUser!.reports
+            {
+                if j?.isPending == true
+                {
+                    self.userReports.append(j)
+                }
+            }
+            print(self.userReports.count)
         }
         
         let filterByInProcessAction = UIAlertAction(title: "In Process", style: .default)
         {
             (_) in
-            print("In Process")
+            
+            self.getData
+                {
+                    (report) in
+                    
+                    self.userReports.removeAll()
+                    self.userReports = report
+                    self.checkReport()
+            }
+            
+            self.userReports.removeAll()
+            for j in self.delegate.currentUser!.reports
+            {
+                if j?.isInProgress == true
+                {
+                    self.userReports.append(j)
+                }
+            }
+            print(self.userReports.count)
         }
         
         let filterByCompletedAction = UIAlertAction(title: "Completed", style: .default)
         {
             (_) in
-            print("Completed")
+            
+            self.getData
+                {
+                    (report) in
+                    
+                    self.userReports.removeAll()
+                    self.userReports = report
+                    self.checkReport()
+            }
+            self.userReports.removeAll()
+            for j in self.delegate.currentUser!.reports
+            {
+                if j?.isCompleted == true
+                {
+                    self.userReports.append(j)
+                }
+            }
         }
         
-        let filterByNameAction = UIAlertAction(title: "Name", style: .default)
-        {
-            (_) in
-            print("Name")
-        }
+        filterOptions.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:
+            {
+                (action) in
+                
+                action.setValue(UIColor.red, forKey: "titleTextColor")
+                
+                self.userReports = self.delegate.currentUser!.reports
+                print(self.userReports.count)
+        }))
         
-//        let filterTextField = UIAlertAction(title: "Name Input", style: .default)
-//        {
-//            (alertAction) in
-//            let textField = filterOptions.textFields![0] as UITextField
-//        }
-//
-//        filterOptions.addTextField
-//            {
-//                (textField) in
-//                textField.placeholder = "Enter your name"
-//        }
         
-        //filterOptions.addAction(filterTextField)
-        filterOptions.addAction(filterByCityAction)
         filterOptions.addAction(filterByPendingAction)
         filterOptions.addAction(filterByInProcessAction)
         filterOptions.addAction(filterByCompletedAction)
-        filterOptions.addAction(filterByNameAction)
         
         self.present(filterOptions, animated: true, completion: nil)
     }
     
+    func getFilterSheet2(title:String, msg:String)
+    {
+        let filterOptions = UIAlertController(title: title, message: msg, preferredStyle: .actionSheet)
+        
+        for i in reportServices.cities
+        {
+            let i = UIAlertAction(title: "\(i)", style: .default)
+            {
+                (_) in
+                func getFilterData(completion:@escaping([Report?])->Void)
+                {
+                    self.reportServices.filterReports(filterType: "\(i)", completion:
+                        {
+                            (report) in
+                    
+                            self.delegate.currentUser!.reports.removeAll()
+                            self.reportsList = report
+                        
+                            self.delegate.currentUser?.reports = self.reportsList
+                            completion(self.delegate.currentUser!.reports)
+                        })
+                
+                    print("City")
+                }
+                getFilterData(completion:
+                    {
+                        (report) in
+                        self.userReports.removeAll()
+                        self.userReports = report
+                        self.checkReport()
+                    }       )
+                self.reportList.reloadData()
+            }
+            filterOptions.addAction(i)
+        }
+        
+        filterOptions.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:
+            {
+                (action) in
+            
+                action.setValue(UIColor.red, forKey: "titleTextColor")
+                
+                self.getData(completion:
+                {
+                    (report) in
+                    self.userReports.removeAll()
+                    self.userReports = report
+                    self.checkReport()
+                })
+        }))
+        
+        self.present(filterOptions, animated: true, completion: nil)
+    }
 }

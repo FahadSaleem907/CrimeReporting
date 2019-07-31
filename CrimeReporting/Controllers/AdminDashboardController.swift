@@ -5,10 +5,18 @@ class AdminDashboardController: UIViewController
 {
     // MARK: - Constants
     let delegate = UIApplication.shared.delegate as! AppDelegate
+    let reportServices = reportFunctions()
     
     // MARK: - Variables
     var layoutSize:CGSize?
-    
+    var reportsList = [Report?]()
+    var userReports = [Report?]()
+    {
+        didSet
+        {
+            reportNumbers.reloadData()
+        }
+    }
 
     // MARK: - Actions
     
@@ -23,8 +31,28 @@ class AdminDashboardController: UIViewController
         layoutSize = reportNumbers.frame.size
     }
     
+    func getData(completion:@escaping([Report?])->Void)
+    {
+        reportServices.adminViewReports
+            {
+                (report) in
+                
+                self.delegate.currentUser!.reports.removeAll()
+                self.reportsList = report
+                
+                self.delegate.currentUser?.reports = self.reportsList
+                completion(self.delegate.currentUser!.reports)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool)
     {
+        getData
+            { (report) in
+            self.userReports.removeAll()
+            self.userReports = report
+            //self.checkReport()
+        }
         reportNumbers.reloadData()
     }
     

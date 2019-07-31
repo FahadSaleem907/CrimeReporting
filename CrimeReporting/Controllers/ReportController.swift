@@ -11,13 +11,12 @@ class ReportController: UIViewController {
     //Marks : Constants
     let reportTypes = ["Kidnapping","Homicide","Mugging","Assault And Batter","Sexual Assault","Hit and Run", "Breaking and Entering", "Destruction of Public Property","Embezzlement", "Forgery"]
     
-    let cities = ["Karachi","Lahore","Islamabad","Faisalabad","Hyderabad","Peshawar","Murree"]
-    
     let cityPickerView = UIPickerView()
     let reportTypePickerView = UIPickerView()
     let datePicker = UIDatePicker()
     
     let reportServices = reportFunctions()
+    
     let delegate = UIApplication.shared.delegate as! AppDelegate
     
     //Marks : Outlets
@@ -126,7 +125,7 @@ extension ReportController: UIPickerViewDelegate, UIPickerViewDataSource, UIText
     {
         if pickerView == cityPickerView
         {
-            return cities.count
+            return reportServices.cities.count
         }
         else
         {
@@ -139,7 +138,7 @@ extension ReportController: UIPickerViewDelegate, UIPickerViewDataSource, UIText
     {
         if pickerView == cityPickerView
         {
-            return cities[row]
+            return reportServices.cities[row]
         }
         else
         {
@@ -151,8 +150,8 @@ extension ReportController: UIPickerViewDelegate, UIPickerViewDataSource, UIText
     {
         if pickerView == cityPickerView
         {
-            city.text = String(cities[row])
-            let acc = cities[row]
+            city.text = String(reportServices.cities[row])
+            let acc = reportServices.cities[row]
             print("zzzzz\(acc)zzzz")
         }
         else
@@ -184,7 +183,7 @@ extension ReportController: UIPickerViewDelegate, UIPickerViewDataSource, UIText
         
         if pickerView == cityPickerView
         {
-            label.text = cities[row]
+            label.text = reportServices.cities[row]
         }
         else
         {

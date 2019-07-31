@@ -42,7 +42,6 @@ class UserReportListController: UIViewController
         if filterCount == 0
         {
             userReports = delegate.currentUser!.reports
-            //reportList.reloadData()
             print(userReports.count)
         }
         else if filterCount == 1
