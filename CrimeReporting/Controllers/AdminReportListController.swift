@@ -34,6 +34,7 @@ class AdminReportListController: UIViewController
     var selectedIndex = 0
     var hiddensCell = [Int]()
     var tmpReportID:String?
+    var tmpReportStatus:String?
     
     // MARK: - Outlets
     @IBOutlet weak var reportList: UITableView!
@@ -106,7 +107,9 @@ class AdminReportListController: UIViewController
     // MARK: -Prepare for Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        
+        let passReportID = segue.destination as! adminResponseController
+        passReportID.tmpReportID = tmpReportID
+        passReportID.tmpReportStatus = tmpReportStatus
     }
     
 }
@@ -265,6 +268,20 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
             
         }
         
+        self.tmpReportID = userReports[indexPath.row]?.reportID
+        
+        if userReports[indexPath.row]?.isPending == true
+        {
+            self.tmpReportStatus = "pending"
+        }
+        else if userReports[indexPath.row]?.isCompleted == true
+        {
+            self.tmpReportStatus = "completed"
+        }
+        else
+        {
+            self.tmpReportStatus = "inProcess"
+        }
         animate(cell: cell)
         self.reportList.reloadData()
     }

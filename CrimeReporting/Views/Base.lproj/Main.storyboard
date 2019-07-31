@@ -39,14 +39,14 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUt-8Y-FME" customClass="fancyUIButton1" customModule="CrimeReporting" customModuleProvider="target">
-                                <rect key="frame" x="103.5" y="499.5" width="207" height="30"/>
+                                <rect key="frame" x="165.5" y="499.5" width="83" height="30"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q6h-IA-APp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zc7-4n-6x1">
-                                <rect key="frame" x="103.5" y="544.5" width="207" height="30"/>
+                                <rect key="frame" x="145" y="544.5" width="124" height="30"/>
                                 <state key="normal" title="Not A User ?">
                                     <color key="titleColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -55,7 +55,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJJ-Xv-sJw">
-                                <rect key="frame" x="41.5" y="822" width="331" height="30"/>
+                                <rect key="frame" x="103.5" y="822" width="207" height="30"/>
                                 <state key="normal" title="Forgot Your Password?">
                                     <color key="titleColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -64,12 +64,12 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="nok-X5-mjB" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="4zY-vY-Qh1"/>
-                            <constraint firstItem="EJJ-Xv-sJw" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="AYR-j2-doj"/>
+                            <constraint firstItem="EJJ-Xv-sJw" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="AYR-j2-doj"/>
                             <constraint firstItem="mUt-8Y-FME" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="FWB-sH-40g"/>
                             <constraint firstItem="zc7-4n-6x1" firstAttribute="top" secondItem="mUt-8Y-FME" secondAttribute="bottom" constant="15" id="GDJ-yn-Vmh"/>
                             <constraint firstItem="rdb-ZX-0c9" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="J7n-Nq-7PR"/>
                             <constraint firstItem="EJJ-Xv-sJw" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="RuA-nE-Ymm"/>
-                            <constraint firstItem="zc7-4n-6x1" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="SDf-QE-z1M"/>
+                            <constraint firstItem="zc7-4n-6x1" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.3" id="SDf-QE-z1M"/>
                             <constraint firstItem="hoG-VS-diT" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="UbB-Nf-Zil"/>
                             <constraint firstItem="971-hw-0o0" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="UhE-l7-pOm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="EJJ-Xv-sJw" secondAttribute="bottom" constant="10" id="ael-gR-D13"/>
@@ -79,7 +79,7 @@
                             <constraint firstItem="hoG-VS-diT" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="hr8-sU-h6c"/>
                             <constraint firstItem="nok-X5-mjB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="r9x-cZ-kcF"/>
                             <constraint firstItem="nok-X5-mjB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="sM5-5K-HU1"/>
-                            <constraint firstItem="mUt-8Y-FME" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="zlj-zH-Jso"/>
+                            <constraint firstItem="mUt-8Y-FME" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.2" id="zlj-zH-Jso"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -749,12 +749,12 @@ Would You Like To File A New Report ?</string>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="hXa-CO-vF0" firstAttribute="centerY" secondItem="ePk-y4-zQu" secondAttribute="centerY" id="5dl-gs-Wy5"/>
+                                                        <constraint firstItem="hXa-CO-vF0" firstAttribute="width" secondItem="ePk-y4-zQu" secondAttribute="width" id="E1y-Ce-hiw"/>
                                                         <constraint firstItem="fWO-XH-nAf" firstAttribute="width" secondItem="ePk-y4-zQu" secondAttribute="width" multiplier="0.5" id="GB7-Fs-U2u"/>
                                                         <constraint firstItem="QWb-hw-6Og" firstAttribute="centerY" secondItem="ePk-y4-zQu" secondAttribute="centerY" id="KfP-ff-45V"/>
-                                                        <constraint firstItem="hXa-CO-vF0" firstAttribute="width" secondItem="ePk-y4-zQu" secondAttribute="width" id="LDe-yb-E5G"/>
                                                         <constraint firstItem="QWb-hw-6Og" firstAttribute="centerX" secondItem="ePk-y4-zQu" secondAttribute="centerX" id="gGP-xq-tgm"/>
                                                         <constraint firstItem="hXa-CO-vF0" firstAttribute="centerX" secondItem="ePk-y4-zQu" secondAttribute="centerX" id="jYe-Vy-fDG"/>
-                                                        <constraint firstItem="hXa-CO-vF0" firstAttribute="height" secondItem="ePk-y4-zQu" secondAttribute="height" id="qse-dq-ZbA"/>
+                                                        <constraint firstItem="hXa-CO-vF0" firstAttribute="height" secondItem="ePk-y4-zQu" secondAttribute="height" id="sZB-MG-4TY"/>
                                                         <constraint firstItem="MZk-Ai-gxx" firstAttribute="width" secondItem="ePk-y4-zQu" secondAttribute="width" multiplier="0.5" id="vNN-tO-ic9"/>
                                                     </constraints>
                                                 </view>

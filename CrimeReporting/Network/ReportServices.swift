@@ -124,32 +124,43 @@ public class reportFunctions
     func pendingReportStatus(reportID:String,value:Bool)
     {
         let ref = self.db.collection("Reports")
-        let queryStatusChange = ref.whereField("reportID", isEqualTo: reportID)
+        //let queryStatusChange = ref.whereField("reportID", isEqualTo: reportID)
         
-        queryStatusChange.setValue(value, forKey: "pending")
-        queryStatusChange.setValue(!value, forKey: "inProgress")
-        queryStatusChange.setValue(!value, forKey: "completed")
+        let dataDic = [ "pending"       : false,
+                        "inProgress"    : true,
+                        "completed"     : false
+                      ]
+        
+        ref.document("\(reportID)").updateData(dataDic)
     }
     
     func inProcessReportStatus(reportID:String,value:Bool)
     {
         let ref = self.db.collection("Reports")
-        let queryStatusChange = ref.whereField("reportID", isEqualTo: reportID)
+        //let queryStatusChange = ref.whereField("reportID", isEqualTo: reportID)
         
-        queryStatusChange.setValue(!value, forKey: "pending")
-        queryStatusChange.setValue(value, forKey: "inProgress")
-        queryStatusChange.setValue(!value, forKey: "completed")
+        let dataDic = [ "pending"       : false,
+                        "inProgress"    : false,
+                        "completed"     : true
+                      ]
+        
+        ref.document("\(reportID)").updateData(dataDic)
     }
     
-    func completedReportStatus(reportID:String,value:Bool)
-    {
-        let ref = self.db.collection("Reports")
-        let queryStatusChange = ref.whereField("reportID", isEqualTo: reportID)
-        
-        queryStatusChange.setValue(!value, forKey: "pending")
-        queryStatusChange.setValue(!value, forKey: "inProgress")
-        queryStatusChange.setValue(value, forKey: "completed")
-    }
+//    func completedReportStatus(reportID:String,value:Bool)
+//    {
+//        let ref = self.db.collection("Reports")
+//        //let queryStatusChange = ref.whereField("reportID", isEqualTo: reportID)
+//
+//        let dataDic = [ "pending"       : false,
+//                        "inProgress"    : false,
+//                        "completed"     : true
+//        ]
+//
+//        queryStatusChange.setValue(!value, forKey: "isPending")
+//        queryStatusChange.setValue(!value, forKey: "isInProgress")
+//        queryStatusChange.setValue(value, forKey: "isCompleted")
+//    }
     
     
     func filterReports(filterType: String,completion:@escaping([Report?])->Void)

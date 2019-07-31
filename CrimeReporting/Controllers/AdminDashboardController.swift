@@ -54,7 +54,10 @@ class AdminDashboardController: UIViewController
             //self.checkReport()
         }
         reportNumbers.reloadData()
+        
+        getSize()
     }
+    
     
     override func viewDidLoad()
     {
@@ -93,6 +96,7 @@ extension AdminDashboardController: UICollectionViewDelegate, UICollectionViewDa
         
         func setBackgroundColor()
         {
+            cell.mainCellView.frame.size = layoutSize!
             cell.mainCellView.backgroundColor = .clear
             
             if indexPath.item == 0

@@ -56,7 +56,7 @@ class MainViewController: UIViewController {
                 
                 if success == true
                 {
-                    self.statusAlert(title: "Success", msg: "Logged in Successfully.\nUser: \(user)", controller: self)
+                    self.statusAlert(title: "Success", msg: "Logged in Successfully", controller: self)
                 
                 }
             }
@@ -95,7 +95,9 @@ extension MainViewController
     func statusAlert(title:String, msg:String, controller:UIViewController)
     {
         let alertValidation = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        let buttonOK = UIAlertAction(title: "Okay", style: .default, handler: {_ in //self.navigationController?.popViewController(animated: true) })
+        let buttonOK = UIAlertAction(title: "Okay", style: .default, handler:
+        {
+            _ in
             if self.delegate.currentUser!.userType == "User"
             {
                 self.performSegue(withIdentifier: "loginUser", sender: self)
@@ -103,7 +105,8 @@ extension MainViewController
             if self.delegate.currentUser!.userType == "Admin"
             {
                 self.performSegue(withIdentifier: "loginAdmin", sender: self)
-            } })
+            }
+        })
         alertValidation.addAction(buttonOK)
         present(alertValidation, animated: true, completion: nil)
     }
@@ -111,8 +114,9 @@ extension MainViewController
     func statusAlert1(title:String, msg:String, controller:UIViewController)
     {
         let alertValidation = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        let buttonOK = UIAlertAction(title: "Okay", style: .default, handler: {_ in //self.navigationController?.popViewController(animated: true) })
-            //self.performSegue(withIdentifier: "loginUser", sender: self)
+        let buttonOK = UIAlertAction(title: "Okay", style: .default, handler:
+        {
+            _ in
             return
         })
         alertValidation.addAction(buttonOK)
