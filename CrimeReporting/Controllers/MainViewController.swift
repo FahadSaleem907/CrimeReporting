@@ -1,5 +1,7 @@
 import Foundation
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class MainViewController: UIViewController {
 
@@ -63,6 +65,23 @@ class MainViewController: UIViewController {
         }
     }
     
+    func handleLogin()
+    {
+        let userLoginController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "userView")
+        
+        let adminLoginController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "adminView")
+        
+        if delegate.currentUser?.userType == "User"
+        {
+            self.navigationController?.pushViewController(userLoginController, animated: true)
+        }
+        if delegate.currentUser?.userType == "Admin"
+        {
+            self.navigationController?.pushViewController(adminLoginController, animated: true)
+        }
+    }
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         self.view.endEditing(true)
@@ -121,5 +140,39 @@ extension MainViewController
         })
         alertValidation.addAction(buttonOK)
         present(alertValidation, animated: true, completion: nil)
+    }
+    
+    func checkLoggedUser()
+    {
+        if Auth.auth().currentUser == nil
+        {
+            return
+        }
+        else
+        {
+            print(Auth.auth().currentUser)
+            let userServices = userFunctions()
+            
+            userServices.getReAuth
+                {
+                    (user, success, error) in
+                    
+                    if let error = error
+                    {
+                        self.statusAlert1(title: "Error", msg: "\(error)", controller: self)
+                    }
+                    else
+                    {
+                        guard let user = user else { return }
+                        guard let success = success else { return }
+                        
+                        if success == true
+                        {
+                            self.statusAlert(title: "Success", msg: "Logged in Successfully", controller: self)
+                            
+                        }
+                    }
+                }
+        }
     }
 }
