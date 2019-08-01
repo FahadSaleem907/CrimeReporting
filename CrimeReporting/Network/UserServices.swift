@@ -104,7 +104,7 @@ public class userFunctions
     func createUser(user:User?,completion:@escaping(String?,User?, Bool?,String?)->Void)
     {
         var ref:DocumentReference? = nil
-    
+        
         Auth.auth().createUser(withEmail: user!.email, password: user!.password!)
         { (result, mainErr) in
             
@@ -161,7 +161,9 @@ public class userFunctions
         var reportList = [Report?]()
         var ref:DocumentReference? = nil
         
-        ref = self.db.collection("Users").document("\(Auth.auth().currentUser?.uid)")
+        delegate.currentUser = User(uid: "asd", name: "asd", email: "asd", pw: nil, userType: "asd", image: nil, userStatus: "asd", report: [])
+        
+        ref = self.db.collection("Users").document("\(Auth.auth().currentUser!.uid)")
         ref?.getDocument(completion:
             {
                 (snapshot, error) in

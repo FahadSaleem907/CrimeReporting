@@ -67,17 +67,26 @@ class MainViewController: UIViewController {
     
     func handleLogin()
     {
-        let userLoginController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "userView")
+//        let userLoginController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "userView")
+//
+//        let adminLoginController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "adminView")
+//
+//        if delegate.currentUser?.userType == "User"
+//        {
+//            self.navigationController?.pushViewController(userLoginController, animated: true)
+//        }
+//        if delegate.currentUser?.userType == "Admin"
+//        {
+//            self.navigationController?.pushViewController(adminLoginController, animated: true)
+//        }
         
-        let adminLoginController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "adminView")
-        
-        if delegate.currentUser?.userType == "User"
+        if self.delegate.currentUser!.userType == "User"
         {
-            self.navigationController?.pushViewController(userLoginController, animated: true)
+            self.performSegue(withIdentifier: "loginUser", sender: self)
         }
-        if delegate.currentUser?.userType == "Admin"
+        if self.delegate.currentUser!.userType == "Admin"
         {
-            self.navigationController?.pushViewController(adminLoginController, animated: true)
+            self.performSegue(withIdentifier: "loginAdmin", sender: self)
         }
     }
     
@@ -90,6 +99,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        checkLoggedUser()
         
         emaill.textColor = .init(red: 192, green: 192, blue: 192, alpha: 1)
         pw.textColor = .init(red: 192, green: 192, blue: 192, alpha: 1)
@@ -144,13 +155,14 @@ extension MainViewController
     
     func checkLoggedUser()
     {
-        if Auth.auth().currentUser == nil
+        if Auth.auth().currentUser?.uid == nil
         {
+            print("No User")
             return
         }
         else
         {
-            print(Auth.auth().currentUser)
+            print(Auth.auth().currentUser?.uid)
             let userServices = userFunctions()
             
             userServices.getReAuth
@@ -163,14 +175,18 @@ extension MainViewController
                     }
                     else
                     {
-                        guard let user = user else { return }
-                        guard let success = success else { return }
-                        
-                        if success == true
+                        //guard let user = user else { return }
+                        if let user = user
                         {
-                            self.statusAlert(title: "Success", msg: "Logged in Successfully", controller: self)
+                            guard let success = success else { return }
                             
+                            if success == true
+                            {
+                                self.handleLogin()
+                                print(self.delegate.currentUser)
+                            }
                         }
+                    
                     }
                 }
         }
