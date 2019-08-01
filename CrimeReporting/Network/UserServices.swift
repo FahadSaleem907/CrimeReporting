@@ -156,6 +156,63 @@ public class userFunctions
     }
 
 
+    func getReAuth(completion:@escaping(User?,Bool?,String?)->Void)
+    {
+        var reportList = [Report?]()
+        var ref:DocumentReference? = nil
+        
+        ref = self.db.collection("Users").document("\(Auth.auth().currentUser?.uid)")
+        ref?.getDocument(completion:
+            {
+                (snapshot, error) in
+                if let snapshot = snapshot
+                {
+                    if snapshot.data() != nil
+                    {
+                        self.delegate.currentUser?.uid = (snapshot.data()!["uid"] as! String)
+                        self.delegate.currentUser?.email = snapshot.data()!["email"] as! String
+                        self.delegate.currentUser?.name = snapshot.data()!["name"] as! String
+                        self.delegate.currentUser?.userType = snapshot.data()!["User Type"] as! String
+                        self.delegate.currentUser?.userStatus = snapshot.data()!["User Status"] as! String
+                        //print("Active Admin Cached document data: \(self.delegate.currentUser)")
+                        let reportService = reportFunctions()
+                        
+                        if self.delegate.currentUser!.userType == "User"
+                        {
+                            reportService.viewUserReports(completion:
+                                {
+                                    (report) in
+                                    
+                                    reportList = report
+                                    
+                                    print(reportList)
+                                    self.delegate.currentUser?.reports = reportList
+                            })
+                        }
+                        else
+                        {
+                            reportService.adminViewReports(completion:
+                                {
+                                    (report) in
+                                    
+                                    reportList = report
+                                    print(reportList)
+                                    self.delegate.currentUser?.reports = reportList
+                            })
+                        }
+                        completion(self.delegate.currentUser,true,nil)
+                    }
+                    else
+                    {
+                        completion(nil,false,error?.localizedDescription)
+                    }
+                }
+                else
+                {
+                    completion(nil,false,error?.localizedDescription)
+                }
+        })
+    }
 
     func deleteUser()
     {
