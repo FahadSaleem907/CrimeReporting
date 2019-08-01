@@ -1,5 +1,8 @@
 import Foundation
 import UIKit
+import Firebase
+import FirebaseFirestore
+import FirebaseAuth
 
 class AdminDashboardController: UIViewController
 {
@@ -20,12 +23,34 @@ class AdminDashboardController: UIViewController
 
     // MARK: - Actions
     
-
+    @IBAction func logout(_ sender: UIButton)
+    {
+        handleLogout()
+    }
+    
     
     // MARK: - Outlets
     @IBOutlet weak var reportNumbers: UICollectionView!
     
     // MARK: - Functions
+    
+    @objc func handleLogout()
+    {
+        do
+        {
+            try Auth.auth().signOut()
+            
+            //let loginController = MainViewController()
+            print(Auth.auth().currentUser?.uid)
+            
+            self.dismiss(animated: true, completion: nil)
+        }
+        catch let logoutError
+        {
+            print(logoutError)
+        }
+    }
+    
     func getSize()
     {
         layoutSize = reportNumbers.frame.size
@@ -45,6 +70,11 @@ class AdminDashboardController: UIViewController
         }
     }
     
+    override func viewDidLayoutSubviews()
+    {
+        getSize()
+    }
+    
     override func viewWillAppear(_ animated: Bool)
     {
         getData
@@ -55,7 +85,7 @@ class AdminDashboardController: UIViewController
         }
         reportNumbers.reloadData()
         
-        getSize()
+        //getSize()
     }
     
     

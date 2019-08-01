@@ -83,6 +83,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="wph-vl-8Lk"/>
                     <connections>
                         <outlet property="emaill" destination="rdb-ZX-0c9" id="Wgx-zS-sZR"/>
                         <outlet property="forgotPwBtn" destination="EJJ-Xv-sJw" id="9T1-t1-iav"/>
@@ -94,7 +95,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1786.9565217391305" y="-151.33928571428569"/>
+            <point key="canvasLocation" x="-876.81159420289862" y="-151.33928571428569"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="cZB-lv-D3n">
@@ -204,7 +205,7 @@ Would You Like To File A New Report ?</string>
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i04-LG-Vse">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="190" id="s2K-oo-yam" customClass="reportTableViewCell" customModule="CrimeReporting" customModuleProvider="target">
@@ -246,6 +247,7 @@ Would You Like To File A New Report ?</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="i04-LG-Vse" firstAttribute="top" secondItem="Uo3-dK-sAv" secondAttribute="top" id="Hpw-ya-RuF"/>
                             <constraint firstItem="ic5-ad-ER5" firstAttribute="centerX" secondItem="F9J-Zd-x4Y" secondAttribute="centerX" id="JuD-qX-2Id"/>
                             <constraint firstItem="ic5-ad-ER5" firstAttribute="centerY" secondItem="F9J-Zd-x4Y" secondAttribute="centerY" id="QR5-UL-e9z"/>
                             <constraint firstItem="F9J-Zd-x4Y" firstAttribute="bottom" secondItem="6D5-3q-0R2" secondAttribute="bottom" id="T05-c5-Fni"/>
@@ -255,7 +257,6 @@ Would You Like To File A New Report ?</string>
                             <constraint firstItem="6D5-3q-0R2" firstAttribute="top" secondItem="F9J-Zd-x4Y" secondAttribute="top" id="h2R-U9-rmN"/>
                             <constraint firstItem="i04-LG-Vse" firstAttribute="leading" secondItem="F9J-Zd-x4Y" secondAttribute="leading" id="il6-T4-Voh"/>
                             <constraint firstItem="F9J-Zd-x4Y" firstAttribute="trailing" secondItem="6D5-3q-0R2" secondAttribute="trailing" id="mg5-KV-UZ4"/>
-                            <constraint firstItem="i04-LG-Vse" firstAttribute="top" secondItem="F9J-Zd-x4Y" secondAttribute="top" id="o9e-Xi-f8p"/>
                             <constraint firstItem="F9J-Zd-x4Y" firstAttribute="bottom" secondItem="i04-LG-Vse" secondAttribute="bottom" id="rnC-yN-Y3V"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="F9J-Zd-x4Y"/>
@@ -418,7 +419,7 @@ Would You Like To File A New Report ?</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="70T-YD-EMP">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="213" id="S8g-6w-ZAq" customClass="AdminReportTableViewCell" customModule="CrimeReporting" customModuleProvider="target">
@@ -573,8 +574,8 @@ Would You Like To File A New Report ?</string>
                             <constraint firstItem="gIO-ef-x1f" firstAttribute="centerX" secondItem="hIV-Og-uUT" secondAttribute="centerX" id="M0X-eO-njM"/>
                             <constraint firstItem="hIV-Og-uUT" firstAttribute="bottom" secondItem="BMe-28-Eij" secondAttribute="bottom" id="MWL-NI-2F3"/>
                             <constraint firstItem="hIV-Og-uUT" firstAttribute="trailing" secondItem="70T-YD-EMP" secondAttribute="trailing" id="Tgy-CQ-86Z"/>
+                            <constraint firstItem="70T-YD-EMP" firstAttribute="top" secondItem="uvj-un-GdB" secondAttribute="top" id="jR8-Kw-wiS"/>
                             <constraint firstItem="gIO-ef-x1f" firstAttribute="centerY" secondItem="hIV-Og-uUT" secondAttribute="centerY" id="lDz-X0-Rbv"/>
-                            <constraint firstItem="70T-YD-EMP" firstAttribute="top" secondItem="hIV-Og-uUT" secondAttribute="top" id="o89-10-O36"/>
                             <constraint firstItem="hIV-Og-uUT" firstAttribute="bottom" secondItem="70T-YD-EMP" secondAttribute="bottom" id="wFC-rE-XfR"/>
                             <constraint firstItem="BMe-28-Eij" firstAttribute="top" secondItem="hIV-Og-uUT" secondAttribute="top" id="wgj-uD-i2g"/>
                             <constraint firstItem="hIV-Og-uUT" firstAttribute="trailing" secondItem="BMe-28-Eij" secondAttribute="trailing" id="xXq-gX-R5L"/>
@@ -725,7 +726,7 @@ Would You Like To File A New Report ?</string>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePk-y4-zQu">
                                                     <rect key="frame" x="0.0" y="0.0" width="410" height="297"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hXa-CO-vF0">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hXa-CO-vF0">
                                                             <rect key="frame" x="0.0" y="0.0" width="410" height="297"/>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="QWb-hw-6Og">
@@ -776,6 +777,15 @@ Would You Like To File A New Report ?</string>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEe-xl-112">
+                                <rect key="frame" x="183" y="763" width="48" height="30"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logout:" destination="wgU-wz-N7W" eventType="touchUpInside" id="Sov-Ww-uhg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -786,7 +796,9 @@ Would You Like To File A New Report ?</string>
                             <constraint firstItem="bf2-mm-OOM" firstAttribute="trailing" secondItem="IKj-iD-xam" secondAttribute="trailing" id="fBk-VP-dUA"/>
                             <constraint firstItem="IKj-iD-xam" firstAttribute="top" secondItem="bf2-mm-OOM" secondAttribute="top" id="gIG-GS-HXW"/>
                             <constraint firstItem="SAw-Tq-Xqb" firstAttribute="top" secondItem="bf2-mm-OOM" secondAttribute="top" constant="5" id="hyw-4x-ZU4"/>
+                            <constraint firstItem="bf2-mm-OOM" firstAttribute="bottom" secondItem="lEe-xl-112" secondAttribute="bottom" constant="20" id="lrV-lg-3iq"/>
                             <constraint firstItem="SAw-Tq-Xqb" firstAttribute="height" secondItem="oNW-SH-7LB" secondAttribute="height" multiplier="0.3" id="nGo-zl-iM2"/>
+                            <constraint firstItem="lEe-xl-112" firstAttribute="centerX" secondItem="bf2-mm-OOM" secondAttribute="centerX" id="njr-Ak-bVy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bf2-mm-OOM"/>
                     </view>
@@ -802,7 +814,7 @@ Would You Like To File A New Report ?</string>
         <!--Tab Bar Controller-->
         <scene sceneID="sNo-hl-KHa">
             <objects>
-                <tabBarController id="FKY-RA-DsO" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="adminView" id="FKY-RA-DsO" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="Ico-6W-6VW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -821,7 +833,7 @@ Would You Like To File A New Report ?</string>
         <!--Tab Bar Controller-->
         <scene sceneID="a8f-ER-Lsy">
             <objects>
-                <tabBarController id="7YN-aa-l1h" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="userView" id="7YN-aa-l1h" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="MbT-jC-Xmr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -915,7 +927,7 @@ Would You Like To File A New Report ?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GkQ-p1-dD7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-748" y="-151"/>
+            <point key="canvasLocation" x="160.86956521739131" y="-151.33928571428569"/>
         </scene>
         <!--Report Controller-->
         <scene sceneID="B7L-eF-wDU">
