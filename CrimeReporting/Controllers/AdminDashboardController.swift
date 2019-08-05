@@ -12,6 +12,7 @@ class AdminDashboardController: UIViewController
     let reportServices = reportFunctions()
     
     // MARK: - Variables
+    var colors = [UIColor]()
     var layoutSize:CGSize?
     var tmpDic = [String:Int]()
     var reportsList = [Report?]()
@@ -53,6 +54,35 @@ class AdminDashboardController: UIViewController
             print(logoutError)
         }
     }
+    
+//    func getColors()
+//    {
+//        colors.removeAll()
+//
+//        let color1 = UIColor(red: CGFloat(139/255), green: CGFloat(85/255), blue: CGFloat(111/255), alpha: 1)
+//        let color2 = UIColor(red: CGFloat(108/255), green: CGFloat(152/255), blue: CGFloat(119/255), alpha: 1)
+//        let color3 = UIColor(red: CGFloat(188/255), green: CGFloat(84/255), blue: CGFloat(73/255), alpha: 1)
+//        let color4 = UIColor(red: CGFloat(252/255), green: CGFloat(162/255), blue: CGFloat(113/255), alpha: 1)
+//        let color5 = UIColor(red: CGFloat(253/255), green: CGFloat(238/255), blue: CGFloat(135/255), alpha: 1)
+//        let color6 = UIColor(red: CGFloat(236/255), green: CGFloat(232/255), blue: CGFloat(185/255), alpha: 1)
+//        let color7 = UIColor(red: CGFloat(236/255), green: CGFloat(252/255), blue: CGFloat(252/255), alpha: 1)
+//        let color8 = UIColor(red: CGFloat(173/255), green: CGFloat(173/255), blue: CGFloat(199/255), alpha: 1)
+//        let color9 = UIColor(red: CGFloat(178/255), green: CGFloat(211/255), blue: CGFloat(194/255), alpha: 1)
+//        let color10 = UIColor(red: CGFloat(114/255), green: CGFloat(140/255), blue: CGFloat(105/255), alpha: 1)
+//        let color11 = UIColor(red: CGFloat(153/255), green: CGFloat(16/255), blue: CGFloat(2/255), alpha: 1)
+//
+//        colors.append(color1)
+//        colors.append(color2)
+//        colors.append(color3)
+//        colors.append(color4)
+//        colors.append(color5)
+//        colors.append(color6)
+//        colors.append(color7)
+//        colors.append(color8)
+//        colors.append(color9)
+//        colors.append(color10)
+//        colors.append(color11)
+//    }
     
     func getSize()
     {
@@ -109,18 +139,27 @@ class AdminDashboardController: UIViewController
         //ds1.colors = ChartColorTemplates.vordiplom()
         //ds2.colors = ChartColorTemplates.colorful()
         
-        var colors: [UIColor] = []
-        
         for i in 0..<reportServices.reportTypes.count {
-            let red = Double(arc4random_uniform(256))
+            let red = Double(arc4random_uniform(150))
             let green = Double(arc4random_uniform(256))
-            let blue = Double(arc4random_uniform(100))
-            
+            let blue = Double(arc4random_uniform(256))
+
             let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
             colors.append(color)
         }
         
-        ds2.colors = colors
+        //getColors()
+//        for i in 0..<reportServices.reportTypes.count
+//        {
+//            for j in colors
+//            {
+//
+//            }
+//        }
+        
+        
+        //print(colors.count)
+        ds2.colors = self.colors
         
         data.addDataSet(ds2)
         //data.addDataSet(ds1)
@@ -141,7 +180,7 @@ class AdminDashboardController: UIViewController
         self.chartView.holeColor = UIColor.clear
         self.chartView.drawEntryLabelsEnabled = false
         self.chartView.chartDescription?.text = ""
-        //self.chartView.
+        self.chartView.legend.textColor = .white
         //self.chartView.chartDescription?.text = "Reports Activity"
     }
     override func viewDidLayoutSubviews()
@@ -161,8 +200,7 @@ class AdminDashboardController: UIViewController
         }
         reportNumbers.reloadData()
         
-        
-        //getSize()
+        getSize()
     }
     
     
