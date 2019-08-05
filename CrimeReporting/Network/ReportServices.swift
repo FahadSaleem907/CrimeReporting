@@ -11,7 +11,7 @@ public class reportFunctions
     let delegate = UIApplication.shared.delegate as! AppDelegate
     let db = Firestore.firestore()
     let cities = ["Karachi","Lahore","Islamabad","Faisalabad","Hyderabad","Peshawar","Murree"]
-    
+    let reportTypes = ["Kidnapping","Homicide","Mugging","Assault And Batter","Sexual Assault","Hit and Run", "Breaking and Entering", "Destruction of Public Property","Embezzlement", "Forgery"]
     
     var reportList = [Report?]()
     

@@ -3,6 +3,7 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 import FirebaseAuth
+import Charts
 
 class AdminDashboardController: UIViewController
 {
@@ -12,6 +13,7 @@ class AdminDashboardController: UIViewController
     
     // MARK: - Variables
     var layoutSize:CGSize?
+    var tmpDic = [String:Int]()
     var reportsList = [Report?]()
     var userReports = [Report?]()
     {
@@ -31,6 +33,7 @@ class AdminDashboardController: UIViewController
     
     // MARK: - Outlets
     @IBOutlet weak var reportNumbers: UICollectionView!
+    @IBOutlet weak var chartView: PieChartView!
     
     // MARK: - Functions
     
@@ -70,9 +73,81 @@ class AdminDashboardController: UIViewController
         }
     }
     
+    func getPieChart()
+    {
+        tmpDic.removeAll()
+        for i in userReports
+        {
+            for j in reportServices.reportTypes
+            {
+                if i?.reportType == j
+                {
+                    if tmpDic.keys.contains(i!.reportType) == true
+                    {
+                        var tmpVal = tmpDic["\(i!.reportType)"]
+                        tmpVal = tmpVal! + 1
+                        tmpDic.updateValue(tmpVal!, forKey: "\(i!.reportType)")
+                    }
+                    else
+                    {
+                        tmpDic.updateValue(1, forKey: i!.reportType)
+                    }
+                }
+            }
+        }
+        let tmpTypes = [String](tmpDic.keys)
+        let tmpArr2 = [Int](tmpDic.values)
+        let ys1 = tmpArr2.map { x in return Double(x) /*( Double(x) / Double(userReports.count) ) * 360.0*/ }
+        
+        let yse1 = ys1.enumerated().map { x, y in return PieChartDataEntry(value: y, label: tmpTypes[x]) }
+        
+        let data = PieChartData()
+        let ds1 = PieChartDataSet(entries: yse1, label: "Hello")
+        let ds2 = PieChartDataSet(entries: yse1, label: "Color Keys")
+        
+        
+        //ds1.colors = ChartColorTemplates.vordiplom()
+        //ds2.colors = ChartColorTemplates.colorful()
+        
+        var colors: [UIColor] = []
+        
+        for i in 0..<reportServices.reportTypes.count {
+            let red = Double(arc4random_uniform(256))
+            let green = Double(arc4random_uniform(256))
+            let blue = Double(arc4random_uniform(100))
+            
+            let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
+            colors.append(color)
+        }
+        
+        ds2.colors = colors
+        
+        data.addDataSet(ds2)
+        //data.addDataSet(ds1)
+        
+        let paragraphStyle: NSMutableParagraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+        paragraphStyle.lineBreakMode = .byTruncatingTail
+        paragraphStyle.alignment = .center
+        let centerText: NSMutableAttributedString = NSMutableAttributedString(string: "Details\nCrime Reports")
+        centerText.setAttributes([NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Light", size: 15.0)!, NSAttributedString.Key.paragraphStyle: paragraphStyle], range: NSMakeRange(0, centerText.length))
+        centerText.addAttributes([NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Light", size: 13.0)!, NSAttributedString.Key.foregroundColor: UIColor.gray], range: NSMakeRange(10, centerText.length - 10))
+        centerText.addAttributes([NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-LightItalic", size: 13.0)!, NSAttributedString.Key.foregroundColor: UIColor(red: 255 / 255.0, green: 255 / 255.0, blue: 255 / 255.0, alpha: 1.0)], range: NSMakeRange(centerText.length - 21, 8))
+        centerText.addAttributes([NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-LightItalic", size: 13.0)!, NSAttributedString.Key.foregroundColor: UIColor(red: 51 / 255.0, green: 181 / 255.0, blue: 229 / 255.0, alpha: 1.0)], range: NSMakeRange(centerText.length - 13, 13))
+//        centerText.addAttributes([NSAttributedString.Key.foregroundColor : whiteColor], range: NSRange(location: 0, length: 7) )
+        
+        self.chartView.centerAttributedText = centerText
+        //self.chartView.drawHoleEnabled = false
+        self.chartView.data = data
+        self.chartView.holeColor = UIColor.clear
+        self.chartView.drawEntryLabelsEnabled = false
+        self.chartView.chartDescription?.text = ""
+        //self.chartView.
+        //self.chartView.chartDescription?.text = "Reports Activity"
+    }
     override func viewDidLayoutSubviews()
     {
         getSize()
+        self.chartView.animate(xAxisDuration: 0.0, yAxisDuration: 1.0)
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -82,8 +157,10 @@ class AdminDashboardController: UIViewController
             self.userReports.removeAll()
             self.userReports = report
             //self.checkReport()
+            self.getPieChart()
         }
         reportNumbers.reloadData()
+        
         
         //getSize()
     }
@@ -97,6 +174,9 @@ class AdminDashboardController: UIViewController
         reportNumbers.dataSource    = self
         
         getSize()
+        
+        //let tmpArray1 = [1,2,3,4,5]
+        
     }
 }
 

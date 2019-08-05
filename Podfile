@@ -12,7 +12,7 @@ target 'CrimeReporting' do
   pod 'MaterialComponents/TextFields'
   pod 'RSLoadingView'
   pod 'SDWebImage', '~> 5.0'
-  
+  pod 'Charts'
   
   target 'CrimeReportingTests' do
     inherit! :search_paths

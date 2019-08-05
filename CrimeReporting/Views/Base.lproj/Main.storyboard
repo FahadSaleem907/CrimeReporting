@@ -786,12 +786,20 @@ Would You Like To File A New Report ?</string>
                                     <action selector="logout:" destination="wgU-wz-N7W" eventType="touchUpInside" id="Sov-Ww-uhg"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXs-tc-6Ym" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="318" width="414" height="358"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="eXs-tc-6Ym" firstAttribute="height" secondItem="oNW-SH-7LB" secondAttribute="height" multiplier="0.4" id="0G5-0g-9WF"/>
                             <constraint firstItem="IKj-iD-xam" firstAttribute="leading" secondItem="bf2-mm-OOM" secondAttribute="leading" id="1hr-VI-QpD"/>
                             <constraint firstItem="bf2-mm-OOM" firstAttribute="bottom" secondItem="IKj-iD-xam" secondAttribute="bottom" id="4jN-VK-vuW"/>
+                            <constraint firstItem="eXs-tc-6Ym" firstAttribute="centerX" secondItem="bf2-mm-OOM" secondAttribute="centerX" id="93y-3q-4Ai"/>
                             <constraint firstItem="SAw-Tq-Xqb" firstAttribute="centerX" secondItem="bf2-mm-OOM" secondAttribute="centerX" id="CHv-jj-LZL"/>
+                            <constraint firstItem="eXs-tc-6Ym" firstAttribute="top" secondItem="SAw-Tq-Xqb" secondAttribute="bottom" id="Lrf-UK-CFn"/>
+                            <constraint firstItem="eXs-tc-6Ym" firstAttribute="width" secondItem="oNW-SH-7LB" secondAttribute="width" id="Zn2-kf-afo"/>
                             <constraint firstItem="SAw-Tq-Xqb" firstAttribute="width" secondItem="oNW-SH-7LB" secondAttribute="width" id="bmb-6c-z2q"/>
                             <constraint firstItem="bf2-mm-OOM" firstAttribute="trailing" secondItem="IKj-iD-xam" secondAttribute="trailing" id="fBk-VP-dUA"/>
                             <constraint firstItem="IKj-iD-xam" firstAttribute="top" secondItem="bf2-mm-OOM" secondAttribute="top" id="gIG-GS-HXW"/>
@@ -804,6 +812,7 @@ Would You Like To File A New Report ?</string>
                     </view>
                     <tabBarItem key="tabBarItem" title="Dashboard" image="dashboard" id="gDV-H3-ThE"/>
                     <connections>
+                        <outlet property="chartView" destination="eXs-tc-6Ym" id="HyZ-jp-oHK"/>
                         <outlet property="reportNumbers" destination="SAw-Tq-Xqb" id="j5e-V8-wU1"/>
                     </connections>
                 </viewController>
@@ -858,6 +867,9 @@ Would You Like To File A New Report ?</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="wbs-VX-1oe">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="zaS-ny-qNd">
                                 <rect key="frame" x="52" y="370.5" width="310.5" height="165"/>
                                 <subviews>
@@ -903,10 +915,13 @@ Would You Like To File A New Report ?</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Xrb-1M-Rk0" firstAttribute="trailing" secondItem="wbs-VX-1oe" secondAttribute="trailing" id="6T1-ch-rpI"/>
+                            <constraint firstItem="wbs-VX-1oe" firstAttribute="leading" secondItem="Xrb-1M-Rk0" secondAttribute="leading" id="8gE-mX-Ger"/>
                             <constraint firstItem="qOT-tu-W6z" firstAttribute="height" secondItem="JGA-JX-fTZ" secondAttribute="height" multiplier="0.15" id="BcB-Ds-lCT"/>
                             <constraint firstItem="iMa-ev-ssf" firstAttribute="width" secondItem="JGA-JX-fTZ" secondAttribute="width" id="EQI-tw-2fT"/>
                             <constraint firstItem="YEx-CI-uOU" firstAttribute="width" secondItem="JGA-JX-fTZ" secondAttribute="width" multiplier="0.75" id="GSY-gO-oiP"/>
                             <constraint firstItem="bxg-3y-TSC" firstAttribute="width" secondItem="JGA-JX-fTZ" secondAttribute="width" multiplier="0.75" id="HQx-EE-ZcZ"/>
+                            <constraint firstItem="Xrb-1M-Rk0" firstAttribute="bottom" secondItem="wbs-VX-1oe" secondAttribute="bottom" id="Mf1-lx-Paf"/>
                             <constraint firstItem="zaS-ny-qNd" firstAttribute="centerY" secondItem="Xrb-1M-Rk0" secondAttribute="centerY" id="Rug-cb-Hfl"/>
                             <constraint firstItem="zaS-ny-qNd" firstAttribute="top" secondItem="qOT-tu-W6z" secondAttribute="bottom" constant="25" id="dFU-HL-Ny5"/>
                             <constraint firstItem="m8R-qF-NEy" firstAttribute="width" secondItem="JGA-JX-fTZ" secondAttribute="width" multiplier="0.75" id="gWs-aK-Ji1"/>
@@ -915,6 +930,7 @@ Would You Like To File A New Report ?</string>
                             <constraint firstItem="zaS-ny-qNd" firstAttribute="centerX" secondItem="Xrb-1M-Rk0" secondAttribute="centerX" id="lag-Am-E1X"/>
                             <constraint firstItem="iMa-ev-ssf" firstAttribute="top" secondItem="zaS-ny-qNd" secondAttribute="bottom" constant="20" id="nka-Q6-ixr"/>
                             <constraint firstItem="iMa-ev-ssf" firstAttribute="centerX" secondItem="Xrb-1M-Rk0" secondAttribute="centerX" id="ofI-4n-s9H"/>
+                            <constraint firstItem="wbs-VX-1oe" firstAttribute="top" secondItem="Xrb-1M-Rk0" secondAttribute="top" id="yqT-rx-YPR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xrb-1M-Rk0"/>
                     </view>

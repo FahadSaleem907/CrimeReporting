@@ -9,7 +9,7 @@ class ReportController: UIViewController {
     //var reportsList = [Report?]()
     
     //Marks : Constants
-    let reportTypes = ["Kidnapping","Homicide","Mugging","Assault And Batter","Sexual Assault","Hit and Run", "Breaking and Entering", "Destruction of Public Property","Embezzlement", "Forgery"]
+    //let reportTypes = ["Kidnapping","Homicide","Mugging","Assault And Batter","Sexual Assault","Hit and Run", "Breaking and Entering", "Destruction of Public Property","Embezzlement", "Forgery"]
     
     let cityPickerView = UIPickerView()
     let reportTypePickerView = UIPickerView()
@@ -129,7 +129,7 @@ extension ReportController: UIPickerViewDelegate, UIPickerViewDataSource, UIText
         }
         else
         {
-            return reportTypes.count
+            return reportServices.reportTypes.count
         }
     }
     
@@ -142,7 +142,7 @@ extension ReportController: UIPickerViewDelegate, UIPickerViewDataSource, UIText
         }
         else
         {
-            return reportTypes[row]
+            return reportServices.reportTypes[row]
         }
     }
     
@@ -156,8 +156,8 @@ extension ReportController: UIPickerViewDelegate, UIPickerViewDataSource, UIText
         }
         else
         {
-            reportType.text = String(reportTypes[row])
-            let acc = reportTypes[row]
+            reportType.text = String(reportServices.reportTypes[row])
+            let acc = reportServices.reportTypes[row]
             print("zzzzz\(acc)zzzz")
         }
     }
@@ -187,7 +187,7 @@ extension ReportController: UIPickerViewDelegate, UIPickerViewDataSource, UIText
         }
         else
         {
-            label.text = reportTypes[row]
+            label.text = reportServices.reportTypes[row]
         }
         
         
