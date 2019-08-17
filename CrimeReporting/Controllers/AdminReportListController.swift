@@ -247,9 +247,12 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
         
         func animate(cell: AdminReportTableViewCell)
         {
-            if !hiddensCell.contains(indexPath.row)
+            UIView.animate(withDuration: 0.5)
             {
-                print(hiddensCell)
+                
+            if !self.hiddensCell.contains(indexPath.row)
+            {
+                print(self.hiddensCell)
                 self.hiddensCell.removeAll()
                 self.hiddensCell.append(indexPath.row)
             }
@@ -260,12 +263,12 @@ extension AdminReportListController: UITableViewDelegate,UITableViewDataSource
 //                    self.hiddensCell.remove(at: index)
 //                }
 
-                hiddensCell.removeLast()
-                print(hiddensCell)
+                self.hiddensCell.removeLast()
+                print(self.hiddensCell)
                 
 //                tableView.reloadRows(at: [indexPath], with: .automatic)
             }
-            
+            }
         }
         
         self.tmpReportID = userReports[indexPath.row]?.reportID

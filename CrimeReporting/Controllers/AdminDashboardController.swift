@@ -132,8 +132,8 @@ class AdminDashboardController: UIViewController
         let yse1 = ys1.enumerated().map { x, y in return PieChartDataEntry(value: y, label: tmpTypes[x]) }
         
         let data = PieChartData()
-        let ds1 = PieChartDataSet(entries: yse1, label: "Hello")
-        let ds2 = PieChartDataSet(entries: yse1, label: "Color Keys")
+        //let ds1 = PieChartDataSet(entries: yse1, label: "Hello")
+        let ds2 = PieChartDataSet(entries: yse1, label: "")
         
         
         //ds1.colors = ChartColorTemplates.vordiplom()
@@ -181,6 +181,14 @@ class AdminDashboardController: UIViewController
         self.chartView.drawEntryLabelsEnabled = false
         self.chartView.chartDescription?.text = ""
         self.chartView.legend.textColor = .white
+        self.chartView.legend.orientation = .vertical
+        self.chartView.legend.verticalAlignment = .top
+        self.chartView.legend.drawInside = false
+        self.chartView.legend.horizontalAlignment = .right
+        self.chartView.setExtraOffsets(left: 20, top: 20, right: 20, bottom: 20)
+        self.chartView.legend.yOffset = 0
+        self.chartView.legend.xOffset = 0
+        
         //self.chartView.chartDescription?.text = "Reports Activity"
     }
     override func viewDidLayoutSubviews()

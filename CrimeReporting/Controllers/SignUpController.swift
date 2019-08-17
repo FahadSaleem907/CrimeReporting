@@ -10,8 +10,15 @@ class SignUpController: UIViewController
     @IBOutlet weak var email: MDCTextField!
     @IBOutlet weak var password: MDCTextField!
     @IBOutlet weak var accountType: MDCTextField!
+    @IBOutlet weak var uploadImgOutlet: UIButton!
     
     //Marks : Actions
+    
+    @IBAction func uploadImg(_ sender: UIButton)
+    {
+        imageAlert()
+    }
+    
     
     @IBAction func createUser(_ sender: fancyUIButton1)
     {
@@ -93,6 +100,13 @@ class SignUpController: UIViewController
         self.view.endEditing(true)
     }
     
+    override func viewDidLayoutSubviews()
+    {
+        let height = uploadImgOutlet.frame.height
+        uploadImgOutlet.layer.cornerRadius = height/2
+        uploadImgOutlet.layer.masksToBounds = true
+        uploadImgOutlet.contentMode = .scaleToFill
+    }
     
     override func viewDidLoad()
     {
@@ -103,6 +117,11 @@ class SignUpController: UIViewController
         type.delegate           = self
         
         accountTypeToolbar()
+        
+        name.textColor          = .init(red: 192, green: 192, blue: 192, alpha: 1)
+        email.textColor         = .init(red: 192, green: 192, blue: 192, alpha: 1)
+        password.textColor      = .init(red: 192, green: 192, blue: 192, alpha: 1)
+        accountType.textColor   = .init(red: 192, green: 192, blue: 192, alpha: 1)
     }
     
 }
@@ -127,6 +146,36 @@ extension SignUpController
         let buttonOK = UIAlertAction(title: "Okay", style: .default, handler: {_ in self.navigationController?.popViewController(animated: true) })
         alertValidation.addAction(buttonOK)
         present(alertValidation, animated: true, completion: nil)
+    }
+    
+    func imageAlert()
+    {
+        let imgAlert = UIAlertController(title: "", message: "Selection Type", preferredStyle: .actionSheet)
+        
+        let takePicBtn = UIAlertAction(title: "Camera", style: .default)
+        { _ in
+            if UIImagePickerController.isSourceTypeAvailable(.camera)
+            {
+            self.presentPhotoPicker(source: .camera)
+            }
+            else
+            {
+                print("Camera Not Available or Accessable")
+            }
+        }
+        
+        let choosePicBtn = UIAlertAction(title: "Gallery", style: .default)
+        { _ in
+            self.presentPhotoPicker(source: .photoLibrary)
+        }
+        
+        let cancelBtn = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        imgAlert.addAction(takePicBtn)
+        imgAlert.addAction(choosePicBtn)
+        imgAlert.addAction(cancelBtn)
+        
+        present(imgAlert, animated: true, completion: nil)
     }
 }
 
@@ -206,5 +255,25 @@ extension SignUpController: UIPickerViewDelegate, UIPickerViewDataSource, UIText
         
         accountType.inputAccessoryView = toolBar
     }
+}
+
+extension SignUpController: UIImagePickerControllerDelegate/*, UINavigationControllerDelegate*/
+{
+    func presentPhotoPicker(source: UIImagePickerController.SourceType)
+    {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = source
+        present(picker , animated: true , completion: nil)
+    }
     
+    func getImg()
+    {
+        guard UIImagePickerController.isSourceTypeAvailable(.camera)
+        else
+        {
+            presentPhotoPicker(source: .photoLibrary)
+            return
+        }
+    }
 }

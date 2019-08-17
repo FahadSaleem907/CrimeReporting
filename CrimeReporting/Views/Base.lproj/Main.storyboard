@@ -24,13 +24,13 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="hoG-VS-diT">
                                 <rect key="frame" x="52" y="421.5" width="310.5" height="63"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rdb-ZX-0c9" customClass="MDCTextField">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rdb-ZX-0c9" customClass="MDCTextField">
                                         <rect key="frame" x="0.0" y="0.0" width="310.5" height="24"/>
                                         <color key="textColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="971-hw-0o0" customClass="MDCTextField">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="971-hw-0o0" customClass="MDCTextField">
                                         <rect key="frame" x="0.0" y="39" width="310.5" height="24"/>
                                         <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
@@ -871,65 +871,69 @@ Would You Like To File A New Report ?</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="zaS-ny-qNd">
-                                <rect key="frame" x="52" y="370.5" width="310.5" height="165"/>
+                                <rect key="frame" x="52" y="382.5" width="310.5" height="141"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bxg-3y-TSC" customClass="MDCTextField">
-                                        <rect key="frame" x="0.0" y="0.0" width="310.5" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bxg-3y-TSC" customClass="MDCTextField">
+                                        <rect key="frame" x="0.0" y="0.0" width="310.5" height="24"/>
+                                        <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m8R-qF-NEy" customClass="MDCTextField">
-                                        <rect key="frame" x="0.0" y="45" width="310.5" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m8R-qF-NEy" customClass="MDCTextField">
+                                        <rect key="frame" x="0.0" y="39" width="310.5" height="24"/>
+                                        <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YEx-CI-uOU" customClass="MDCTextField">
-                                        <rect key="frame" x="0.0" y="90" width="310.5" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YEx-CI-uOU" customClass="MDCTextField">
+                                        <rect key="frame" x="0.0" y="78" width="310.5" height="24"/>
+                                        <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Account Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wjT-DP-2fM" customClass="MDCTextField">
-                                        <rect key="frame" x="0.0" y="135" width="310.5" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Account Type" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wjT-DP-2fM" customClass="MDCTextField">
+                                        <rect key="frame" x="0.0" y="117" width="310.5" height="24"/>
+                                        <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMa-ev-ssf" customClass="fancyUIButton1" customModule="CrimeReporting" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="555.5" width="414" height="30"/>
+                                <rect key="frame" x="0.0" y="543.5" width="414" height="30"/>
                                 <state key="normal" title="Create"/>
                                 <connections>
                                     <action selector="createUser:" destination="Kr0-rN-Jna" eventType="touchUpInside" id="7Mv-R8-ai7"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qOT-tu-W6z">
-                                <rect key="frame" x="140" y="211" width="134" height="134.5"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bbi-Ye-mFu">
+                                <rect key="frame" x="140" y="223" width="134" height="134.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="qOT-tu-W6z" secondAttribute="height" multiplier="1:1" id="9VG-pr-aGe"/>
+                                    <constraint firstAttribute="width" secondItem="Bbi-Ye-mFu" secondAttribute="height" multiplier="1:1" id="aKh-FL-dIN"/>
                                 </constraints>
-                            </imageView>
+                                <state key="normal" image="profilepic"/>
+                                <connections>
+                                    <action selector="uploadImg:" destination="Kr0-rN-Jna" eventType="touchUpInside" id="2s2-oc-RaC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Xrb-1M-Rk0" firstAttribute="trailing" secondItem="wbs-VX-1oe" secondAttribute="trailing" id="6T1-ch-rpI"/>
                             <constraint firstItem="wbs-VX-1oe" firstAttribute="leading" secondItem="Xrb-1M-Rk0" secondAttribute="leading" id="8gE-mX-Ger"/>
-                            <constraint firstItem="qOT-tu-W6z" firstAttribute="height" secondItem="JGA-JX-fTZ" secondAttribute="height" multiplier="0.15" id="BcB-Ds-lCT"/>
+                            <constraint firstItem="zaS-ny-qNd" firstAttribute="top" secondItem="Bbi-Ye-mFu" secondAttribute="bottom" constant="25" id="9R4-T1-iNT"/>
+                            <constraint firstItem="Bbi-Ye-mFu" firstAttribute="height" secondItem="JGA-JX-fTZ" secondAttribute="height" multiplier="0.15" id="9z1-o1-yoA"/>
                             <constraint firstItem="iMa-ev-ssf" firstAttribute="width" secondItem="JGA-JX-fTZ" secondAttribute="width" id="EQI-tw-2fT"/>
                             <constraint firstItem="YEx-CI-uOU" firstAttribute="width" secondItem="JGA-JX-fTZ" secondAttribute="width" multiplier="0.75" id="GSY-gO-oiP"/>
                             <constraint firstItem="bxg-3y-TSC" firstAttribute="width" secondItem="JGA-JX-fTZ" secondAttribute="width" multiplier="0.75" id="HQx-EE-ZcZ"/>
                             <constraint firstItem="Xrb-1M-Rk0" firstAttribute="bottom" secondItem="wbs-VX-1oe" secondAttribute="bottom" id="Mf1-lx-Paf"/>
                             <constraint firstItem="zaS-ny-qNd" firstAttribute="centerY" secondItem="Xrb-1M-Rk0" secondAttribute="centerY" id="Rug-cb-Hfl"/>
-                            <constraint firstItem="zaS-ny-qNd" firstAttribute="top" secondItem="qOT-tu-W6z" secondAttribute="bottom" constant="25" id="dFU-HL-Ny5"/>
                             <constraint firstItem="m8R-qF-NEy" firstAttribute="width" secondItem="JGA-JX-fTZ" secondAttribute="width" multiplier="0.75" id="gWs-aK-Ji1"/>
                             <constraint firstItem="wjT-DP-2fM" firstAttribute="width" secondItem="JGA-JX-fTZ" secondAttribute="width" multiplier="0.75" id="gaw-Vb-BKE"/>
-                            <constraint firstItem="qOT-tu-W6z" firstAttribute="centerX" secondItem="Xrb-1M-Rk0" secondAttribute="centerX" id="izG-It-iaM"/>
                             <constraint firstItem="zaS-ny-qNd" firstAttribute="centerX" secondItem="Xrb-1M-Rk0" secondAttribute="centerX" id="lag-Am-E1X"/>
                             <constraint firstItem="iMa-ev-ssf" firstAttribute="top" secondItem="zaS-ny-qNd" secondAttribute="bottom" constant="20" id="nka-Q6-ixr"/>
                             <constraint firstItem="iMa-ev-ssf" firstAttribute="centerX" secondItem="Xrb-1M-Rk0" secondAttribute="centerX" id="ofI-4n-s9H"/>
+                            <constraint firstItem="Bbi-Ye-mFu" firstAttribute="centerX" secondItem="Xrb-1M-Rk0" secondAttribute="centerX" id="tig-me-iVg"/>
                             <constraint firstItem="wbs-VX-1oe" firstAttribute="top" secondItem="Xrb-1M-Rk0" secondAttribute="top" id="yqT-rx-YPR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xrb-1M-Rk0"/>
@@ -939,6 +943,7 @@ Would You Like To File A New Report ?</string>
                         <outlet property="email" destination="m8R-qF-NEy" id="iQY-CT-Krn"/>
                         <outlet property="name" destination="bxg-3y-TSC" id="Idj-mn-dSg"/>
                         <outlet property="password" destination="YEx-CI-uOU" id="eFz-IK-dOf"/>
+                        <outlet property="uploadImgOutlet" destination="Bbi-Ye-mFu" id="0EO-Hx-yxp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GkQ-p1-dD7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1132,5 +1137,6 @@ Would You Like To File A New Report ?</string>
         <image name="filter" width="25" height="25"/>
         <image name="list" width="30" height="30"/>
         <image name="profile" width="30" height="30"/>
+        <image name="profilepic" width="600" height="600"/>
     </resources>
 </document>
