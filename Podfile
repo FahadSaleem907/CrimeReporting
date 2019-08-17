@@ -9,6 +9,7 @@ target 'CrimeReporting' do
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
   pod 'MaterialComponents/TextFields'
   pod 'RSLoadingView'
   pod 'SDWebImage', '~> 5.0'

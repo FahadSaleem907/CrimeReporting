@@ -3,6 +3,7 @@ import UIKit
 import MaterialComponents.MaterialTextFields
 
 
+
 class SignUpController: UIViewController
 {
     //Marks : Outlets
@@ -54,14 +55,17 @@ class SignUpController: UIViewController
     
     //Marks : Constants
     let userServices = userFunctions()
-    let userType = ["Admin","User"]
-    let type = UIPickerView()
+    let userType    = ["Admin","User"]
+    let type        = UIPickerView()
+    var downloadURL = ""
     
     // MARKS : FUNCTIONS
     
     func createuser()
     {
-        let user1 = User(uid: nil, name: "\(name.text!)", email: "\(email.text!)", pw: "\(password.text!)", userType: "\(accountType.text!)", image: nil, userStatus: "Inactive", report: [])
+        
+        
+        let user1 = User(uid: nil, name: "\(name.text!)", email: "\(email.text!)", pw: "\(password.text!)", userType: "\(accountType.text!)", image: nil, userStatus: "Inactive", report: [], downloadURL: downloadURL)
         
         
         userServices.createUser(user: user1)
@@ -84,6 +88,21 @@ class SignUpController: UIViewController
                     
                         let newUser = user
                     
+                        self.userServices.uploadImg(uid: "\(newUser.uid)", image: self.uploadImgOutlet.currentImage!, completion:
+                            {
+                                (url, error) in
+                                
+                                guard let url = url
+                                else
+                                {
+                                    guard let error = error else { return }
+                                    print("ERROR: \(error)")
+                                    return
+                                }
+                                
+                                self.downloadURL = url
+                        })
+                        
                         if success ==  true
                         {
                             self.statusAlert(title: "Success", msg: "User Created Successfully.\n\(newUser)", controller: self)
@@ -267,13 +286,21 @@ extension SignUpController: UIImagePickerControllerDelegate/*, UINavigationContr
         present(picker , animated: true , completion: nil)
     }
     
-    func getImg()
+    func uploadImg()
     {
-        guard UIImagePickerController.isSourceTypeAvailable(.camera)
-        else
-        {
-            presentPhotoPicker(source: .photoLibrary)
-            return
+        
+    }
+    
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            print("got image")
+            uploadImgOutlet.setImage(image, for: .normal)
+        }else {
+            print("no image")
+            let image = UIImage(named: "profilePic")
+            uploadImgOutlet.setImage(image, for: .normal)
         }
     }
 }

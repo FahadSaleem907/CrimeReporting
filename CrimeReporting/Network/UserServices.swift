@@ -11,6 +11,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
 
 public class userFunctions
 {
@@ -22,7 +23,7 @@ public class userFunctions
     {
         var reportList = [Report?]()
         
-        delegate.currentUser = User(uid: "asd", name: "asd", email: "asd", pw: nil, userType: "asd", image: nil, userStatus: "asd", report: [])
+        delegate.currentUser = User(uid: "asd", name: "asd", email: "asd", pw: nil, userType: "asd", image: nil, userStatus: "asd", report: [], downloadURL: "asd")
         
         Auth.auth().signIn(withEmail: email, password: password)
         {
@@ -110,7 +111,9 @@ public class userFunctions
             
             if mainErr == nil
             {
-                var users:User? = User(uid: user!.uid, name: user!.name, email: user!.email, pw: user!.password, userType: user!.userType, image: nil, userStatus: "Active", report: [])
+                
+                
+                var users:User? = User(uid: user!.uid, name: user!.name, email: user!.email, pw: user!.password, userType: user!.userType, image: nil, userStatus: "Active", report: [], downloadURL: user!.downloadURL)
                 
                 users?.uid = result!.user.uid
                 users?.userStatus = "Active"
@@ -161,7 +164,7 @@ public class userFunctions
         var reportList = [Report?]()
         var ref:DocumentReference? = nil
         
-        delegate.currentUser = User(uid: "asd", name: "asd", email: "asd", pw: nil, userType: "asd", image: nil, userStatus: "asd", report: [])
+        delegate.currentUser = User(uid: "asd", name: "asd", email: "asd", pw: nil, userType: "asd", image: nil, userStatus: "asd", report: [], downloadURL: "asd")
         
         ref = self.db.collection("Users").document("\(Auth.auth().currentUser!.uid)")
         ref?.getDocument(completion:
@@ -216,6 +219,49 @@ public class userFunctions
         })
     }
 
+    func uploadImg(uid:String?,image:UIImage?,completion:@escaping(_ url:String?,_ error:String?)->Void)
+    {
+        let storageRef:StorageReference!
+        storageRef = Storage.storage().reference()
+        
+        let storageFile = storageRef.child("ProfileImage").child("\(uid)")
+        
+        var imageData:Data? = nil
+        
+        
+        imageData = image?.jpegData(compressionQuality: 0.2)
+        print(imageData!)
+        
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+        
+        storageFile.putData(imageData!, metadata: metaData)
+        {
+            (metaData, error) in
+            
+            guard let metaData = metaData
+            else
+            {
+                print("ERROR : \(error?.localizedDescription)")
+                return
+            }
+            
+            storageFile.downloadURL(completion:
+                {
+                    (url, error) in
+                    guard let downloadURL = url?.absoluteString else
+                    {
+                        print(error?.localizedDescription ?? "Error")
+                        completion(nil,error?.localizedDescription)
+                        return
+                    }
+                    print(downloadURL)
+                    
+                    completion(downloadURL,nil)
+                })
+        }
+    }
+    
     func deleteUser()
     {
         
